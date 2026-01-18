@@ -1,0 +1,380 @@
+[
+  {
+    "id": 1,
+    "name": "Tetra-Gaze Swamp Wyvern",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1764945091/1764659171920_i5fdns.jpg",
+    "lore": "Born in the toxic mists of the Deep Marsh, this creature is a biological nightmare evolved for ambush. Its most terrifying feature is its four independent eyes: the top pair scans the sky for larger predators, while the bottom pair locks onto prey hiding in the murky water. Unlike noble dragons, it flies clumsily, preferring to use its muscular, hand-like wings to crawl rapidly through the sludge and drag victims into the depths.",
+    "stats": {
+      "hp": 1350,
+      "attack": 180,
+      "defense": 115,
+      "mana": 0,
+      "speed": 195,
+      "intelligence": 140,
+      "total": 1980,
+      "range": "Monster",
+      "type": "amphibian"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Jaguarnaut",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1765467104/1764654166911_uwp7tf.png",
+    "lore": "Banished from his jungle tribe for relying on steel instead of stealth, the Mauler is a mercenary who traded speed for raw, crushing power. He wears heavy plate armor on his massive forearms to act as a living battering ram. He no longer stalks his prey from the shadows; he simply smashes through their front gates, proving that no shield can withstand the weight of his strike.",
+    "stats": {
+      "hp": 1940,
+      "attack": 270,
+      "defense": 390,
+      "mana": 0,
+      "speed": 145,
+      "intelligence": 135,
+      "total": 2880,
+      "range": "Demi human",
+      "type": "terrestial"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Snow-Maw",
+    "rarity": "common",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1765467070/1764663074683_1_vh3jxn.jpg",
+    "lore": "the Slobberjaw is perpetually hungry and dangerously happy about it. It doesn't hunt with stealth; it hunts with a tongue that can stretch five feet and tastes like frozen iron.Legends say its drool is so slippery that entire explorer's team have fallen over before even landing a hit. If the bite doesn't get you, the slip-and-slide will.",
+    "stats": {
+      "hp": 880,
+      "attack": 190,
+      "defense": 130,
+      "mana": 0,
+      "speed": 115,
+      "intelligence": 90,
+      "total": 1405,
+      "range": "Monster",
+      "type": "terrestial"
+    }
+  },
+  {
+    "id": 4,
+    "name": "Paleolith",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1765467079/1764620093838_1_1_gjlwkz.jpg",
+    "lore": "A silent guardian of the shallow seas, this Coral-Spine Ancient is often mistaken for a piece of drifting reef until it opens its eyes. The vibrant red structures on its back are not just for show; they are living, breathing coral colonies that harden instantly when attacked. Sailors believe that the shimmering, translucent fin on its tail can refract light to create illusions, hiding entire shipwrecks—or treasures—from greedy eyes.",
+    "stats": {
+      "hp": 2220,
+      "attack": 240,
+      "defense": 525,
+      "mana": 0,
+      "speed": 140,
+      "intelligence": 90,
+      "total": 3215,
+      "range": "Monster",
+      "type": "aquatic"
+    }
+  },
+  {
+    "id": 5,
+    "name": "T-Shark 9",
+    "rarity": "common",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1765467072/1764656936592_1_xn8r9e.jpg",
+    "lore": "The T-Shark 9 is not a product of natural evolution, but a biological weapon forged in the laboratories of the Black-Steel Bioscience. In a world where rising sea levels forced jungle warfare to the coasts, warlords needed a beast that could hunt with the stealth of a tiger in the brush and the sensory precision of a shark in the water.",
+    "stats": {
+      "hp": 1420,
+      "attack": 240,
+      "defense": 175,
+      "mana": 0,
+      "speed": 120,
+      "intelligence": 75,
+      "range": "Artificial Creature",
+      "type": "Amphibian",
+      "total": 2030
+    }
+  },
+  {
+    "id": 6,
+    "name": "Boreassus",
+    "rarity": "epic",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1765467077/1764620410101_1_1_c68rux.jpg",
+    "lore": "The Boreassus is a solitary apex predator native to the sunless, crushing depths of the Boreal Trench, a deep-sea chasm located beneath the polar ice caps. These creatures are ancient, living remnants of a prehistoric ice age, perfectly adapted to extreme cold and pressure. Their bodies generate a potent natural antifreeze, giving their skin a constant, pale, frozen, gel-like appearance that is cold to the touch.",
+    "stats": {
+      "hp": 4170,
+      "attack": 620,
+      "defense": 880,
+      "mana": 75,
+      "speed": 60,
+      "intelligence": 65,
+      "range": "Monster",
+      "type": "Aquatic",
+      "total": 5870
+    }
+  },
+  {
+    "id": 7,
+    "name": "Drowzhowl",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1765467071/1764692501664_1_qazy7f.jpg",
+    "lore": "This creature has a massive bellows system inside its chest instead of normal lungs. In combat, it inhales deeply for several seconds (making it vulnerable), and then exhales a concentrated \"slug\" of compressed air.",
+    "stats": {
+      "hp": 2170,
+      "attack": 410,
+      "defense": 335,
+      "mana": 0,
+      "speed": 70,
+      "intelligence": 65,
+      "range": "Dragon",
+      "type": "Terrestial",
+      "total": 3050
+    }
+  },
+  {
+    "id": 8,
+    "name": "Cerebrorex ",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1765468682/1764681929162_1_fet4dn.jpg",
+    "lore": "Created in a laboratory, Cerebrorex is a prehistoric predator resurrected with synthetic biology. Because its original skull could not contain its massively expanded intelligence, scientists encased its head in a life-support hydro-dome. It does not hunt with claws; instead, it uses its exposed brain to project psychic shockwaves that paralyze prey instantly. The orange plating on its tail acts as a cooling vent for the immense heat its brain generates during battle.",
+    "stats": {
+      "hp": 1260,
+      "attack": 110,
+      "defense": 130,
+      "mana": 85,
+      "speed": 135,
+      "intelligence": 395,
+      "range": "Artificial Creature",
+      "type": "Terrestial",
+      "total": 2115
+    }
+  },
+  {
+    "id": 9,
+    "name": "Golgoth",
+    "rarity": "legendary",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1765468682/1764663441525_1_zpbx0t.jpg",
+    "lore": "Ancient scriptures from the Merfolk civilizations speak of a \"King who sees all, bites all, and knows all.\". It does not belong to a single species but is a terrifying fusion of the ocean’s deadliest predators. It roams the deepest, darkest trenches of the Sapphire Ocean, specifically haunting the \"Graveyard of Galleons\"—a region where ships carrying royal gold frequently disappear. ",
+    "stats": {
+      "hp": 7250,
+      "attack": 1145,
+      "defense": 870,
+      "mana": 520,
+      "speed": 210,
+      "intelligence": 110,
+      "range": "Monster",
+      "type": "Aquatic",
+      "total": 10105
+    }
+  },
+  {
+    "id": 10,
+    "name": "Noxotaur",
+    "rarity": "common",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1765468681/1764670750906_1_mehhmc.jpg",
+    "lore": "If you need to move contraband across the jagged peaks of the Iron Mountains, you don't buy a horse—you hire a Hauler. With skin as tough as cured leather and a temperament to match, these beasts are immune to the bitter cold and can climb near-vertical cliffs. The mysterious purple-stoppered jars usually contain \"Nightshade Brew,\" a banned liquor highly prized by giants and ogres. The Haulers are fiercely loyal only to their specific handler; anyone else who tries to touch the cargo gets introduced to the beast's blunt horns.",
+    "stats": {
+      "hp": 980,
+      "attack": 85,
+      "defense": 145,
+      "mana": 0,
+      "speed": 65,
+      "intelligence": 50,
+      "range": "Beast",
+      "type": "Terrestial",
+      "total": 1325
+    }
+  },
+  {
+    "id": 11,
+    "name": "Berrydra",
+    "rarity": "common",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1765468682/1764672220279_1_jy7oyr.jpg",
+    "lore": "A distant, less intelligent cousin of the Hydra. Having three heads should make it a tactical genius, but unfortunately, they share a single stomach and constantly argue over who gets to eat the snack. They are terrible at stealth because they are constantly bickering. However, their neon-colored drool is incredibly slippery—enemies chasing them often slip and fall, making the Slobberus an accidental tactical genius.",
+    "stats": {
+      "hp": 875,
+      "attack": 110,
+      "defense": 95,
+      "mana": 15,
+      "speed": 115,
+      "intelligence": 80,
+      "range": "Dragon",
+      "type": "Terrestial",
+      "total": 1290
+    }
+  },
+  {
+    "id": 12,
+    "name": "Megadon-09",
+    "rarity": "epic",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1765467077/1764653538309_1_gzxfkj.jpg",
+    "lore": "Originally an apex predator of the deep ocean, Typhodus is the result of \"Project Shoreline,\" an illicit military experiment designed to create a unit capable of dominating both sea and land warfare.While the physical enhancements were a success, the neural implant (indicated by the glowing red eye and antenna) was intended to make the beast obedient. However, the sheer aggression of the shark DNA constantly fights the programming. Megadon is now a rogue agent—a berserker who serves no master, roaming coastal ruins and tearing through armored tanks as easily as it tears through flesh.",
+    "stats": {
+      "hp": 3845,
+      "attack": 740,
+      "defense": 480,
+      "mana": 0,
+      "speed": 75,
+      "intelligence": 210,
+      "range": "Artificial Monster",
+      "type": "Amphibian",
+      "total": 5350
+    }
+  },
+  {
+    "id": 13,
+    "name": "Demon Toad",
+    "rarity": "common",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1765467082/1764618584967_1_qnxb07.jpg",
+    "lore": "The Demon Toads are the undisputed kings of the Kuromuli wetlands. Growing to the size of a grizzly bear, they are the largest poisonous creatures in the region. They are easily identified by the jagged horns on their snout and the strange, white rune-like markings on their skin.\n\nThese markings are not tattoos, but natural warning signs. When the white patterns glow, it signals that the toad's glands are full of neurotoxin. A single Demon Toad releases enough noxious gas from its skin to turn the surrounding swamp water into acid, dissolving the armor and flesh of any prey foolish enough to get close. Travelers in Kuromuli know that if the fog smells like sulfur, a Demon Toad is nearby.",
+    "stats": {
+      "hp": 1560,
+      "attack": 155,
+      "defense": 140,
+      "mana": 20,
+      "speed": 35,
+      "intelligence": 60,
+      "range": "Monster",
+      "type": "Amphibian",
+      "total": 1970
+    }
+  },
+  {
+    "id": 14,
+    "name": "Vespion",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1766212838/vespion_luhhez.jpg",
+    "lore": "The Vespion is the \"Heavy Siege\" unit of the insect kingdom. Born from a larva fed exclusively on Royal Jelly and liquid iron, it grows too massive and armored to fly properly. Instead of gathering nectar, it exists solely to crush the hive's enemies.\n\nIts wings function like thrusters, allowing it to hover inches off the ground and dash forward with terrifying speed (a move known as the \"Buzz-Blitz\"). The thick white fur around its neck is not for warmth—it is a sensory mane that detects the heartbeat of invisible enemies. When a Vespion enters the battlefield, the buzzing of its wings is low and heavy, sounding more like a chainsaw than a bee.",
+    "stats": {
+      "hp": 2289,
+      "attack": 295,
+      "defense": 270,
+      "mana": 0,
+      "speed": 145,
+      "intelligence": 110,
+      "range": "beastfolk",
+      "type": "Aerial",
+      "total": 3109
+    }
+  },
+  {
+    "id": 15,
+    "name": "Kernalisk",
+    "rarity": "epic",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1766214442/1764696606081_1_sphe7t.jpg",
+    "lore": "The Kernalisk was not born; it was grown. Legend says these creatures were originally created by ancient druids to act as scarecrows to protect sacred crops during times of famine. However, after absorbing too much wild magic from the soil, they gained sentience and a voracious hunger. Now, they do not protect the harvest—they hoard it. The creature’s body is a dense armor of calcified kernels. The yellow scales are as hard as gold, while the purple scales (found on its secondary head) are venomous. Its \"wings\" and mane are razor-sharp husks capable of slicing through iron armor.",
+    "stats": {
+      "hp": 2950,
+      "attack": 730,
+      "defense": 625,
+      "mana": 220,
+      "speed": 110,
+      "intelligence": 85,
+      "range": "Dragon",
+      "type": "Terrestial",
+      "total": 4720
+    }
+  },
+  {
+    "id": 16,
+    "name": "Kenji",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1766214443/1764694435321_1_iva1kw.jpg",
+    "lore": "In the misty provinces of the East, humans are often plagued by Yōkai (mischievous or malevolent spirits) that are invisible to the human eye. Kenji is not a soldier for a human army; he is a specialized Exorcist for Hire.\nThe gold swirls on his face and forehead are not natural markings, nor are they paint. They are Singes—scars left from a battle with a Lightning Raiju when he was just a pup. Surviving that strike granted him \"The Sight,\" allowing him to see the most dangerous spirits that even other hounds miss.",
+    "stats": {
+      "hp": 1270,
+      "attack": 121,
+      "defense": 115,
+      "mana": 30,
+      "speed": 125,
+      "intelligence": 155,
+      "range": "beastfolk",
+      "type": "Terrestial",
+      "total": 1816
+    }
+  },
+  {
+    "id": 17,
+    "name": "Ribbitor",
+    "rarity": "common",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1766214442/1764697439167_1_qjcjbe.jpg",
+    "lore": "The Ribbitor is an evolutionary anomaly found in the most humid, overgrown sectors of the world. It is not a true dragon, but a highly specialized amphibian that has developed the ability to glide. Its most unique feature is its wings. They are not made of skin or bone, but are actually formed from a hardened, translucent secretion produced by glands on its back. This \"living gel\" mimics the sunlight filtering through leaves, granting the Ribbitor near-perfect camouflage while in the air. It begins its life as a massive tadpole in stagnant, poisonous pools. As it matures, it climbs into the high mangroves. It is an ambush predator; it waits motionless on high branches until it spots prey, then drops silently, extending its sticky wings to glide down and latch onto its victim.",
+    "stats": {
+      "hp": 1265,
+      "attack": 90,
+      "defense": 75,
+      "mana": 0,
+      "speed": 135,
+      "intelligence": 80,
+      "range": "Dragon",
+      "type": "Amphibian",
+      "total": 1645
+    }
+  },
+  {
+    "id": 18,
+    "name": "Grandmaster Regulus",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1766214443/1764693553086_1_t5spui.jpg",
+    "lore": "Regulus was once a singular mortal king who presided over a kingdom destined to fall. Unwilling to accept defeat, he attempted the \"Hourglass Ritual\"—a forbidden spell designed to pull a \"winning\" version of himself from a different timeline to replace his failing self. But the ritual shattered. Instead of swapping places with a victorious version of himself, the spell collapsed the walls between realities. Seven distinct Regulus—from the optimistic Prince to the tyrannical Warlord—were violently pulled into a single point in space-time, fused into one immortal, agonizing vessel.",
+    "stats": {
+      "hp": 2245,
+      "attack": 245,
+      "defense": 280,
+      "mana": 285,
+      "speed": 60,
+      "intelligence": 180,
+      "range": "beastfolk",
+      "type": "Terrestial",
+      "total": 3295
+    }
+  },
+  {
+    "id": 19,
+    "name": "gulperdrake",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1766214442/1764704256973_1_lg9nz7.jpg",
+    "lore": "Gulperdrakes are the reason coastal towns experience sudden, dry summers. These creatures feed primarily on rainclouds. Using their massive, accordion-like throats, they inhale entire storm fronts in a single breath, filtering the moisture and spitting out the dry air.\n\nBecause they are so heavy with water weight, their tiny wings can't actually lift them; instead, they inflate their internal air sacs to achieve buoyancy, bobbing through the air like a heavy balloon. In combat, they release this stored pressure in a sonic \"Bellow Blast\" that sends enemies flying backward.",
+    "stats": {
+      "hp": 2540,
+      "attack": 215,
+      "defense": 420,
+      "mana": 65,
+      "speed": 55,
+      "intelligence": 75,
+      "range": "Dragon",
+      "type": "Aquatic",
+      "total": 3370
+    }
+  },
+  {
+    "id": 20,
+    "name": "Kravos",
+    "rarity": "epic",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1766214444/1764672514698_1_wmwo5v.jpg",
+    "lore": "Kravos is a \"Living Spell\"—a complex rune written by a wizard in a forbidden grimoire. The magic was so volatile that the ink refused to stay on the page. It pulled itself into the 3D world, constructing a body out of the surrounding library stone and fusing it with the aggression of the beast drawn on the page. He is constantly \"rewriting\" his own form. The whip on his back is his tether to the 2D world; he uses it to \"erase\" his enemies from existence, turning them into 2D puddles of ink.",
+    "stats": {
+      "hp": 3665,
+      "attack": 750,
+      "defense": 660,
+      "mana": 290,
+      "speed": 130,
+      "intelligence": 175,
+      "range": "Magic",
+      "type": "Terrestial",
+      "total": 5670
+    }
+  },
+  {
+    "id": 21,
+    "name": "Sylvalisk",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1766996534/1764694688226_1_1_to7m26.jpg",
+    "lore": "The Sylvalisk is a gentle, amphibious spirit that acts as a guardian of ancient riverbanks and dense forests. Born from the roots of the World Tree, its scales are a blend of hardened bark and living moss, allowing it to camouflage perfectly against the canopy.\n\nUnusually, it does not walk on land but \"swims\" through the air using the large, translucent leaf-fin on its tail to steer. It is said that wherever a Sylvalisk rests, the plants grow twice as fast, and sick trees are instantly healed. Its glowing blue eyes can see the true intent of any creature; it guides lost travelers to safety but leads those who wish to harm the forest into endless, tangling thickets.",
+    "stats": {
+      "hp": 2340,
+      "attack": 190,
+      "defense": 225,
+      "mana": 20,
+      "speed": 100,
+      "intelligence": 75,
+      "range": "Monster",
+      "type": "Amphibian",
+      "total": 2950
+    }
+  }
+]
