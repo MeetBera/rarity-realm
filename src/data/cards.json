@@ -180,7 +180,6 @@
     }
   },
   {
-    
     "id": 11,
     "name": "Berrydra",
     "rarity": "common",
@@ -376,6 +375,42 @@
       "range": "Monster",
       "type": "Amphibian",
       "total": 2950
+    }
+  },
+  {
+    "id": 22,
+    "name": "Tropigriff",
+    "rarity": "common",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1766996610/1764704915476_1_qxwcl6.jpg",
+    "lore": "A chaotic blend of predator and prankster, the Tropigriff uses its spiral tail to mimic exotic fruit, luring hungry travelers into pecking range. While it can change colors to blend into the jungle canopy, it often forgets to camouflage its bright orange toes, making it surprisingly easy to spot for those who look down.",
+    "stats": {
+      "hp": 455,
+      "attack": 35,
+      "defense": 20,
+      "mana": 0,
+      "speed": 70,
+      "intelligence": 85,
+      "range": "Monster",
+      "type": "Aerial",
+      "total": 665
+    }
+  },
+  {
+    "id": 23,
+    "name": "Vulcakroak",
+    "rarity": "common",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1766996610/1764705273231_1_1_n7m7u0.jpg",
+    "lore": "Born near the ashes of dormant volcanoes, Vulcakroak are grumpy creatures filled with hot, buoyant gas that allows their undersized wings to lift their hefty bodies. They possess a delusion of grandeur, firmly believing they are mighty dragons, and spend their days fruitlessly trying to breathe fire, only ever producing a disappointing puff of warm smoke.",
+    "stats": {
+      "hp": 660,
+      "attack": 65,
+      "defense": 50,
+      "mana": 5,
+      "speed": 45,
+      "intelligence": 40,
+      "range": "Monster",
+      "type": "Terrestial",
+      "total": 865
     }
   }
 ]

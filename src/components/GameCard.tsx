@@ -103,7 +103,7 @@ export const GameCard = ({ card, onCardClick }: GameCardProps) => {
         <img
           src={card.image}
           alt={card.name}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 blur-[0.4px]"
         />
 
         {/* Top Actions & Badges - Layered over image */}
