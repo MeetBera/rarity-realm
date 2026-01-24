@@ -93,7 +93,7 @@
     "id": 6,
     "name": "Boreassus",
     "rarity": "epic",
-    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1765467077/1764620410101_1_1_c68rux.jpg",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1769241697/1769239157799.jpg_rota59.jpg",
     "lore": "The Boreassus is a solitary apex predator native to the sunless, crushing depths of the Boreal Trench, a deep-sea chasm located beneath the polar ice caps. These creatures are ancient, living remnants of a prehistoric ice age, perfectly adapted to extreme cold and pressure. Their bodies generate a potent natural antifreeze, giving their skin a constant, pale, frozen, gel-like appearance that is cold to the touch.",
     "stats": {
       "hp": 4170,
@@ -147,7 +147,7 @@
     "id": 9,
     "name": "Golgoth",
     "rarity": "legendary",
-    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1765468682/1764663441525_1_zpbx0t.jpg",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1769241697/1769240101255_1.jpg_ugiiev.jpg",
     "lore": "Ancient scriptures from the Merfolk civilizations speak of a \"King who sees all, bites all, and knows all.\". It does not belong to a single species but is a terrifying fusion of the ocean’s deadliest predators. It roams the deepest, darkest trenches of the Sapphire Ocean, specifically haunting the \"Graveyard of Galleons\"—a region where ships carrying royal gold frequently disappear. ",
     "stats": {
       "hp": 7250,
@@ -180,11 +180,12 @@
     }
   },
   {
+    
     "id": 11,
     "name": "Berrydra",
     "rarity": "common",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1765468682/1764672220279_1_jy7oyr.jpg",
-    "lore": "A distant, less intelligent cousin of the Hydra. Having three heads should make it a tactical genius, but unfortunately, they share a single stomach and constantly argue over who gets to eat the snack. They are terrible at stealth because they are constantly bickering. However, their neon-colored drool is incredibly slippery—enemies chasing them often slip and fall, making the Slobberus an accidental tactical genius.",
+    "lore": "A distant, less intelligent cousin of the Hydra. Having three heads should make it a tactical genius, but unfortunately, they share a single stomach and constantly argue over who gets to eat the snack. They are terrible at stealth because they are constantly bickering. However, their neon-colored drool is incredibly slippery—enemies chasing them often slip and fall, making the Berrydra an accidental tactical genius.",
     "stats": {
       "hp": 875,
       "attack": 110,
