@@ -47,7 +47,7 @@ export const CardModal = ({ isOpen, onClose, card }: any) => {
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent 
-        className="p-2 border-none bg-transparent shadow-none max-w-4xl w-full md:w-[95vw] overflow-hidden"
+        className="p-0 border-none bg-transparent shadow-none max-w-5xl w-full md:w-[95vw] overflow-hidden focus:outline-none"
         onInteractOutside={(e) => {
           if (fullscreenImage) e.preventDefault();
         }}
@@ -55,13 +55,13 @@ export const CardModal = ({ isOpen, onClose, card }: any) => {
         <DialogTitle className="sr-only">{card.name} Details</DialogTitle>
 
         <div className={cn(
-          "relative w-full rounded-[2rem] border-2 bg-slate-950/95 backdrop-blur-2xl transition-all duration-500 max-h-[92vh] overflow-y-auto scrollbar-hide",
+          "relative w-full rounded-[2rem] border bg-slate-950/95 backdrop-blur-2xl transition-all duration-500 overflow-hidden shadow-2xl",
           theme.border,
           theme.shadow
         )}>
           {/* Animated Background Gradients */}
           <div className={cn(
-            "absolute inset-0 opacity-20 bg-gradient-to-br pointer-events-none animate-pulse",
+            "absolute inset-0 opacity-10 bg-gradient-to-br pointer-events-none animate-pulse mix-blend-screen",
             theme.gradient
           )} />
           
@@ -76,124 +76,127 @@ export const CardModal = ({ isOpen, onClose, card }: any) => {
           </Button>
 
           {/* Desktop Navigation Arrows */}
-          <div className="hidden md:block">
+          <div className="md:block">
             <Button 
               variant="ghost" size="icon" onClick={prevSlide}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-[60] text-white/20 hover:text-white h-12 w-12"
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-[60] text-white/20 hover:text-white hover:bg-white/5 h-12 w-12 rounded-full"
             >
-              <ChevronLeft className="h-10 w-10" />
+              <ChevronLeft className="h-8 w-8" />
             </Button>
             <Button 
               variant="ghost" size="icon" onClick={nextSlide}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-[60] text-white/20 hover:text-white h-12 w-12"
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-[60] text-white/20 hover:text-white hover:bg-white/5 h-12 w-12 rounded-full"
             >
-              <ChevronRight className="h-10 w-10" />
+              <ChevronRight className="h-8 w-8" />
             </Button>
           </div>
 
-          <div className="relative p-5 md:p-10">
+          <div className="relative w-full h-[90vh] md:h-[650px] max-h-[90vh] flex flex-col">
             <AnimatePresence mode="wait">
               {currentSlide === 0 ? (
                 <motion.div
                   key="slide-info"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  className="flex flex-col md:flex-row gap-6 md:gap-10 items-center"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="flex flex-col md:flex-row h-full"
                 >
-                  {/* Image Container */}
-                  <div 
-                    onClick={() => setFullscreenImage(true)}
-                    className="group relative w-full md:w-2/5 cursor-zoom-in aspect-[4/5] md:aspect-[3/4] max-h-[45vh] md:max-h-none"
-                  >
-                    <div className={cn(
-                      "absolute -inset-1 rounded-2xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity",
-                      theme.accent
-                    )} />
-                    <div className={cn(
-                      "relative h-full w-full rounded-2xl overflow-hidden border bg-slate-900/50",
-                      theme.border
-                    )}>
-                      <img
-                        src={card.image}
-                        alt={card.name}
-                        className="w-full h-full object-contain p-4 transition-transform duration-700 md:group-hover:scale-110"
-                      />
-                    </div>
+                  {/* --- LEFT SIDE: IMAGE HERO --- */}
+                  <div className="w-full md:w-[55%] h-[45vh] md:h-full relative flex items-center justify-center p-6 md:p-10">
+                     {/* Glow behind image */}
+                     <div className={cn(
+                        "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] rounded-full blur-[100px] opacity-30 pointer-events-none",
+                        theme.accent
+                      )} />
+                      
+                      <div 
+                        onClick={() => setFullscreenImage(true)}
+                        className="relative w-full h-full flex items-center justify-center cursor-zoom-in group z-10"
+                      >
+                         <img
+                          src={card.image}
+                          alt={card.name}
+                          className="max-w-full max-h-full object-contain drop-shadow-2xl transition-transform duration-500 md:group-hover:scale-110"
+                        />
+                      </div>
                   </div>
 
-                  {/* Header Info */}
-                  <div className="w-full md:w-3/5 space-y-6">
+                  {/* --- RIGHT SIDE: INFO --- */}
+                  <div className="w-full md:w-[45%] h-full flex flex-col justify-center p-6 md:p-12 md:pl-0 space-y-6 md:space-y-8 relative z-20 bg-gradient-to-t md:bg-gradient-to-l from-slate-950/80 to-transparent">
                     <div>
-                      <h2 className="text-3xl md:text-6xl font-black uppercase text-white leading-none">
-                        {card.name}
-                      </h2>
-                      <div className="flex flex-wrap gap-2 mt-3 items-center">
+                      <div className="flex items-center gap-3 mb-4">
                         <span className={cn(
-                          "px-3 py-0.5 rounded-sm text-[10px] md:text-xs font-black uppercase skew-x-[-12deg]",
+                          "px-3 py-1 rounded-sm text-xs font-black uppercase tracking-widest skew-x-[-12deg]",
                           theme.accent, "text-black"
                         )}>
                           {card.rarity}
                         </span>
-                        <span className="text-slate-500 font-mono text-[10px] md:text-xs tracking-widest uppercase">
-                          // {card.stats.type} CLASS
+                        <div className="h-px flex-1 bg-white/10" />
+                        <span className="text-slate-500 font-mono text-xs tracking-widest uppercase">
+                          {card.stats.type}
                         </span>
                       </div>
+
+                      <h2 className="text-4xl md:text-6xl font-black uppercase text-white leading-[0.9] tracking-tighter drop-shadow-lg">
+                        {card.name}
+                      </h2>
                     </div>
 
-                    <div className="grid grid-cols-1 gap-3">
-                      <QuickStat label="Type" value={card.stats.range} icon={<Move className="w-4 h-4" />} />
-                      <QuickStat label="Combat Rating" value={totalPower} icon={<Zap className="w-4 h-4" />} isHighlight />
+                    <div className="space-y-3">
+                      <QuickStat label="Range" value={card.stats.range} icon={<Move className="w-4 h-4" />} />
+                      <QuickStat label="Power" value={totalPower} icon={<Zap className="w-4 h-4" />} isHighlight />
                     </div>
                     
-                    {/* Mobile Only Hint */}
-                    <p className="md:hidden text-center text-slate-500 text-[10px] uppercase tracking-widest animate-pulse">
-                      Tap dots below for stats
-                    </p>
+                    {/* Pagination Indicator */}
+                    <div className="pt-4 flex gap-2">
+                       <div className={cn("h-1 w-12 rounded-full", theme.accent)} />
+                       <button onClick={nextSlide} className="h-1 w-2 bg-slate-800 rounded-full hover:bg-slate-700 transition-colors" />
+                    </div>
                   </div>
                 </motion.div>
               ) : (
                 <motion.div
                   key="slide-stats"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  className="grid md:grid-cols-2 gap-8"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  className="w-full h-full p-4 md:p-8 overflow-y-auto"
                 >
-                  <div className="space-y-4">
-                    <div className="inline-block px-3 py-1 bg-white/5 border-l-4 border-white/20">
-                       <h3 className="text-[10px] font-black uppercase text-slate-400 tracking-[0.2em]">Lore</h3>
-                    </div>
-                    <p className="text-sm md:text-lg text-slate-300 font-mono italic leading-relaxed">
-                      "{card.lore}"
-                    </p>
-                  </div>
+                  <div className="max-w-3xl mx-auto space-y-10">
+                     <div className="text-center space-y-4">
+                        <h3 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight">Attributes & Lore</h3>
+                        <div className={cn("h-1 w-20 mx-auto rounded-full", theme.accent)} />
+                     </div>
 
-                  <div className=" grid grid-cols-1 gap-3 md:gap-4">
-                    <StatRow label="Health" value={card.stats.hp} icon={<Activity className="w-3 h-3"/>} max={10000} />
-                    <StatRow label="Attack" value={card.stats.attack} icon={<Swords className="w-3 h-3"/>} max={2000} />
-                    <StatRow label="Defense" value={card.stats.defense} icon={<Shield className="w-3 h-3"/>} max={2000} />
-                    <StatRow label="Mana" value={card.stats.mana} icon={<Sun className="w-3 h-3"/>} max={1000} />
-                    <StatRow label="Intelligence" value={card.stats.intelligence} icon={<Brain className="w-3 h-3"/>} max={500} />
-                    <StatRow label="Speed" value={card.stats.speed} icon={<Zap className="w-3 h-3"/>} max={1000} />
+                     <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+                        <div className="space-y-5">
+                           <div className="flex items-center gap-2 text-slate-400 uppercase text-xs font-bold tracking-widest mb-4">
+                              <Brain className="w-4 h-4" /> Story
+                           </div>
+                           <p className="text-slate-300 font-mono italic text-sm md:text-base leading-relaxed border-l-2 border-white/10 pl-4">
+                            "{card.lore}"
+                           </p>
+                        </div>
+
+                        <div className="space-y-4">
+                          <StatRow label="Health" value={card.stats.hp} icon={<Activity className="w-3 h-3"/>} max={10000} color={theme.accent} />
+                          <StatRow label="Attack" value={card.stats.attack} icon={<Swords className="w-3 h-3"/>} max={2000} color={theme.accent} />
+                          <StatRow label="Defense" value={card.stats.defense} icon={<Shield className="w-3 h-3"/>} max={2000} color={theme.accent} />
+                          <StatRow label="Mana" value={card.stats.mana} icon={<Sun className="w-3 h-3"/>} max={1000} color={theme.accent} />
+                          <StatRow label="Intelligence" value={card.stats.intelligence} icon={<Brain className="w-3 h-3"/>} max={1000} color={theme.accent} />
+                          <StatRow label="Speed" value={card.stats.speed} icon={<Zap className="w-3 h-3"/>} max={500} color={theme.accent} />
+                        </div>
+                     </div>
+                     
+                     <div className="flex justify-center pt-8">
+                        <button onClick={prevSlide} className="text-xs font-bold text-slate-500 hover:text-white uppercase tracking-widest flex items-center gap-2">
+                           <ChevronLeft className="w-4 h-4" /> Back to Card
+                        </button>
+                     </div>
                   </div>
                 </motion.div>
               )}
             </AnimatePresence>
-
-            {/* Pagination dots - Made larger for touch */}
-            <div className="mt-8 md:mt-10 flex justify-center gap-4">
-              {[0, 1].map((i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentSlide(i)}
-                  className={cn(
-                    "h-2 transition-all duration-300 rounded-full",
-                    currentSlide === i ? cn("w-10", theme.accent) : "w-5 bg-slate-800"
-                  )}
-                />
-              ))}
-            </div>
           </div>
         </div>
 
@@ -204,19 +207,19 @@ export const CardModal = ({ isOpen, onClose, card }: any) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 cursor-zoom-out"
+              className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 cursor-zoom-out backdrop-blur-sm"
               onClick={() => setFullscreenImage(false)}
             >
               <motion.img
-                initial={{ scale: 0.9 }}
-                animate={{ scale: 1 }}
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
                 src={card.image}
-                className="max-w-full max-h-[80vh] object-contain"
+                className="max-w-full max-h-[90vh] object-contain drop-shadow-[0_0_50px_rgba(255,255,255,0.1)]"
               />
               <Button
                 variant="ghost"
                 size="icon"
-                className="absolute top-6 right-6 text-white bg-white/10 rounded-full"
+                className="absolute top-6 right-6 text-white bg-white/10 rounded-full hover:bg-white/20"
                 onClick={(e) => {
                   e.stopPropagation();
                   setFullscreenImage(false);
@@ -233,39 +236,42 @@ export const CardModal = ({ isOpen, onClose, card }: any) => {
 };
 
 const rarityConfig = {
-  common: { text: "text-slate-300", border: "border-slate-500", bg: "bg-slate-500/10", shadow: "shadow-slate-500/20", gradient: "from-slate-500/20 to-slate-900/40", accent: "bg-slate-500" },
-  rare: { text: "text-blue-400", border: "border-blue-500", bg: "bg-blue-500/10", shadow: "shadow-blue-500/30", gradient: "from-blue-500/20 to-blue-900/40", accent: "bg-blue-500" },
-  epic: { text: "text-purple-400", border: "border-purple-500", bg: "bg-purple-500/10", shadow: "shadow-purple-500/30", gradient: "from-purple-500/20 to-purple-900/40", accent: "bg-purple-500" },
-  legendary: { text: "text-amber-400", border: "border-amber-500", bg: "bg-amber-500/10", shadow: "shadow-amber-500/40", gradient: "from-amber-500/20 to-amber-900/40", accent: "bg-amber-500" },
-  mythical: { text: "text-red-500", border: "border-red-500", bg: "bg-red-500/10", shadow: "shadow-red-500/50", gradient: "from-red-500/20 to-red-900/40", accent: "bg-red-500" },
+  common: { text: "text-slate-300", border: "border-slate-500/50", bg: "bg-slate-500/10", shadow: "shadow-slate-500/10", gradient: "from-slate-500/10 to-transparent", accent: "bg-slate-400" },
+  rare: { text: "text-blue-400", border: "border-blue-500/50", bg: "bg-blue-500/10", shadow: "shadow-blue-500/20", gradient: "from-blue-500/20 to-transparent", accent: "bg-blue-500" },
+  epic: { text: "text-purple-400", border: "border-purple-500/50", bg: "bg-purple-500/10", shadow: "shadow-purple-500/20", gradient: "from-purple-500/20 to-transparent", accent: "bg-purple-500" },
+  legendary: { text: "text-amber-400", border: "border-amber-500/50", bg: "bg-amber-500/10", shadow: "shadow-amber-500/20", gradient: "from-amber-500/20 to-transparent", accent: "bg-amber-500" },
+  mythical: { text: "text-red-500", border: "border-red-500/50", bg: "bg-red-500/10", shadow: "shadow-red-500/20", gradient: "from-red-500/20 to-transparent", accent: "bg-red-500" },
 } as const;
 
 const QuickStat = ({ label, value, icon, isHighlight }: any) => (
   <div className={cn(
-    "p-3 md:p-4 rounded-xl flex items-center justify-between border transition-colors",
-    isHighlight ? "bg-white/10 border-white/20" : "bg-black/20 border-white/5"
+    "p-4 rounded-xl flex items-center justify-between border transition-all hover:bg-white/5",
+    isHighlight ? "bg-white/5 border-white/20 shadow-lg" : "bg-transparent border-white/10"
   )}>
-    <div className="flex items-center gap-2 md:gap-3 text-slate-400 text-[10px] md:text-xs uppercase font-black tracking-widest">
-      <div className="p-1.5 md:p-2 rounded-lg bg-white/5">{icon}</div> {label}
+    <div className="flex items-center gap-3 text-slate-400 text-[10px] uppercase font-black tracking-widest">
+      <div className="p-1.5 rounded-md bg-white/5">{icon}</div> {label}
     </div>
-    <span className="text-xl md:text-2xl font-black font-mono text-white">{value}</span>
+    <span className="text-xl md:text-2xl font-black font-mono text-white tracking-tighter">{value}</span>
   </div>
 );
 
-const StatRow = ({ label, value, icon, max }: any) => (
-  <div className="space-y-1.5">
+const StatRow = ({ label, value, icon, max, color }: any) => (
+  <div className="space-y-2 group">
     <div className="flex justify-between items-end px-1">
-      <div className="flex items-center gap-2 text-[10px] font-black uppercase text-slate-500 tracking-tighter">
+      <div className="flex items-center gap-2 text-xs font-bold uppercase text-slate-500 tracking-wider group-hover:text-slate-300 transition-colors">
         {icon} {label}
       </div>
-      <span className="text-xs md:text-sm font-mono font-bold text-white">{value}</span>
+      <span className="text-sm font-mono font-bold text-white">{value}</span>
     </div>
-    <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
+    <div className="h-2 w-full bg-slate-900 rounded-full overflow-hidden border border-white/5 relative">
       <motion.div 
         initial={{ width: 0 }}
         animate={{ width: `${(value / max) * 100}%` }}
-        className="h-full bg-gradient-to-r from-white/20 to-white/60"
+        transition={{ duration: 1, ease: "circOut" }}
+        className={cn("h-full absolute left-0 top-0", color)}
       />
+      {/* Glossy overlay on bar */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent pointer-events-none" />
     </div>
   </div>
 );

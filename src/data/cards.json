@@ -346,7 +346,7 @@
     "name": "Kravos",
     "rarity": "epic",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1766214444/1764672514698_1_wmwo5v.jpg",
-    "lore": "Kravos is a \"Living Spell\"—a complex rune written by a wizard in a forbidden grimoire. The magic was so volatile that the ink refused to stay on the page. It pulled itself into the 3D world, constructing a body out of the surrounding library stone and fusing it with the aggression of the beast drawn on the page. He is constantly \"rewriting\" his own form. The whip on his back is his tether to the 2D world; he uses it to \"erase\" his enemies from existence, turning them into 2D puddles of ink.",
+    "lore": "Kravos is a \"Living Spell\" that literally jumped off the page. Born from a forbidden grimoire, his ink was so unstable it fused with the stone of the library to create a physical form. He’s never truly \"static,\" as he’s constantly rewriting his own shape to suit his feral instincts. His signature whip isn't just a weapon; it's a tether to the 2D world. One strike from it doesn't just hurt—it unmakes you, flattening your existence into a harmless puddle of ink.",
     "stats": {
       "hp": 3665,
       "attack": 750,
@@ -411,6 +411,24 @@
       "range": "Monster",
       "type": "Terrestial",
       "total": 865
+    }
+  },
+  {
+    "id": 24,
+    "name": "Equinox",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1770823202/1764835357344_1_ixf1db.jpg",
+    "lore": "Equinox only appears during the few weeks between late Summer and early Autumn. It represents the turning of the season—the moment when the green of summer begins to fade into the orange of fall.\nThe Ribbons: Local farmers leave these ribbons on the edge of the woods as offerings. They believe that if Equinox wears them, the frost will be delayed, allowing for a bountiful harvest.",
+    "stats": {
+      "hp": 1440,
+      "attack": 155,
+      "defense": 160,
+      "mana": 115,
+      "speed": 145,
+      "intelligence": 125,
+      "range": "Monster",
+      "type": "Terrestial",
+      "total": 2140
     }
   }
 ]
