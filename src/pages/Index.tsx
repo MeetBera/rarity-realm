@@ -1,293 +1,571 @@
-import { useState, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion"; 
+import { useState, useMemo, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { GameCard, GameCardData } from "@/components/GameCard";
 import { CardModal } from "@/components/CardModal";
 import cardsData from "@/data/cards.json";
-import { 
-  Sparkles, 
-  Coins, 
-  Gem, 
-  Menu, 
-  Search, 
-  Filter, 
-  ArrowUpDown, 
-  Swords, 
-  ShieldAlert 
+import {
+  Sparkles, Coins, Gem, Menu, Search, Filter,
+  ArrowUpDown, Swords, ShieldAlert, X, ChevronDown,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-// Helper to calculate total power for sorting
+/* ─── helpers (unchanged) ─── */
 const getCardPower = (card: GameCardData) => {
   const { hp, attack, defense, mana, intelligence, speed } = card.stats;
   return hp + attack + defense + mana + intelligence + speed;
 };
+const rarityWeight = { common: 1, rare: 2, epic: 3, legendary: 4, mythical: 5 } as Record<string, number>;
 
-// Rarity weight for sorting
-const rarityWeight = {
-  common: 1,
-  rare: 2,
-  epic: 3,
-  legendary: 4,
-  mythical: 5,
-} as Record<string, number>;
+/* ─── TICKER items ─── */
+const TICKER_ITEMS = [
+  "⚔️  SEASON IV UNDERWAY", "✦  NEW MYTHICAL CARDS RELEASED",
+  "🔥  LEGENDARY DROP RATE +25%", "💎  ARENA SEASON FINALS THIS WEEKEND",
+  "⚡  DOUBLE XP EVENT ACTIVE", "🏆  CONQUEROR'S CUP OPEN REGISTRATION",
+];
 
+/* ─────────────────────────────────────────────────────────────────────────── */
+/*  BACKGROUND CANVAS — slow-moving aurora mesh                                */
+/* ─────────────────────────────────────────────────────────────────────────── */
+const AuroraBackground = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  useEffect(() => {
+    const c = canvasRef.current;
+    if (!c) return;
+    const ctx = c.getContext("2d")!;
+    let raf: number;
+    let t = 0;
+    const resize = () => { c.width = window.innerWidth; c.height = window.innerHeight; };
+    resize();
+    window.addEventListener("resize", resize);
+
+    const draw = () => {
+      t += 0.003;
+      ctx.clearRect(0, 0, c.width, c.height);
+      const blobs = [
+        { x: Math.sin(t * 0.7) * 0.3 + 0.25, y: Math.cos(t * 0.5) * 0.2 + 0.3, r: 0.45, color: "rgba(180,120,30,0.055)" },
+        { x: Math.cos(t * 0.4) * 0.25 + 0.72, y: Math.sin(t * 0.6) * 0.2 + 0.55, r: 0.4, color: "rgba(120,40,180,0.04)" },
+        { x: Math.sin(t * 0.3 + 1) * 0.2 + 0.5, y: Math.cos(t * 0.8) * 0.15 + 0.75, r: 0.35, color: "rgba(30,100,200,0.045)" },
+      ];
+      blobs.forEach(({ x, y, r, color }) => {
+        const grd = ctx.createRadialGradient(x * c.width, y * c.height, 0, x * c.width, y * c.height, r * Math.max(c.width, c.height));
+        grd.addColorStop(0, color);
+        grd.addColorStop(1, "transparent");
+        ctx.fillStyle = grd;
+        ctx.fillRect(0, 0, c.width, c.height);
+      });
+      raf = requestAnimationFrame(draw);
+    };
+    draw();
+    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", resize); };
+  }, []);
+  return <canvas ref={canvasRef} className="fixed inset-0 z-0 pointer-events-none" />;
+};
+
+/* ─────────────────────────────────────────────────────────────────────────── */
+/*  TICKER TAPE                                                                */
+/* ─────────────────────────────────────────────────────────────────────────── */
+const TickerTape = () => {
+  const items = [...TICKER_ITEMS, ...TICKER_ITEMS];
+  return (
+    <div className="overflow-hidden border-b border-amber-500/15 bg-black/40 backdrop-blur-sm" style={{ height: 28 }}>
+      <motion.div
+        className="flex gap-0 whitespace-nowrap"
+        animate={{ x: ["0%", "-50%"] }}
+        transition={{ duration: 32, ease: "linear", repeat: Infinity }}
+      >
+        {items.map((item, i) => (
+          <span key={i} className="inline-flex items-center gap-6 px-8 text-[10px] font-black uppercase tracking-[0.22em]"
+            style={{ color: "rgba(245,158,11,0.65)", lineHeight: "28px" }}>
+            {item}
+            <span style={{ color: "rgba(245,158,11,0.2)" }}>◆</span>
+          </span>
+        ))}
+      </motion.div>
+    </div>
+  );
+};
+
+/* ─────────────────────────────────────────────────────────────────────────── */
+/*  NAV                                                                        */
+/* ─────────────────────────────────────────────────────────────────────────── */
+const Nav = ({ searchQuery, setSearchQuery }: { searchQuery: string; setSearchQuery: (v: string) => void }) => {
+  const [mobileSearch, setMobileSearch] = useState(false);
+  return (
+    <nav className="relative z-50 sticky top-0">
+      <TickerTape />
+      <div
+        className="border-b border-white/[0.07] backdrop-blur-xl shadow-[0_1px_0_rgba(245,158,11,0.08)]"
+        style={{ background: "rgba(4,3,8,0.92)" }}
+      >
+        <div className="container mx-auto px-4 h-[60px] flex items-center justify-between gap-4">
+
+          {/* LEFT — logo */}
+          <div className="flex items-center gap-3 flex-shrink-0">
+            <div
+              className="w-8 h-8 rounded-lg flex items-center justify-center"
+              style={{ background: "linear-gradient(135deg,#f59e0b,#d97706)", boxShadow: "0 0 18px rgba(245,158,11,0.4)" }}
+            >
+              <Swords className="w-4 h-4 text-black" />
+            </div>
+            <div className="hidden sm:block">
+              <div
+                className="text-base font-black uppercase leading-none tracking-[0.1em]"
+                style={{ fontFamily: "'Cinzel','Georgia',serif", color: "#fde68a" }}
+              >
+                Odyssey
+              </div>
+              <div className="text-[9px] uppercase tracking-[0.3em] text-amber-600/70 font-bold leading-none mt-0.5">Conqueror's Clash</div>
+            </div>
+          </div>
+
+          {/* CENTER — search */}
+          <div className="hidden md:flex items-center gap-2.5 flex-1 max-w-xs mx-auto rounded-xl px-4 py-2 border transition-all duration-300 focus-within:border-amber-500/50 focus-within:shadow-[0_0_20px_rgba(245,158,11,0.12)]"
+            style={{ background: "rgba(255,255,255,0.03)", borderColor: "rgba(255,255,255,0.08)" }}
+          >
+            <Search className="w-3.5 h-3.5 flex-shrink-0" style={{ color: "rgba(245,158,11,0.5)" }} />
+            <input
+              type="text"
+              placeholder="Search warriors…"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="bg-transparent border-none outline-none text-sm text-slate-200 placeholder:text-slate-600 w-full"
+              style={{ fontFamily: "inherit" }}
+            />
+            {searchQuery && (
+              <button onClick={() => setSearchQuery("")}>
+                <X className="w-3 h-3 text-slate-500 hover:text-white transition-colors" />
+              </button>
+            )}
+          </div>
+
+          {/* RIGHT — currency + menu */}
+          <div className="flex items-center gap-3 flex-shrink-0">
+            <CurrencyChip icon={<Coins className="w-3.5 h-3.5 text-amber-400" />} label="Gold" value="24,500" color="#f59e0b" />
+            <CurrencyChip icon={<Gem className="w-3.5 h-3.5 text-cyan-400" />} label="Gems" value="1,200" color="#22d3ee" />
+            <button
+              className="p-2 rounded-lg transition-all duration-200 hover:bg-white/8 border border-transparent hover:border-white/10"
+              onClick={() => setMobileSearch(!mobileSearch)}
+            >
+              <Menu className="w-5 h-5 text-slate-400 hover:text-white transition-colors" />
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile search */}
+        <AnimatePresence>
+          {mobileSearch && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              className="md:hidden border-t border-white/[0.06] overflow-hidden"
+            >
+              <div className="px-4 py-3 flex items-center gap-2.5">
+                <Search className="w-4 h-4 text-slate-500" />
+                <input
+                  type="text"
+                  placeholder="Search warriors…"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="bg-transparent border-none outline-none text-sm text-slate-200 placeholder:text-slate-600 w-full"
+                  autoFocus
+                />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </nav>
+  );
+};
+
+const CurrencyChip = ({ icon, label, value, color }: { icon: any; label: string; value: string; color: string }) => (
+  <div
+    className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg border"
+    style={{
+      background: `${color}0e`,
+      borderColor: `${color}28`,
+      boxShadow: `0 0 12px ${color}10`,
+    }}
+  >
+    {icon}
+    <div className="flex flex-col leading-none">
+      <span className="text-[8px] uppercase tracking-[0.25em] font-black" style={{ color: `${color}80` }}>{label}</span>
+      <span className="text-xs font-mono font-black text-white">{value}</span>
+    </div>
+  </div>
+);
+
+/* ─────────────────────────────────────────────────────────────────────────── */
+/*  HERO SECTION                                                               */
+/* ─────────────────────────────────────────────────────────────────────────── */
+const HeroSection = ({ total, showing }: { total: number; showing: number }) => {
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 400], [0, 80]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+
+  return (
+    <motion.div style={{ y, opacity }} className="relative text-center pt-16 pb-10 px-4 pointer-events-none select-none">
+      {/* Big atmospheric glow */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(ellipse, rgba(245,158,11,0.07) 0%, transparent 70%)", filter: "blur(40px)" }}
+      />
+
+      {/* Eyebrow */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 }}
+        className="flex items-center justify-center gap-3 mb-5"
+      >
+        <div className="h-px w-12 bg-gradient-to-r from-transparent to-amber-500/50" />
+        <span className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.35em]" style={{ color: "rgba(245,158,11,0.7)" }}>
+          <Sparkles className="w-3 h-3" /> Season IV — New Genesis <Sparkles className="w-3 h-3" />
+        </span>
+        <div className="h-px w-12 bg-gradient-to-l from-transparent to-amber-500/50" />
+      </motion.div>
+
+      {/* Title */}
+      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+        <h1
+          className="leading-none uppercase mb-2"
+          style={{
+            fontFamily: "'Cinzel','Trajan Pro','Georgia',serif",
+            fontSize: "clamp(42px, 10vw, 100px)",
+            fontWeight: 900,
+            letterSpacing: "-0.01em",
+            background: "linear-gradient(175deg, #ffffff 0%, #e2d5b0 35%, #a07830 65%, #5a3e18 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            textShadow: "none",
+            filter: "drop-shadow(0 4px 40px rgba(200,140,40,0.25))",
+          }}
+        >
+          Conqueror's
+        </h1>
+        <h1
+          className="leading-none uppercase"
+          style={{
+            fontFamily: "'Cinzel','Trajan Pro','Georgia',serif",
+            fontSize: "clamp(42px, 10vw, 100px)",
+            fontWeight: 900,
+            letterSpacing: "-0.01em",
+            background: "linear-gradient(175deg, #fde68a 0%, #f59e0b 40%, #d97706 70%, #92400e 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            filter: "drop-shadow(0 0 60px rgba(245,158,11,0.35))",
+          }}
+        >
+          Odyssey
+        </h1>
+      </motion.div>
+
+      {/* Sub rule */}
+      <motion.div
+        initial={{ scaleX: 0, opacity: 0 }}
+        animate={{ scaleX: 1, opacity: 1 }}
+        transition={{ delay: 0.4, duration: 0.8 }}
+        className="flex items-center justify-center gap-4 mt-6"
+      >
+        <div className="h-px flex-1 max-w-[100px]" style={{ background: "linear-gradient(to right, transparent, rgba(245,158,11,0.4))" }} />
+        <div className="flex items-center gap-2">
+          <div className="w-1 h-1 rounded-full bg-amber-500/60" />
+          <span className="text-[10px] font-mono uppercase tracking-[0.4em] text-slate-500">
+            {showing} of {total} warriors
+          </span>
+          <div className="w-1 h-1 rounded-full bg-amber-500/60" />
+        </div>
+        <div className="h-px flex-1 max-w-[100px]" style={{ background: "linear-gradient(to left, transparent, rgba(245,158,11,0.4))" }} />
+      </motion.div>
+    </motion.div>
+  );
+};
+
+/* ─────────────────────────────────────────────────────────────────────────── */
+/*  CONTROLS BAR                                                               */
+/* ─────────────────────────────────────────────────────────────────────────── */
+const ControlsBar = ({
+  filters, activeFilter, setActiveFilter, sortOption, setSortOption,
+}: {
+  filters: string[]; activeFilter: string; setActiveFilter: (v: string) => void;
+  sortOption: string; setSortOption: (v: string) => void;
+}) => (
+  <motion.div
+    initial={{ opacity: 0, y: 12 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.35 }}
+    className="sticky top-[89px] z-40 mb-8"
+  >
+    <div
+      className="max-w-4xl mx-auto rounded-2xl border px-3 py-2.5 flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between"
+      style={{
+        background: "rgba(6,5,12,0.88)",
+        backdropFilter: "blur(24px)",
+        borderColor: "rgba(255,255,255,0.07)",
+        boxShadow: "0 8px 40px rgba(0,0,0,0.5), 0 1px 0 rgba(245,158,11,0.06) inset",
+      }}
+    >
+      {/* Filter pills */}
+      <div className="flex gap-1.5 overflow-x-auto scrollbar-hide pb-0.5 sm:pb-0">
+        {filters.map((f) => (
+          <motion.button
+            key={f}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setActiveFilter(f)}
+            className="flex-shrink-0 relative px-4 py-1.5 rounded-xl text-[11px] font-black uppercase tracking-[0.18em] transition-all duration-200 overflow-hidden"
+            style={
+              activeFilter === f
+                ? {
+                    background: "linear-gradient(135deg,#f59e0b,#d97706)",
+                    color: "#1c1008",
+                    boxShadow: "0 0 20px rgba(245,158,11,0.35), 0 4px 12px rgba(0,0,0,0.4)",
+                    border: "1px solid rgba(253,230,138,0.3)",
+                  }
+                : {
+                    background: "rgba(255,255,255,0.03)",
+                    color: "rgba(255,255,255,0.35)",
+                    border: "1px solid rgba(255,255,255,0.06)",
+                  }
+            }
+          >
+            {activeFilter === f && (
+              <motion.div
+                layoutId="filterActive"
+                className="absolute inset-0 rounded-xl"
+                style={{ background: "linear-gradient(135deg,#f59e0b,#d97706)" }}
+                transition={{ type: "spring", stiffness: 380, damping: 30 }}
+              />
+            )}
+            <span className="relative z-10">{f}</span>
+          </motion.button>
+        ))}
+      </div>
+
+      {/* Divider */}
+      <div className="hidden sm:block w-px h-6 self-center" style={{ background: "rgba(255,255,255,0.07)" }} />
+
+      {/* Sort */}
+      <div className="flex items-center gap-2.5 flex-shrink-0">
+        <div className="flex items-center gap-1.5 text-[9px] font-black uppercase tracking-[0.22em]" style={{ color: "rgba(255,255,255,0.2)" }}>
+          <ArrowUpDown className="w-3 h-3" /> Sort
+        </div>
+        <div className="relative">
+          <select
+            value={sortOption}
+            onChange={(e) => setSortOption(e.target.value)}
+            className="appearance-none pl-3 pr-8 py-1.5 rounded-xl text-[11px] font-black uppercase tracking-wider text-slate-300 outline-none cursor-pointer transition-all duration-200"
+            style={{
+              background: "rgba(255,255,255,0.04)",
+              border: "1px solid rgba(255,255,255,0.07)",
+            }}
+          >
+            <option value="power-desc">Highest Power</option>
+            <option value="power-asc">Lowest Power</option>
+            <option value="name-asc">Name A–Z</option>
+            <option value="rarity-desc">Rarity</option>
+          </select>
+          <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-3 h-3 text-slate-500 pointer-events-none" />
+        </div>
+      </div>
+    </div>
+  </motion.div>
+);
+
+/* ─────────────────────────────────────────────────────────────────────────── */
+/*  EMPTY STATE                                                                */
+/* ─────────────────────────────────────────────────────────────────────────── */
+const EmptyState = ({ onClear }: { onClear: () => void }) => (
+  <motion.div
+    initial={{ opacity: 0, scale: 0.95 }}
+    animate={{ opacity: 1, scale: 1 }}
+    className="col-span-full flex flex-col items-center justify-center py-24 gap-5"
+  >
+    <div
+      className="w-20 h-20 rounded-2xl flex items-center justify-center"
+      style={{
+        background: "rgba(255,255,255,0.03)",
+        border: "1px solid rgba(255,255,255,0.07)",
+        boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05)",
+      }}
+    >
+      <ShieldAlert className="w-9 h-9 text-slate-600" />
+    </div>
+    <div className="text-center space-y-1">
+      <h3
+        className="text-2xl font-black uppercase text-white tracking-tight"
+        style={{ fontFamily: "'Cinzel','Georgia',serif" }}
+      >
+        No Warriors Found
+      </h3>
+      <p className="text-xs text-slate-600 font-mono uppercase tracking-widest">Adjust your filters or search</p>
+    </div>
+    <button
+      onClick={onClear}
+      className="px-5 py-2 rounded-xl text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-200 hover:scale-105"
+      style={{
+        background: "linear-gradient(135deg,#f59e0b22,#d9770611)",
+        border: "1px solid rgba(245,158,11,0.3)",
+        color: "#f59e0b",
+        boxShadow: "0 0 20px rgba(245,158,11,0.1)",
+      }}
+    >
+      Clear All Filters
+    </button>
+  </motion.div>
+);
+
+/* ─────────────────────────────────────────────────────────────────────────── */
+/*  MAIN PAGE                                                                  */
+/* ─────────────────────────────────────────────────────────────────────────── */
 const Index = () => {
   const [selectedCard, setSelectedCard] = useState<GameCardData | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
-  // --- FILTER & SORT STATE ---
   const [searchQuery, setSearchQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState("All");
   const [sortOption, setSortOption] = useState("power-desc");
 
-  // --- CORE LOGIC ENGINE ---
   const filteredAndSortedCards = useMemo(() => {
     let result = [...cardsData] as GameCardData[];
-
-    // 1. Search Logic
     if (searchQuery) {
-      const query = searchQuery.toLowerCase();
-      result = result.filter(card => 
-        card.name.toLowerCase().includes(query) || 
-        card.stats.type.toLowerCase().includes(query)
-      );
+      const q = searchQuery.toLowerCase();
+      result = result.filter((c) => c.name.toLowerCase().includes(q) || c.stats.type.toLowerCase().includes(q));
     }
-
-    // 2. Category Filter Logic
     if (activeFilter !== "All") {
-      result = result.filter(card => 
-        // Assumes your JSON has 'Hero', 'Creature', etc. in card.stats.type
-        // We normalize to lowercase for safer comparison
-        card.stats.type.toLowerCase() === activeFilter.toLowerCase().slice(0, -1) || // e.g. "Heroes" -> "hero"
-        card.stats.type.toLowerCase() === activeFilter.toLowerCase() // Direct match
+      result = result.filter((c) =>
+        c.stats.type.toLowerCase() === activeFilter.toLowerCase().slice(0, -1) ||
+        c.stats.type.toLowerCase() === activeFilter.toLowerCase()
       );
     }
-
-    // 3. Sorting Logic
     result.sort((a, b) => {
       switch (sortOption) {
-        case "power-desc":
-          return getCardPower(b) - getCardPower(a);
-        case "power-asc":
-          return getCardPower(a) - getCardPower(b);
-        case "name-asc":
-          return a.name.localeCompare(b.name);
-        case "rarity-desc":
-          return (rarityWeight[b.rarity.toLowerCase()] || 0) - (rarityWeight[a.rarity.toLowerCase()] || 0);
-        default:
-          return 0;
+        case "power-desc": return getCardPower(b) - getCardPower(a);
+        case "power-asc": return getCardPower(a) - getCardPower(b);
+        case "name-asc": return a.name.localeCompare(b.name);
+        case "rarity-desc": return (rarityWeight[b.rarity.toLowerCase()] || 0) - (rarityWeight[a.rarity.toLowerCase()] || 0);
+        default: return 0;
       }
     });
-
     return result;
   }, [searchQuery, activeFilter, sortOption]);
 
-  // Handlers
-  const handleCardClick = (card: GameCardData) => {
-    setSelectedCard(card);
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setSelectedCard(null);
-  };
-
-  // Categories defined manually for control, or you could derive from data
-  const filters = ['All', 'Heroes', 'Creatures', 'Spells'];
+  const handleCardClick = (card: GameCardData) => { setSelectedCard(card); setIsModalOpen(true); };
+  const handleCloseModal = () => { setIsModalOpen(false); setSelectedCard(null); };
+  const filters = ["All", "Heroes", "Creatures", "Spells"];
 
   return (
-    <div className="min-h-screen bg-slate-950 relative overflow-x-hidden font-sans selection:bg-amber-500/30">
-      
-      {/* --- BACKGROUND FX --- */}
-      <div className="fixed inset-0 z-0 pointer-events-none opacity-20" 
-           style={{ backgroundImage: 'linear-gradient(to right, #334155 1px, transparent 1px), linear-gradient(to bottom, #334155 1px, transparent 1px)', backgroundSize: '40px 40px' }} 
+    <div
+      className="min-h-screen relative overflow-x-hidden"
+      style={{
+        background: "rgb(4,3,8)",
+        fontFamily: "'DM Sans','system-ui',sans-serif",
+      }}
+    >
+      {/* Animated aurora */}
+      <AuroraBackground />
+
+      {/* Fine dot grid */}
+      <div
+        className="fixed inset-0 z-0 pointer-events-none"
+        style={{
+          backgroundImage: "radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+          maskImage: "radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%)",
+        }}
       />
-      <div className="fixed inset-0 z-0 pointer-events-none bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent" />
-      <div className="fixed inset-0 z-0 pointer-events-none bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-slate-900/50 via-slate-950 to-slate-950" />
 
-      
-      {/* --- GAME HUD --- */}
-      <nav className="relative z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur-md sticky top-0 shadow-2xl">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-            {/* Left: Menu */}
-            <div className="p-2 hover:bg-white/10 rounded-md cursor-pointer transition-colors group">
-                <Menu className="text-slate-400 group-hover:text-white w-6 h-6 transition-colors" />
-            </div>
+      {/* Horizontal scan line overlay */}
+      <div
+        className="fixed inset-0 z-0 pointer-events-none opacity-[0.018]"
+        style={{ backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.5) 3px, rgba(255,255,255,0.5) 4px)" }}
+      />
 
-            {/* Center: Functional Search Bar */}
-            <div className="hidden md:flex items-center gap-3 bg-slate-900/80 border border-white/10 focus-within:border-amber-500/50 focus-within:ring-2 focus-within:ring-amber-500/20 rounded-full px-4 py-2 w-80 transition-all shadow-inner">
-                <Search className="w-4 h-4 text-slate-500" />
-                <input 
-                  type="text" 
-                  placeholder="Search Collection..." 
-                  className="bg-transparent border-none outline-none text-sm text-slate-200 placeholder:text-slate-600 w-full"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
-            </div>
+      {/* NAV */}
+      <Nav searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
-            {/* Right: Player Stats */}
-            <div className="flex items-center gap-4 md:gap-6">
-                <div className="flex items-center gap-2">
-                    <div className="bg-amber-500/20 p-1.5 rounded-lg border border-amber-500/50 shadow-[0_0_10px_rgba(245,158,11,0.2)]">
-                        <Coins className="w-4 h-4 text-amber-400" />
-                    </div>
-                    <div className="flex flex-col leading-none">
-                        <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Gold</span>
-                        <span className="text-sm text-slate-200 font-mono font-bold">24,500</span>
-                    </div>
-                </div>
-                <div className="flex items-center gap-2">
-                    <div className="bg-cyan-500/20 p-1.5 rounded-lg border border-cyan-500/50 shadow-[0_0_10px_rgba(6,182,212,0.2)]">
-                        <Gem className="w-4 h-4 text-cyan-400" />
-                    </div>
-                    <div className="flex flex-col leading-none">
-                        <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Gems</span>
-                        <span className="text-sm text-slate-200 font-mono font-bold">1,200</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-      </nav>
+      {/* MAIN */}
+      <main className="relative z-10 container mx-auto px-4 pb-20">
 
+        {/* Hero */}
+        <HeroSection total={cardsData.length} showing={filteredAndSortedCards.length} />
 
-      {/* --- MAIN CONTENT --- */}
-      <main className="relative z-10 container mx-auto px-4 py-12">
-        
-        {/* Title Section */}
-        <div className="text-center mb-12 relative">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[100px] bg-amber-500/10 blur-[100px] rounded-full pointer-events-none" />
-            
-            <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-            >
-                <div className="flex items-center justify-center gap-3 mb-4 text-amber-500">
-                    <Sparkles className="w-5 h-5 animate-pulse" />
-                    <span className="text-sm font-bold tracking-[0.3em] uppercase opacity-80">New Genesis</span>
-                    <Sparkles className="w-5 h-5 animate-pulse" />
-                </div>
-                
-                <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight">
-                    <span className="bg-gradient-to-b from-white via-slate-200 to-slate-500 bg-clip-text text-transparent drop-shadow-2xl">
-                        CONQUEROR'S
-                    </span>
-                    <span className="block text-transparent bg-clip-text bg-gradient-to-b from-amber-300 via-amber-500 to-amber-700 drop-shadow-sm">
-                        ODYSSEY
-                    </span>
-                </h1>
-            </motion.div>
-        </div>
+        {/* Controls */}
+        <ControlsBar
+          filters={filters}
+          activeFilter={activeFilter}
+          setActiveFilter={setActiveFilter}
+          sortOption={sortOption}
+          setSortOption={setSortOption}
+        />
 
-        {/* --- CONTROLS BAR --- */}
-        <div className="sticky top-20 z-40 mb-10 mx-auto max-w-5xl backdrop-blur-xl bg-slate-900/60 border border-white/10 rounded-2xl p-2 md:p-3 shadow-2xl flex flex-col md:flex-row gap-4 justify-between items-center">
-             
-             {/* Filter Tabs */}
-             <div className="flex gap-1 md:gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-hide">
-                {filters.map((filter) => (
-                  <button 
-                    key={filter} 
-                    onClick={() => setActiveFilter(filter)}
-                    className={cn(
-                      "px-4 md:px-6 py-2 rounded-xl text-xs md:text-sm font-bold uppercase tracking-wide transition-all whitespace-nowrap border",
-                      activeFilter === filter
-                        ? "bg-amber-500 text-black border-amber-400 shadow-[0_0_20px_-5px_rgba(245,158,11,0.5)] scale-105" 
-                        : "bg-slate-800/50 border-transparent text-slate-400 hover:bg-slate-800 hover:text-white hover:border-white/10"
-                    )}
-                  >
-                    {filter}
-                  </button>
-                ))}
-             </div>
-
-             {/* Sort Dropdown */}
-             <div className="flex items-center gap-3 w-full md:w-auto border-t md:border-t-0 border-white/5 pt-3 md:pt-0">
-                <div className="flex items-center gap-2 text-slate-500 text-xs font-bold uppercase tracking-wider pl-2">
-                  <Filter className="w-3 h-3" /> Sort By
-                </div>
-                <div className="relative flex-1 md:flex-none">
-                  <select 
-                    value={sortOption}
-                    onChange={(e) => setSortOption(e.target.value)}
-                    className="w-full md:w-48 appearance-none bg-slate-950 border border-slate-700 rounded-lg py-2 pl-4 pr-10 text-sm text-slate-200 font-medium focus:outline-none focus:border-amber-500/50 cursor-pointer hover:bg-slate-900 transition-colors"
-                  >
-                    <option value="power-desc">Highest Power</option>
-                    <option value="power-asc">Lowest Power</option>
-                    <option value="name-asc">Name (A-Z)</option>
-                    <option value="rarity-desc">Rarity (Highest)</option>
-                  </select>
-                  <ArrowUpDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 pointer-events-none" />
-                </div>
-             </div>
-        </div>
-
-        {/* --- GRID --- */}
-        <motion.div 
-            layout
-            className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 md:gap-8 min-h-[400px]"
+        {/* GRID */}
+        <motion.div
+          layout
+          className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 md:gap-6 min-h-[400px]"
         >
           <AnimatePresence mode="popLayout">
             {filteredAndSortedCards.length > 0 ? (
-              filteredAndSortedCards.map((card) => (
-                <motion.div 
+              filteredAndSortedCards.map((card, i) => (
+                <motion.div
                   layout
-                  key={card.id} 
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3 }}
+                  key={card.id}
+                  initial={{ opacity: 0, y: 20, scale: 0.94 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.92 }}
+                  transition={{ duration: 0.35, delay: Math.min(i * 0.04, 0.4), ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <GameCard
-                    card={card}
-                    onCardClick={handleCardClick}
-                  />
+                  <GameCard card={card} onCardClick={handleCardClick} />
                 </motion.div>
               ))
             ) : (
-              /* Empty State */
-              <motion.div 
-                initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-                className="col-span-full flex flex-col items-center justify-center py-20 text-slate-500 space-y-4"
-              >
-                <div className="w-16 h-16 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center">
-                  <ShieldAlert className="w-8 h-8 opacity-50" />
-                </div>
-                <div className="text-center">
-                  <h3 className="text-xl font-bold text-slate-300">No Warriors Found</h3>
-                  <p className="text-sm">Try adjusting your filters or search query.</p>
-                </div>
-                <button 
-                  onClick={() => {setActiveFilter('All'); setSearchQuery('');}}
-                  className="text-amber-500 text-sm font-bold uppercase tracking-widest hover:text-amber-400 underline underline-offset-4"
-                >
-                  Clear Filters
-                </button>
-              </motion.div>
+              <EmptyState onClear={() => { setActiveFilter("All"); setSearchQuery(""); }} />
             )}
           </AnimatePresence>
         </motion.div>
 
-        {/* Results Count Footer */}
-        <div className="mt-8 text-center">
-           <span className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-slate-900 border border-white/5 text-xs font-mono text-slate-500">
-             <Swords className="w-3 h-3" />
-             Showing {filteredAndSortedCards.length} / {cardsData.length} Cards
-           </span>
-        </div>
-
+        {/* Footer count */}
+        {filteredAndSortedCards.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="mt-12 flex items-center justify-center gap-3"
+          >
+            <div className="h-px w-16" style={{ background: "linear-gradient(to right, transparent, rgba(245,158,11,0.3))" }} />
+            <span
+              className="px-4 py-1.5 rounded-full text-[10px] font-mono font-black uppercase tracking-[0.25em]"
+              style={{
+                background: "rgba(255,255,255,0.03)",
+                border: "1px solid rgba(255,255,255,0.07)",
+                color: "rgba(245,158,11,0.55)",
+              }}
+            >
+              ⚔ {filteredAndSortedCards.length} / {cardsData.length} Warriors
+            </span>
+            <div className="h-px w-16" style={{ background: "linear-gradient(to left, transparent, rgba(245,158,11,0.3))" }} />
+          </motion.div>
+        )}
       </main>
 
-      <footer className="relative z-10 py-12 text-center text-slate-600 text-sm border-t border-white/5 bg-slate-950/50 mt-20">
-            <p className="uppercase tracking-widest font-bold opacity-50">Odyssey Clash • v1.0.4 • server: Asia-1</p>
+      {/* FOOTER */}
+      <footer
+        className="relative z-10 py-10 text-center border-t"
+        style={{ borderColor: "rgba(255,255,255,0.05)", background: "rgba(0,0,0,0.4)" }}
+      >
+        <div className="flex items-center justify-center gap-3 mb-2">
+          <div className="h-px w-10 bg-amber-500/20" />
+          <Sparkles className="w-3 h-3 text-amber-500/40" />
+          <div className="h-px w-10 bg-amber-500/20" />
+        </div>
+        <p
+          className="text-[9px] uppercase tracking-[0.35em] font-black"
+          style={{ color: "rgba(255,255,255,0.15)" }}
+        >
+          Odyssey Clash  ◆  v1.0.4  ◆  Server: Asia-1
+        </p>
       </footer>
 
-      <CardModal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        card={selectedCard}
-      />
+      <CardModal isOpen={isModalOpen} onClose={handleCloseModal} card={selectedCard} />
     </div>
   );
 };
