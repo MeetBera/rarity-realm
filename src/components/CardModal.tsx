@@ -622,9 +622,9 @@ export const CardModal = ({ isOpen, onClose, card }) => {
                         </div>
                         <div className="space-y-3">
                           <StatRow label="Health"       value={card.stats.hp}           icon={<Activity className="w-3 h-3"/>}  max={10000} color={theme.accentHex} barClass={theme.bar} delay={0.1} />
-                          <StatRow label="Attack"       value={card.stats.attack}       icon={<Swords className="w-3 h-3"/>}    max={2000}  color={theme.accentHex} barClass={theme.bar} delay={0.15} />
-                          <StatRow label="Defense"      value={card.stats.defense}      icon={<Shield className="w-3 h-3"/>}    max={2000}  color={theme.accentHex} barClass={theme.bar} delay={0.2} />
-                          <StatRow label="Mana"         value={card.stats.mana}         icon={<Sun className="w-3 h-3"/>}       max={1000}  color={theme.accentHex} barClass={theme.bar} delay={0.25} />
+                          <StatRow label="Attack"       value={card.stats.attack}       icon={<Swords className="w-3 h-3"/>}    max={3000}  color={theme.accentHex} barClass={theme.bar} delay={0.15} />
+                          <StatRow label="Defense"      value={card.stats.defense}      icon={<Shield className="w-3 h-3"/>}    max={3000}  color={theme.accentHex} barClass={theme.bar} delay={0.2} />
+                          <StatRow label="Mana"         value={card.stats.mana}         icon={<Sun className="w-3 h-3"/>}       max={2500}  color={theme.accentHex} barClass={theme.bar} delay={0.25} />
                           <StatRow label="Intelligence" value={card.stats.intelligence} icon={<Brain className="w-3 h-3"/>}     max={1000}  color={theme.accentHex} barClass={theme.bar} delay={0.3} />
                           <StatRow label="Speed"        value={card.stats.speed}        icon={<Zap className="w-3 h-3"/>}       max={500}   color={theme.accentHex} barClass={theme.bar} delay={0.35} />
                         </div>

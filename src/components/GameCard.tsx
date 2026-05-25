@@ -10,6 +10,7 @@ export interface GameCardData {
   name: string;
   rarity: CardRarity;
   image: string;
+  thumbnail?: string; // <-- Added thumbnail property
   lore: string;
   stats: {
     hp: number;
@@ -30,7 +31,7 @@ interface GameCardProps {
 }
 
 /* ─────────────────────────────────────────────────────────────────────────── */
-/*  RARITY CONFIG — ink-on-paper luxury meets supernatural                     */
+/* RARITY CONFIG — ink-on-paper luxury meets supernatural                     */
 /* ─────────────────────────────────────────────────────────────────────────── */
 const rarityConfig: Record<CardRarity, {
   border: string; glow: string; badge: string; text: string; bgGradient: string;
@@ -186,7 +187,7 @@ const StatBadge = ({
 );
 
 /* ─────────────────────────────────────────────────────────────────────────── */
-/*  MAIN EXPORT  — logic identical                                             */
+/* MAIN EXPORT  — logic identical                                             */
 /* ─────────────────────────────────────────────────────────────────────────── */
 export const GameCard = ({ card, onCardClick }: GameCardProps) => {
   const theme = rarityConfig[card.rarity] ?? rarityConfig.common;
@@ -277,12 +278,13 @@ export const GameCard = ({ card, onCardClick }: GameCardProps) => {
           }}
         />
 
+        {/* Using the thumbnail as the main display, falling back to original image if missing */}
         <motion.img
-          src={card.image}
+          src={card.thumbnail || card.image}
           alt={card.name}
           animate={{ scale: hovered ? 1.12 : 1.08 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full h-full object-cover object-top"
+          className="w-full h-full object-cover object-center"
           style={{
             filter: hovered ? "saturate(1.15) contrast(1.05)" : "saturate(0.9) contrast(1.0)",
             transition: "filter 0.5s ease",
@@ -336,26 +338,17 @@ export const GameCard = ({ card, onCardClick }: GameCardProps) => {
             style={{ background: `linear-gradient(to right, transparent, ${theme.accent}60, transparent)` }}
           />
           <h3
-            className="font-black uppercase leading-none truncate"
+            className="font-black uppercase leading-none  truncate"
             style={{
-              fontFamily: "'Cinzel', 'Playfair Display', Georgia, serif",
-              fontSize: "clamp(11px, 2.8vw, 13px)",
-              color: theme.nameColor,
+              fontFamily: "mono",
+              fontSize: "clamp(12px, 2.9vw, 13px)",
+              color: "white",
               letterSpacing: "0.06em",
               textShadow: `0 2px 20px rgba(0,0,0,0.9), 0 0 30px ${theme.accent}55`,
             }}
           >
             {card.name}
           </h3>
-          <div className="flex items-center gap-1.5 mt-1">
-            <Flame className="w-2.5 h-2.5" style={{ color: theme.typeLabel, opacity: 0.8 }} />
-            <p
-              className="text-[9px] font-bold uppercase tracking-[0.2em]"
-              style={{ color: theme.typeLabel, opacity: 0.65 }}
-            >
-              {card.stats.type} Class
-            </p>
-          </div>
         </div>
       </div>
 
