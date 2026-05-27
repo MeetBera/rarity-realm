@@ -4,7 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  base: "/rarity-realm/",   // ✅ REQUIRED for GitHub Pages
+  base: "/rarity-realm-main/",   // ✅ REQUIRED for GitHub Pages
 
   server: {
     host: "::",
