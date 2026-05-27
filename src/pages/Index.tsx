@@ -91,7 +91,7 @@ const TickerTape = () => {
 const Nav = ({ searchQuery, setSearchQuery }: { searchQuery: string; setSearchQuery: (v: string) => void }) => {
   const [mobileSearch, setMobileSearch] = useState(false);
   return (
-    <nav className="relative z-50 sticky top-0">
+    <nav className="relative z-50 top-0">
       <TickerTape />
       <div
         className="border-b border-white/[0.07] backdrop-blur-xl shadow-[0_1px_0_rgba(245,158,11,0.08)]"
@@ -272,7 +272,7 @@ const HeroSection = ({ total, showing }: { total: number; showing: number }) => 
         <div className="flex items-center gap-2">
           <div className="w-1 h-1 rounded-full bg-amber-500/60" />
           <span className="text-[10px] font-mono uppercase tracking-[0.4em] text-slate-500">
-            {showing} of {total} warriors
+            {showing} of {total} Characters
           </span>
           <div className="w-1 h-1 rounded-full bg-amber-500/60" />
         </div>
@@ -396,7 +396,7 @@ const EmptyState = ({ onClear }: { onClear: () => void }) => (
         className="text-2xl font-black uppercase text-white tracking-tight"
         style={{ fontFamily: "'Cinzel','Georgia',serif" }}
       >
-        No Warriors Found
+        No Characters Found
       </h3>
       <p className="text-xs text-slate-600 font-mono uppercase tracking-widest">Adjust your filters or search</p>
     </div>
@@ -540,7 +540,7 @@ const Index = () => {
                 color: "rgba(245,158,11,0.55)",
               }}
             >
-              ⚔ {filteredAndSortedCards.length} / {cardsData.length} Warriors
+              ⚔ {filteredAndSortedCards.length} / {cardsData.length} Characters
             </span>
             <div className="h-px w-16" style={{ background: "linear-gradient(to left, transparent, rgba(245,158,11,0.3))" }} />
           </motion.div>
