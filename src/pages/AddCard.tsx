@@ -8,7 +8,7 @@ interface CardStats {
   mana: number;
   speed: number;
   intelligence: number;
-  range: string;
+  class: string;
   type: string;
 }
 
@@ -22,7 +22,7 @@ interface CardData {
 }
 
 const initialStats: CardStats = {
-  hp: 0, attack: 0, defense: 0, mana: 0, speed: 0, intelligence: 0, range: 'Melee', type: 'organic'
+  hp: 0, attack: 0, defense: 0, mana: 0, speed: 0, intelligence: 0, class: 'Warrior', type: 'organic'
 };
 
 const AddCard = () => {
@@ -49,7 +49,7 @@ const AddCard = () => {
       stats: {
         ...prev.stats,
         // Convert numbers, keep strings as strings
-        [name]: ['range', 'type'].includes(name) ? value : Number(value)
+        [name]: ['class', 'type'].includes(name) ? value : Number(value)
       }
     }));
   };
@@ -149,8 +149,8 @@ const AddCard = () => {
             {/* UPDATED: Changed from Select to Input */}
             <input 
               type="text" 
-              name="range" 
-              value={formData.stats.range} 
+              name="class" 
+              value={formData.stats.class} 
               onChange={handleStatChange} 
               className="w-full bg-gray-700 rounded p-2" 
               placeholder="monster"

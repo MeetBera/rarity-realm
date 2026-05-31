@@ -10,6 +10,7 @@ import {
   Activity,
   Move,
   Sun,
+  BookOpen,
 } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -212,7 +213,7 @@ const TiltImage = ({ src, alt, color, onFullscreen }) => {
       <img
         src={src}
         alt={alt}
-        className="max-w-full max-h-full object-contain relative z-10"
+        className="max-w-full max-h-[80%] object-contain relative z-10"
         style={{
           filter: `drop-shadow(0 0 40px ${color}66) drop-shadow(0 20px 40px rgba(0,0,0,0.8))`,
           transition: "filter 0.3s ease",
@@ -326,8 +327,9 @@ export const CardModal = ({ isOpen, onClose, card }) => {
   const rarityKey = card.rarity.toLowerCase();
   const theme = rarityConfig[rarityKey] ?? rarityConfig.common;
 
-  const nextSlide = () => setCurrentSlide((p) => (p + 1) % 2);
-  const prevSlide = () => setCurrentSlide((p) => (p - 1 + 2) % 2);
+  // Updated navigation for 3 slides
+  const nextSlide = () => setCurrentSlide((p) => (p + 1) % 3);
+  const prevSlide = () => setCurrentSlide((p) => (p - 1 + 3) % 3);
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
@@ -409,13 +411,13 @@ export const CardModal = ({ isOpen, onClose, card }) => {
           ))}
 
           {/* ── CONTENT AREA ── */}
-          <div className="relative w-full h-[90vh] md:h-[640px] max-h-[90vh] flex flex-col">
+          <div className="relative w-full h-[90vh] md:h-[740px] max-h-[90vh] flex flex-col">
             <AnimatePresence mode="wait">
 
               {/* ════ SLIDE 0 – HERO ════ */}
               {currentSlide === 0 && (
                 <motion.div
-                  key="slide-info"
+                  key="slide-hero"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -475,7 +477,7 @@ export const CardModal = ({ isOpen, onClose, card }) => {
                         className="text-[10px] font-mono uppercase tracking-[0.2em]"
                         style={{ color: `${theme.accentHex}88` }}
                       >
-                        {card.stats.type}
+                        {card.stats.categorie}
                       </span>
                     </motion.div>
 
@@ -504,26 +506,31 @@ export const CardModal = ({ isOpen, onClose, card }) => {
                       transition={{ delay: 0.25 }}
                       className="space-y-2.5"
                     >
-                      <QuickStat label="Range" value={card.stats.range} icon={<Move className="w-3.5 h-3.5" />} isHighlight={false} color={theme.accentHex} />
+                      <QuickStat label="Class" value={card.stats.class} icon={<Move className="w-3.5 h-3.5" />} isHighlight={false} color={theme.accentHex} />
                       <QuickStat label="Total Power" value={totalPower} icon={<Zap className="w-3.5 h-3.5" />} isHighlight color={theme.accentHex} />
                     </motion.div>
 
-                    {/* Divider + slide indicator */}
+                    {/* 3-Slide Indicators */}
                     <motion.div
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.35 }}
                       className="pt-2 flex items-center gap-2"
                     >
-                      <div
-                        className="h-[3px] w-10 rounded-full"
-                        style={{ background: theme.accentHex, boxShadow: `0 0 8px ${theme.accentHex}` }}
-                      />
-                      <button
-                        onClick={nextSlide}
-                        className="h-[3px] w-4 rounded-full transition-all duration-300 hover:opacity-100"
-                        style={{ background: `${theme.accentHex}33` }}
-                      />
+                      {[0, 1, 2].map((idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setCurrentSlide(idx)}
+                          className={cn(
+                            "h-[3px] rounded-full transition-all duration-300",
+                            currentSlide === idx ? "w-10 opacity-100" : "w-4 opacity-40 hover:opacity-100"
+                          )}
+                          style={{
+                            background: theme.accentHex,
+                            boxShadow: currentSlide === idx ? `0 0 8px ${theme.accentHex}` : "none"
+                          }}
+                        />
+                      ))}
                     </motion.div>
 
                     {/* View stats hint */}
@@ -535,7 +542,7 @@ export const CardModal = ({ isOpen, onClose, card }) => {
                       className="self-start flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-200 group"
                       style={{ color: `${theme.accentHex}66` }}
                     >
-                      <span className="group-hover:text-white transition-colors">View Attributes</span>
+                      <span className="group-hover:text-white transition-colors">View Stats</span>
                       <ChevronRight
                         className="w-3 h-3 group-hover:translate-x-1 transition-transform"
                         style={{ color: theme.accentHex }}
@@ -553,20 +560,20 @@ export const CardModal = ({ isOpen, onClose, card }) => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -24 }}
                   transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                  className="w-full h-full p-5 md:p-10 overflow-y-auto"
+                  className="w-full h-full p-5 md:p-10 flex flex-col justify-center overflow-y-auto"
                   style={{ scrollbarWidth: "thin", scrollbarColor: `${theme.accentHex}44 transparent` }}
                 >
-                  <div className="max-w-3xl mx-auto space-y-8">
+                  <div className="max-w-4xl w-full mx-auto space-y-10">
 
                     {/* Header */}
                     <div className="text-center space-y-3">
                       <motion.h3
                         initial={{ opacity: 0, y: -6 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-xl md:text-2xl font-black text-white uppercase tracking-[0.25em]"
+                        className="text-2xl md:text-3xl font-black text-white uppercase tracking-[0.25em]"
                         style={{ fontFamily: "'Bebas Neue'", letterSpacing: "0.2em" }}
                       >
-                        Attributes & Lore
+                        Combat Attributes
                       </motion.h3>
                       <motion.div
                         initial={{ scaleX: 0 }}
@@ -577,66 +584,22 @@ export const CardModal = ({ isOpen, onClose, card }) => {
                       />
                     </div>
 
-                    {/* Two columns */}
-                    <div className="grid md:grid-cols-2 gap-8 md:gap-10">
-
-                      {/* Lore column */}
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.15 }}
-                        className="space-y-4"
-                      >
-                        <div className="flex items-center gap-2 text-[10px] uppercase font-black tracking-[0.22em]" style={{ color: `${theme.accentHex}99` }}>
-                          <Brain className="w-3.5 h-3.5" /> Lore
-                        </div>
-
-                        <div
-                          className="relative p-5 rounded-xl"
-                          style={{
-                            background: `linear-gradient(135deg, ${theme.accentHex}09, transparent)`,
-                            border: `1px solid ${theme.accentHex}20`,
-                            boxShadow: `inset 0 1px 0 ${theme.accentHex}15`,
-                          }}
-                        >
-                          {/* Quote mark */}
-                          <div
-                            className="absolute top-3 left-4 text-5xl leading-none font-serif pointer-events-none select-none"
-                            style={{ color: `${theme.accentHex}20`, fontFamily: "Georgia, serif" }}
-                          >
-                            "
-                          </div>
-                          <p
-                            className="text-slate-300 text-sm md:text-[15px] leading-relaxed relative z-10 pt-3"
-                            style={{ fontFamily: "'Courier New', monospace", fontStyle: "italic" }}
-                          >
-                            {card.lore}
-                          </p>
-                        </div>
-                      </motion.div>
-
-                      {/* Stats column */}
-                      <div className="space-y-3.5">
-                        <div className="flex items-center gap-2 text-[10px] uppercase font-black tracking-[0.22em]" style={{ color: `${theme.accentHex}99` }}>
-                          <Activity className="w-3.5 h-3.5" /> Combat Stats
-                        </div>
-                        <div className="space-y-3">
-                          <StatRow label="Health"       value={card.stats.hp}           icon={<Activity className="w-3 h-3"/>}  max={10000} color={theme.accentHex} barClass={theme.bar} delay={0.1} />
-                          <StatRow label="Attack"       value={card.stats.attack}       icon={<Swords className="w-3 h-3"/>}    max={3000}  color={theme.accentHex} barClass={theme.bar} delay={0.15} />
-                          <StatRow label="Defense"      value={card.stats.defense}      icon={<Shield className="w-3 h-3"/>}    max={3000}  color={theme.accentHex} barClass={theme.bar} delay={0.2} />
-                          <StatRow label="Mana"         value={card.stats.mana}         icon={<Sun className="w-3 h-3"/>}       max={2500}  color={theme.accentHex} barClass={theme.bar} delay={0.25} />
-                          <StatRow label="Intelligence" value={card.stats.intelligence} icon={<Brain className="w-3 h-3"/>}     max={1000}  color={theme.accentHex} barClass={theme.bar} delay={0.3} />
-                          <StatRow label="Speed"        value={card.stats.speed}        icon={<Zap className="w-3 h-3"/>}       max={500}   color={theme.accentHex} barClass={theme.bar} delay={0.35} />
-                        </div>
-                      </div>
+                    {/* Stats Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-1 mx-auto max-w-2xl gap-x-12 gap-y-6">
+                      <StatRow label="Health" value={card.stats.hp} icon={<Activity className="w-4 h-4" />} max={10000} color={theme.accentHex} barClass={theme.bar} delay={0.1} />
+                      <StatRow label="Attack" value={card.stats.attack} icon={<Swords className="w-4 h-4" />} max={3000} color={theme.accentHex} barClass={theme.bar} delay={0.15} />
+                      <StatRow label="Defense" value={card.stats.defense} icon={<Shield className="w-4 h-4" />} max={3000} color={theme.accentHex} barClass={theme.bar} delay={0.2} />
+                      <StatRow label="Mana" value={card.stats.mana} icon={<Sun className="w-4 h-4" />} max={2500} color={theme.accentHex} barClass={theme.bar} delay={0.25} />
+                      <StatRow label="Intelligence" value={card.stats.intelligence} icon={<Brain className="w-4 h-4" />} max={1000} color={theme.accentHex} barClass={theme.bar} delay={0.3} />
+                      <StatRow label="Speed" value={card.stats.speed} icon={<Zap className="w-4 h-4" />} max={500} color={theme.accentHex} barClass={theme.bar} delay={0.35} />
                     </div>
 
                     {/* Total power banner */}
                     <motion.div
                       initial={{ opacity: 0, y: 6 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.5 }}
-                      className="relative overflow-hidden rounded-xl px-6 py-4 flex items-center justify-between"
+                      transition={{ delay: 0.45 }}
+                      className="relative overflow-hidden rounded-xl px-8 py-5 flex items-center justify-between"
                       style={{
                         background: `linear-gradient(135deg, ${theme.accentHex}14, ${theme.accentHex}06)`,
                         border: `1px solid ${theme.accentHex}30`,
@@ -644,27 +607,116 @@ export const CardModal = ({ isOpen, onClose, card }) => {
                       }}
                     >
                       <div
-                        className="absolute right-0 top-0 bottom-0 w-1 rounded-r-xl"
+                        className="absolute right-0 top-0 bottom-0 w-1.5 rounded-r-xl"
                         style={{ background: theme.accentHex, boxShadow: `0 0 14px ${theme.accentHex}` }}
                       />
-                      <span className="text-xs font-black uppercase tracking-[0.25em] text-slate-400">Total Power</span>
+                      <span className="text-sm font-black uppercase tracking-[0.25em] text-slate-400">Total Output Power</span>
                       <span
-                        className="text-3xl font-black font-mono"
+                        className="text-4xl font-black font-mono"
                         style={{ color: theme.accentHex, textShadow: `0 0 20px ${theme.accentHex}99`, letterSpacing: "-0.04em" }}
                       >
                         {totalPower.toLocaleString()}
                       </span>
                     </motion.div>
 
-                    {/* Back button */}
-                    <div className="flex justify-center pb-2">
+                    {/* Bottom nav hints */}
+                    <motion.div 
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.5 }}
+                      className="flex justify-between items-center px-4"
+                    >
                       <button
                         onClick={prevSlide}
                         className="text-[10px] font-black text-slate-600 hover:text-white uppercase tracking-[0.2em] flex items-center gap-1.5 transition-colors duration-200"
                       >
-                        <ChevronLeft className="w-3.5 h-3.5" /> Back to Card
+                        <ChevronLeft className="w-3.5 h-3.5" /> Hero
                       </button>
+                      <button
+                        onClick={nextSlide}
+                        className="text-[10px] font-black text-slate-600 hover:text-white uppercase tracking-[0.2em] flex items-center gap-1.5 transition-colors duration-200"
+                      >
+                        Lore <ChevronRight className="w-3.5 h-3.5" />
+                      </button>
+                    </motion.div>
+                  </div>
+                </motion.div>
+              )}
+
+              {/* ════ SLIDE 2 – LORE ════ */}
+              {currentSlide === 2 && (
+                <motion.div
+                  key="slide-lore"
+                  initial={{ opacity: 0, x: 24 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -24 }}
+                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  className="w-full h-full p-5 md:p-10 flex flex-col overflow-y-auto"
+                >
+                  <div className="max-w-3xl w-full mx-auto h-full flex flex-col space-y-8">
+                    
+                    {/* Header */}
+                    <div className="text-center space-y-3 shrink-0 pt-4">
+                      <motion.h3
+                        initial={{ opacity: 0, y: -6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-2xl md:text-3xl font-black text-white uppercase tracking-[0.25em] flex items-center justify-center gap-3"
+                        style={{ fontFamily: "'Bebas Neue'", letterSpacing: "0.2em" }}
+                      >
+                        <BookOpen className="w-6 h-6" style={{ color: theme.accentHex }} />
+                        Character Lore
+                      </motion.h3>
+                      <motion.div
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: 1 }}
+                        transition={{ delay: 0.1, duration: 0.5 }}
+                        className="h-[2px] w-24 mx-auto rounded-full"
+                        style={{ background: `linear-gradient(to right, transparent, ${theme.accentHex}, transparent)` }}
+                      />
                     </div>
+
+                    {/* Scrollable Container */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.15 }}
+                      className="relative p-8 md:p-12 rounded-2xl flex-1 min-h-0 overflow-y-auto custom-scrollbar"
+                      style={{
+                        background: `linear-gradient(135deg, ${theme.accentHex}09, transparent)`,
+                        border: `1px solid ${theme.accentHex}20`,
+                        boxShadow: `inset 0 1px 0 ${theme.accentHex}15`,
+                      }}
+                    >
+                      {/* Quote mark (stays in place while text scrolls) */}
+                      <div
+                        className="absolute top-6 left-6 text-7xl leading-none font-serif pointer-events-none select-none"
+                        style={{ color: `${theme.accentHex}20`, fontFamily: "Georgia, serif" }}
+                      >
+                        "
+                      </div>
+
+                      <p
+                        className="text-slate-300 text-base md:text-lg leading-loose relative z-10 pt-4"
+                        style={{ fontFamily: "'Courier New', monospace", fontStyle: "italic" }}
+                      >
+                        {card.lore}
+                      </p>
+                    </motion.div>
+
+                    {/* Back button */}
+                    <motion.div 
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.3 }}
+                      className="flex justify-center pb-4 shrink-0"
+                    >
+                      <button
+                        onClick={() => setCurrentSlide(0)}
+                        className="text-[10px] font-black text-slate-600 hover:text-white uppercase tracking-[0.2em] flex items-center gap-1.5 transition-colors duration-200"
+                      >
+                        <ChevronLeft className="w-3.5 h-3.5" /> Back to Start
+                      </button>
+                    </motion.div>
                   </div>
                 </motion.div>
               )}

@@ -18,13 +18,13 @@ const rarityWeight = { common: 1, rare: 2, epic: 3, legendary: 4, mythical: 5 } 
 
 /* ─── TICKER items ─── */
 const TICKER_ITEMS = [
-  "⚔️  SEASON IV UNDERWAY", "✦  NEW MYTHICAL CARDS RELEASED",
-  "🔥  LEGENDARY DROP RATE +25%", "💎  ARENA SEASON FINALS THIS WEEKEND",
-  "⚡  DOUBLE XP EVENT ACTIVE", "🏆  CONQUEROR'S CUP OPEN REGISTRATION",
+  "⚔️   SEASON IV UNDERWAY", "✦   NEW MYTHICAL CARDS RELEASED",
+  "🔥   LEGENDARY DROP RATE +25%", "💎   ARENA SEASON FINALS THIS WEEKEND",
+  "⚡   DOUBLE XP EVENT ACTIVE", "🏆   CONQUEROR'S CUP OPEN REGISTRATION",
 ];
 
 /* ─────────────────────────────────────────────────────────────────────────── */
-/*  BACKGROUND CANVAS — slow-moving aurora mesh                                */
+/*  BACKGROUND CANVAS — slow-moving aurora mesh                               */
 /* ─────────────────────────────────────────────────────────────────────────── */
 const AuroraBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -62,7 +62,7 @@ const AuroraBackground = () => {
 };
 
 /* ─────────────────────────────────────────────────────────────────────────── */
-/*  TICKER TAPE                                                                */
+/*  TICKER TAPE                                                               */
 /* ─────────────────────────────────────────────────────────────────────────── */
 const TickerTape = () => {
   const items = [...TICKER_ITEMS, ...TICKER_ITEMS];
@@ -86,7 +86,7 @@ const TickerTape = () => {
 };
 
 /* ─────────────────────────────────────────────────────────────────────────── */
-/*  NAV                                                                        */
+/*  NAV                                                                       */
 /* ─────────────────────────────────────────────────────────────────────────── */
 const Nav = ({ searchQuery, setSearchQuery }: { searchQuery: string; setSearchQuery: (v: string) => void }) => {
   const [mobileSearch, setMobileSearch] = useState(false);
@@ -185,7 +185,7 @@ const CurrencyChip = ({ icon, label, value, color }: { icon: any; label: string;
     style={{
       background: `${color}0e`,
       borderColor: `${color}28`,
-      boxShadow: `0 0 12px ${color}10`,
+      shadowColor: `0 0 12px ${color}10`,
     }}
   >
     {icon}
@@ -197,7 +197,7 @@ const CurrencyChip = ({ icon, label, value, color }: { icon: any; label: string;
 );
 
 /* ─────────────────────────────────────────────────────────────────────────── */
-/*  HERO SECTION                                                               */
+/*  HERO SECTION                                                              */
 /* ─────────────────────────────────────────────────────────────────────────── */
 const HeroSection = ({ total, showing }: { total: number; showing: number }) => {
   const { scrollY } = useScroll();
@@ -283,7 +283,7 @@ const HeroSection = ({ total, showing }: { total: number; showing: number }) => 
 };
 
 /* ─────────────────────────────────────────────────────────────────────────── */
-/*  CONTROLS BAR                                                               */
+/*  CONTROLS BAR                                                              */
 /* ─────────────────────────────────────────────────────────────────────────── */
 const ControlsBar = ({
   filters, activeFilter, setActiveFilter, sortOption, setSortOption,
@@ -363,6 +363,7 @@ const ControlsBar = ({
             <option value="power-desc">Highest Power</option>
             <option value="power-asc">Lowest Power</option>
             <option value="name-asc">Name A–Z</option>
+            <option value="class-asc">Class A-Z</option>
             <option value="rarity-desc">Rarity</option>
           </select>
           <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-3 h-3 text-slate-500 pointer-events-none" />
@@ -373,7 +374,7 @@ const ControlsBar = ({
 );
 
 /* ─────────────────────────────────────────────────────────────────────────── */
-/*  EMPTY STATE                                                                */
+/*  EMPTY STATE                                                               */
 /* ─────────────────────────────────────────────────────────────────────────── */
 const EmptyState = ({ onClear }: { onClear: () => void }) => (
   <motion.div
@@ -416,7 +417,7 @@ const EmptyState = ({ onClear }: { onClear: () => void }) => (
 );
 
 /* ─────────────────────────────────────────────────────────────────────────── */
-/*  MAIN PAGE                                                                  */
+/*  MAIN PAGE                                                                 */
 /* ─────────────────────────────────────────────────────────────────────────── */
 const Index = () => {
   const [selectedCard, setSelectedCard] = useState<GameCardData | null>(null);
@@ -442,6 +443,12 @@ const Index = () => {
         case "power-desc": return getCardPower(b) - getCardPower(a);
         case "power-asc": return getCardPower(a) - getCardPower(b);
         case "name-asc": return a.name.localeCompare(b.name);
+        case "class-asc": {
+          // Fallback to empty string if c.class or c.stats.class doesn't exist on specific JSON objects
+          const classA = (a as any).class || a.stats?.['class'] || "";
+          const classB = (b as any).class || b.stats?.['class'] || "";
+          return classA.localeCompare(classB);
+        }
         case "rarity-desc": return (rarityWeight[b.rarity.toLowerCase()] || 0) - (rarityWeight[a.rarity.toLowerCase()] || 0);
         default: return 0;
       }
@@ -540,7 +547,7 @@ const Index = () => {
                 color: "rgba(245,158,11,0.55)",
               }}
             >
-              ⚔ {filteredAndSortedCards.length} / {cardsData.length} Characters
+              Â⚔ {filteredAndSortedCards.length} / {cardsData.length} Characters
             </span>
             <div className="h-px w-16" style={{ background: "linear-gradient(to left, transparent, rgba(245,158,11,0.3))" }} />
           </motion.div>

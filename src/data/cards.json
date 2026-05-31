@@ -14,7 +14,7 @@
       "speed": 190,
       "intelligence": 120,
       "total": 2055,
-      "range": "Dragon",
+      "class": "Dragon",
       "type": "amphibian"
     }
   },
@@ -24,16 +24,16 @@
     "rarity": "rare",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779517032/Generated_Image_May_23_2026_-_10_34AM.jpg_esn9ot.jpg",
     "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779517031/Generated_Image_May_23_2026_-_10_34AM_1.jpg_ishlal.jpg",
-    "lore": "Banished from his jungle tribe for relying on steel instead of stealth, the Mauler is a mercenary who traded speed for raw, crushing power. He wears heavy plate armor on his massive forearms to act as a living battering ram. He no longer stalks his prey from the shadows; he simply smashes through their front gates, proving that no shield can withstand the weight of his strike.",
+    "lore": "Once A army general, banished from his jungle tribe for relying on steel instead of stealth, the Jaguarnaut is a mercenary who traded speed for raw, crushing power. He wears heavy plate armor on his massive forearms to act as a living battering ram. He no longer stalks his prey from the shadows; he simply smashes through their front gates, proving that no shield can withstand the weight of his strike.",
     "stats": {
-      "hp": 1940,
+      "hp": 1740,
       "attack": 270,
       "defense": 390,
       "mana": 0,
       "speed": 145,
       "intelligence": 135,
-      "total": 2880,
-      "range": "Demi Human",
+      "total": 2680,
+      "class": "Beastfolk",
       "type": "terrestial"
     }
   },
@@ -50,9 +50,9 @@
       "defense": 130,
       "mana": 0,
       "speed": 115,
-      "intelligence": 90,
-      "total": 1405,
-      "range": "Beast",
+      "intelligence": 70,
+      "total": 1385,
+      "class": "Beast",
       "type": "terrestial"
     }
   },
@@ -64,14 +64,14 @@
     "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779772102/Generated_Image_May_26_2026_-_10_18AM_1.jpg_mnyfga.jpg",
     "lore": "A silent guardian of the shallow seas, this Coral-Spine Ancient is often mistaken for a piece of drifting reef until it opens its eyes. The vibrant red structures on its back are not just for show; they are living, breathing coral colonies that harden instantly when attacked. Sailors believe that the shimmering, translucent fin on its tail can refract light to create illusions, hiding entire shipwrecks—or treasures—from greedy eyes.",
     "stats": {
-      "hp": 1820,
+      "hp": 1920,
       "attack": 240,
-      "defense": 325,
+      "defense": 225,
       "mana": 400,
       "speed": 135,
       "intelligence": 90,
       "total": 3010,
-      "range": "Monster",
+      "class": "Monster",
       "type": "aquatic"
     }
   },
@@ -81,7 +81,7 @@
     "rarity": "common",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779812379/Generated_Image_May_26_2026_-_10_03AM.jpg_pzzjrg.jpg",
     "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779812378/Generated_Image_May_26_2026_-_10_03AM_1.jpg_zqwivv.jpg",
-    "lore": "The T-Shark 9 is not a product of natural evolution, but a biological weapon forged in the laboratories of the Black-Steel Bioscience. In a world where rising sea levels forced jungle warfare to the coasts, warlords needed a beast that could hunt with the stealth of a tiger in the brush and the sensory precision of a shark in the water.",
+    "lore": "The T-Shark 9 is not a product of natural evolution, but a biological weapon forged in the laboratories of the Project shoreline. In a world where rising sea levels forced jungle warfare to the coasts, warlords needed a beast that could hunt with the stealth of a tiger in the brush and the sensory precision of a shark in the water.",
     "stats": {
       "hp": 1220,
       "attack": 140,
@@ -89,7 +89,7 @@
       "mana": 0,
       "speed": 120,
       "intelligence": 75,
-      "range": "Artificial Beast",
+      "class": "Artificial Beast",
       "type": "Amphibian",
       "total": 1670
     }
@@ -98,19 +98,19 @@
     "id": 6,
     "name": "Boreassus",
     "rarity": "epic",
-    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779772104/Generated_Image_May_26_2026_-_10_32AM.jpg_am9xkp.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779772102/Generated_Image_May_26_2026_-_10_32AM_1.jpg_pjxgxn.jpg",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779950163/Generated_Image_May_28_2026_-_12_25AM.jpg_ks2nla.jpg",
+    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779950092/Generated_Image_May_28_2026_-_12_25AM_1.jpg_uuiibo.jpg",
     "lore": "The Boreassus is a solitary apex predator native to the sunless, crushing depths of the Boreal Trench, a deep-sea chasm located beneath the polar ice caps. These creatures are ancient, living remnants of a prehistoric ice age, perfectly adapted to extreme cold and pressure. Their bodies generate a potent natural antifreeze, giving their skin a constant, pale, frozen, gel-like appearance that is cold to the touch.",
     "stats": {
-      "hp": 4170,
-      "attack": 620,
-      "defense": 480,
+      "hp": 3670,
+      "attack": 470,
+      "defense": 380,
       "mana": 0,
       "speed": 60,
       "intelligence": 65,
-      "range": "Monster",
+      "class": "Monster",
       "type": "Aquatic",
-      "total": 5395
+      "total": 4645
     }
   },
   {
@@ -125,11 +125,11 @@
       "attack": 410,
       "defense": 335,
       "mana": 0,
-      "speed": 70,
+      "speed": 50,
       "intelligence": 65,
-      "range": "Dragon",
+      "class": "Dragon",
       "type": "Terrestial",
-      "total": 3050
+      "total": 3030
     }
   },
   {
@@ -138,7 +138,7 @@
     "rarity": "rare",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779604274/Generated_Image_May_24_2026_-_11_29AM.jpg_fbvtlh.jpg",
     "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779604273/Generated_Image_May_24_2026_-_11_29AM_1.jpg_plqsur.jpg",
-    "lore": "Created in a laboratory, Cerebrorex is a prehistoric predator resurrected with synthetic biology. Because its original skull could not contain its massively expanded intelligence, scientists encased its head in a life-support hydro-dome. It does not hunt with claws; instead, it uses its exposed brain to project psychic shockwaves that paralyze prey instantly. The orange plating on its tail acts as a cooling vent for the immense heat its brain generates during battle.",
+    "lore": "Created in a laboratory, Cerebrorex is a prehistoric predator resurrected with synthetic biology. Because its original skull could not contain its massively expanded intelligence, scientists encased its head in a life-support hydro-dome. It does not hunt with claws; instead, it uses its exposed brain to project psychic shockwaves that paralyze prey instantly. The oclass plating on its tail acts as a cooling vent for the immense heat its brain generates during battle.",
     "stats": {
       "hp": 1260,
       "attack": 110,
@@ -146,7 +146,7 @@
       "mana": 85,
       "speed": 135,
       "intelligence": 395,
-      "range": "Artificial Monster",
+      "class": "Artificial Monster",
       "type": "Terrestial",
       "total": 2115
     }
@@ -165,7 +165,7 @@
       "mana": 1120,
       "speed": 210,
       "intelligence": 110,
-      "range": "Dragon",
+      "class": "Dragon",
       "type": "Aquatic",
       "total": 9410
     }
@@ -176,17 +176,17 @@
     "rarity": "common",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1765468681/1764670750906_1_mehhmc.jpg",
     "thumbnail": "",
-    "lore": "If you need to move contraband across the jagged peaks of the Iron Mountains, you don't buy a horse—you hire a Hauler. With skin as tough as cured leather and a temperament to match, these beasts are immune to the bitter cold and can climb near-vertical cliffs. The mysterious purple-stoppered jars usually contain \"Nightshade Brew,\" a banned liquor highly prized by giants and ogres. The Haulers are fiercely loyal only to their specific handler; anyone else who tries to touch the cargo gets introduced to the beast's blunt horns.",
+    "lore": "If you need to move contraband across the jagged peaks of the Iron Mountains, you don't buy a horse you hire a Hauler. With skin as tough as cured leather and a temperament to match, these beasts are immune to the bitter cold and can climb near-vertical cliffs. The mysterious purple-stoppered jars usually contain \"Nightshade Brew,\" a banned liquor highly prized by giants and ogres. The Haulers are fiercely loyal only to their specific handler; anyone else who tries to touch the cargo gets introduced to the beast's blunt horns.",
     "stats": {
-      "hp": 980,
+      "hp": 880,
       "attack": 85,
       "defense": 145,
       "mana": 0,
       "speed": 65,
       "intelligence": 40,
-      "range": "Beast",
+      "class": "Beast",
       "type": "Terrestial",
-      "total": 1315
+      "total": 1215
     }
   },
   {
@@ -202,29 +202,29 @@
       "defense": 95,
       "mana": 15,
       "speed": 115,
-      "intelligence": 80,
-      "range": "Dragon",
+      "intelligence": 40,
+      "class": "Dragon",
       "type": "Terrestial",
-      "total": 1290
+      "total": 1250
     }
   },
   {
     "id": 12,
     "name": "Megadon-09",
     "rarity": "epic",
-    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1765467077/1764653538309_1_gzxfkj.jpg",
-    "thumbnail": "",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779961888/Generated_Image_May_28_2026_-_1_51PM.jpg_qqxmrm.jpg",
+    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779961883/Generated_Image_May_28_2026_-_1_51PM_1.jpg_u9nlo6.jpg",
     "lore": "Originally an apex predator of the deep ocean, Typhodus is the result of \"Project Shoreline,\" an illicit military experiment designed to create a unit capable of dominating both sea and land warfare.While the physical enhancements were a success, the neural implant (indicated by the glowing red eye and antenna) was intended to make the beast obedient. However, the sheer aggression of the shark DNA constantly fights the programming. Megadon is now a rogue agent—a berserker who serves no master, roaming coastal ruins and tearing through armored tanks as easily as it tears through flesh.",
     "stats": {
-      "hp": 3245,
+      "hp": 3345,
       "attack": 640,
       "defense": 330,
       "mana": 0,
       "speed": 95,
       "intelligence": 210,
-      "range": "Artificial Monster",
+      "class": "Artificial Beast",
       "type": "Amphibian",
-      "total": 4500
+      "total": 4620
     }
   },
   {
@@ -233,7 +233,7 @@
     "rarity": "common",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779688781/Generated_Image_May_25_2026_-_12_21AM.jpg_lgbfyh.jpg",
     "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779688779/Generated_Image_May_25_2026_-_12_21AM_1.jpg_ghpl3d.jpg",
-    "lore": "The Demon Toads are the undisputed kings of the Kuromuli wetlands. Growing to the size of a grizzly bear, they are the largest poisonous creatures in the region. They are easily identified by the jagged horns on their snout and the strange, white rune-like markings on their skin.\n\nThese markings are not tattoos, but natural warning signs. When the white patterns glow, it signals that the toad's glands are full of neurotoxin. A single Demon Toad releases enough noxious gas from its skin to turn the surrounding swamp water into acid, dissolving the armor and flesh of any prey foolish enough to get close. Travelers in Kuromuli know that if the fog smells like sulfur, a Demon Toad is nearby.",
+    "lore": "The Demon Toads are the undisputed kings of the Kuromuli wetlands. Growing to the size of a grizzly bear, they are the largest poisonous creatures in the region. They are easily identified by the jagged horns on their snout and the stclass, white rune-like markings on their skin.\n\nThese markings are not tattoos, but natural warning signs. When the white patterns glow, it signals that the toad's glands are full of neurotoxin. A single Demon Toad releases enough noxious gas from its skin to turn the surrounding swamp water into acid, dissolving the armor and flesh of any prey foolish enough to get close. Travelers in Kuromuli know that if the fog smells like sulfur, a Demon Toad is nearby.",
     "stats": {
       "hp": 1560,
       "attack": 155,
@@ -241,7 +241,7 @@
       "mana": 20,
       "speed": 35,
       "intelligence": 60,
-      "range": "Monster",
+      "class": "Monster",
       "type": "Amphibian",
       "total": 1970
     }
@@ -260,7 +260,7 @@
       "mana": 0,
       "speed": 195,
       "intelligence": 110,
-      "range": "beastfolk",
+      "class": "Beastfolk",
       "type": "Aerial",
       "total": 3360
     }
@@ -268,20 +268,20 @@
   {
     "id": 15,
     "name": "Kernalisk",
-    "rarity": "epic",
+    "rarity": "rare",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779693406/Generated_Image_May_25_2026_-_12_20PM.jpg_uhgltv.jpg",
     "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779693402/Generated_Image_May_25_2026_-_12_20PM_1.jpg_e3sopr.jpg",
     "lore": "The Kernalisk was not born; it was grown. Legend says these creatures were originally created by ancient druids to act as scarecrows to protect sacred crops during times of famine. However, after absorbing too much wild magic from the soil, they gained sentience and a voracious hunger. Now, they do not protect the harvest—they hoard it. The creature’s body is a dense armor of calcified kernels. The yellow scales are as hard as gold, while the purple scales (found on its secondary head) are venomous. Its \"wings\" and mane are razor-sharp husks capable of slicing through iron armor.",
     "stats": {
-      "hp": 3050,
-      "attack": 730,
-      "defense": 425,
+      "hp": 2850,
+      "attack": 430,
+      "defense": 325,
       "mana": 270,
       "speed": 110,
       "intelligence": 85,
-      "range": "Dragon",
+      "class": "Dragon",
       "type": "Terrestial",
-      "total": 4670
+      "total": 4070
     }
   },
   {
@@ -292,15 +292,15 @@
     "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779522248/Generated_Image_May_23_2026_-_1_11PM_1.jpg_qpx0vk.jpg",
     "lore": "In the misty provinces of the East, humans are often plagued by Yōkai (mischievous or malevolent spirits) that are invisible to the human eye. Kenji is not a soldier for a human army; he is a specialized Exorcist for Hire.\nThe gold swirls on his face and forehead are not natural markings, nor are they paint. They are Singes—scars left from a battle with a Lightning Raiju when he was just a pup. Surviving that strike granted him \"The Sight,\" allowing him to see the most dangerous spirits that even other hounds miss.",
     "stats": {
-      "hp": 1170,
+      "hp": 1070,
       "attack": 120,
       "defense": 145,
       "mana": 30,
       "speed": 125,
       "intelligence": 155,
-      "range": "Demi Human",
+      "class": "Demi Human",
       "type": "Terrestial",
-      "total": 1745
+      "total": 1645
     }
   },
   {
@@ -311,15 +311,15 @@
     "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779693401/Generated_Image_May_25_2026_-_12_26PM_1.jpg_mkq60w.jpg",
     "lore": "The Ribbitor is an evolutionary anomaly found in the most humid, overgrown sectors of the world. It is not a true dragon, but a highly specialized amphibian that has developed the ability to glide. Its most unique feature is its wings. They are not made of skin or bone, but are actually formed from a hardened, translucent secretion produced by glands on its back. This \"living gel\" mimics the sunlight filtering through leaves, granting the Ribbitor near-perfect camouflage while in the air. It begins its life as a massive tadpole in stagnant, poisonous pools. As it matures, it climbs into the high mangroves. It is an ambush predator; it waits motionless on high branches until it spots prey, then drops silently, extending its sticky wings to glide down and latch onto its victim.",
     "stats": {
-      "hp": 1065,
+      "hp": 965,
       "attack": 90,
       "defense": 75,
       "mana": 0,
       "speed": 135,
-      "intelligence": 80,
-      "range": "Dragon",
+      "intelligence": 70,
+      "class": "Dragon",
       "type": "Amphibian",
-      "total": 1445
+      "total": 1335
     }
   },
   {
@@ -336,7 +336,7 @@
       "mana": 685,
       "speed": 70,
       "intelligence": 220,
-      "range": "Demi Human",
+      "class": "Demi Human",
       "type": "Terrestial",
       "total": 4565
     }
@@ -354,10 +354,10 @@
       "defense": 305,
       "mana": 185,
       "speed": 55,
-      "intelligence": 75,
-      "range": "Dragon",
+      "intelligence": 65,
+      "class": "Dragon",
       "type": "Aquatic",
-      "total": 3575
+      "total": 3565
     }
   },
   {
@@ -374,7 +374,7 @@
       "mana": 540,
       "speed": 130,
       "intelligence": 175,
-      "range": "Monster",
+      "class": "Monster",
       "type": "Terrestial",
       "total": 5820
     }
@@ -385,17 +385,17 @@
     "rarity": "rare",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779812380/Generated_Image_May_26_2026_-_10_01AM.jpg_cvpy6v.jpg",
     "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779812379/Generated_Image_May_26_2026_-_10_01AM_1.jpg_fkzo8t.jpg",
-    "lore": "The Sylvalisk is a gentle, amphibious spirit that acts as a guardian of ancient riverbanks and dense forests. Born from the roots of the World Tree, its scales are a blend of hardened bark and living moss, allowing it to camouflage perfectly against the canopy.\n\nUnusually, it does not walk on land but \"swims\" through the air using the large, translucent leaf-fin on its tail to steer. It is said that wherever a Sylvalisk rests, the plants grow twice as fast, and sick trees are instantly healed. Its glowing blue eyes can see the true intent of any creature; it guides lost travelers to safety but leads those who wish to harm the forest into endless, tangling thickets.",
+    "lore": "The Sylvalisk is a gentle, amphibious spirit that acts as a guardian of eastern riverbanks and dense forests. Born from the roots of the World Tree, its scales are a blend of hardened bark and living moss, allowing it to camouflage perfectly against the canopy.\n\nUnusually, it does not walk on land but \"swims\" through the air using the large, translucent leaf-fin on its tail to steer. It is said that wherever a Sylvalisk rests, the plants grow twice as fast, and sick trees are instantly healed. Its glowing blue eyes can see the true intent of any creature; it guides lost travelers to safety but leads those who wish to harm the forest into endless, tangling thickets.",
     "stats": {
-      "hp": 2340,
-      "attack": 190,
-      "defense": 225,
-      "mana": 45,
-      "speed": 100,
-      "intelligence": 75,
-      "range": "Monster",
+      "hp": 2140,
+      "attack": 90,
+      "defense": 125,
+      "mana": 145,
+      "speed": 70,
+      "intelligence": 85,
+      "class": "Spirit",
       "type": "Amphibian",
-      "total": 2975
+      "total": 2655
     }
   },
   {
@@ -404,17 +404,17 @@
     "rarity": "common",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779604274/Generated_Image_May_24_2026_-_11_30AM.jpg_aftyci.jpg",
     "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779604273/Generated_Image_May_24_2026_-_11_30AM_1.jpg_r1sw2u.jpg",
-    "lore": "A chaotic blend of predator and prankster, the Tropigriff uses its spiral tail to mimic exotic fruit, luring hungry travelers into pecking range. While it can change colors to blend into the jungle canopy, it often forgets to camouflage its bright orange toes, making it surprisingly easy to spot for those who look down.",
+    "lore": "A chaotic blend of predator and prankster, the Tropigriff uses its spiral tail to mimic exotic fruit, luring hungry travelers into pecking class. While it can change colors to blend into the jungle canopy, it often forgets to camouflage its bright oclass toes, making it surprisingly easy to spot for those who look down.",
     "stats": {
       "hp": 355,
       "attack": 35,
       "defense": 20,
       "mana": 0,
-      "speed": 70,
-      "intelligence": 85,
-      "range": "Beast",
+      "speed": 50,
+      "intelligence": 55,
+      "class": "Beast",
       "type": "Aerial",
-      "total": 565
+      "total": 515
     }
   },
   {
@@ -425,15 +425,15 @@
     "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779518480/Generated_Image_May_23_2026_-_9_22AM_1.jpg_ksgx0j.jpg",
     "lore": "Born near the ashes of dormant volcanoes, Vulcakroak are grumpy creatures filled with hot, buoyant gas that allows their undersized wings to lift their hefty bodies. They possess a delusion of grandeur, firmly believing they are mighty dragons, and spend their days fruitlessly trying to breathe fire, only ever producing a disappointing puff of warm smoke.",
     "stats": {
-      "hp": 660,
+      "hp": 560,
       "attack": 75,
       "defense": 50,
       "mana": 0,
       "speed": 45,
       "intelligence": 40,
-      "range": "Beast",
+      "class": "Beast",
       "type": "Terrestial",
-      "total": 870
+      "total": 770
     }
   },
   {
@@ -442,17 +442,17 @@
     "rarity": "common",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1770823202/1764835357344_1_ixf1db.jpg",
     "thumbnail": "",
-    "lore": "Equinox only appears during the few weeks between late Summer and early Autumn. It represents the turning of the season—the moment when the green of summer begins to fade into the orange of fall.\nThe Ribbons: Local farmers leave these ribbons on the edge of the woods as offerings. They believe that if Equinox wears them, the frost will be delayed, allowing for a bountiful harvest.",
+    "lore": "Equinox only appears during the few weeks between late Summer and early Autumn. It represents the turning of the season—the moment when the green of summer begins to fade into the oclass of fall.\nThe Ribbons: Local farmers leave these ribbons on the edge of the woods as offerings. They believe that if Equinox wears them, the frost will be delayed, allowing for a bountiful harvest.",
     "stats": {
-      "hp": 1040,
+      "hp": 940,
       "attack": 125,
       "defense": 100,
       "mana": 145,
       "speed": 145,
-      "intelligence": 125,
-      "range": "Monster",
+      "intelligence": 115,
+      "class": "Spirit",
       "type": "Terrestial",
-      "total": 1680
+      "total": 1570
     }
   },
   {
@@ -461,17 +461,17 @@
     "rarity": "rare",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779464593/Untitled234_20260521222638.jpg_lqsyxj.jpg",
     "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779467479/Untitled234_20260521222638.jpg1_hitfy6.jpg",
-    "lore": "Stories say the Peelagorn wasn't hatched from an egg, but was the result of an ancient, tropical tree absorbing too much ambient Tej over centuries. It eventually uprooted itself, evolving into a roaming, reptilian guardian of the deep jungle. Its appearance is deceivingly comical, but seasoned adventurers know better than to underestimate this botanical beast",
+    "lore": "Stories say the Peelagorn wasn't hatched from an egg, but was the result of an ancient, tropical tree absorbing too much ambient mana over centuries. It eventually uprooted itself, evolving into a roaming, reptilian guardian of the deep jungle. Its appearance is deceivingly comical, but seasoned adventurers know better than to underestimate this botanical beast",
     "stats": {
       "hp": 2250,
       "attack": 250,
-      "defense": 260,
+      "defense": 160,
       "mana": 190,
       "speed": 95,
       "intelligence": 100,
-      "range": "Dragon",
+      "class": "Dragon",
       "type": "Terrestial",
-      "total": 3145
+      "total": 3045
     }
   },
   {
@@ -482,15 +482,15 @@
     "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779467647/Generated_Image_May_22_2026_-_8_00PM.jpg2_ghdy7i.jpg",
     "lore": "The Melobuzz is a highly evolved, fruit-mimicking arthropod that thrives in sun-drenched, high-magic canopies by disguising itself perfectly as a hovering watermelon. Its durable, green-striped carapace acts as an organic solar array, absorbing ambient sunlight and converting this radiant energy into a highly restorative, volatile red nectar that sustains its hive. Though typically docile, a threatened Melobuzz swarm becomes a formidable defensive force, vibrating their fleshy, slice-like wings to release a disorienting, sweet-smelling mist while rapidly firing hardened, kinetic \"seeds\" from their bodies with the devastating force of a scattergun.",
     "stats": {
-      "hp": 350,
+      "hp": 315,
       "attack": 30,
-      "defense": 95,
+      "defense": 65,
       "mana": 10,
       "speed": 65,
       "intelligence": 60,
-      "range": "Monster",
+      "class": "Monster",
       "type": "Aerial",
-      "total": 610
+      "total": 545
     }
   },
   {
@@ -506,10 +506,10 @@
       "defense": 315,
       "mana": 0,
       "speed": 70,
-      "intelligence": 90,
-      "range": "Demi Human",
+      "intelligence": 100,
+      "class": "Demi Human",
       "type": "organic",
-      "total": 3155
+      "total": 3165
     }
   },
   {
@@ -520,15 +520,15 @@
     "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779527597/Generated_Image_May_22_2026_-_1_40PM_1.jpg_dttoxy.jpg",
     "lore": "Native to the misty, sun-dappled canopies of the Elderwood, the Ear-Flap Squirrel is an elusive chimera that bridges the gap between woodland mammal and lesser drake. Its most striking feature—a prehensile, looping tail covered in hardened, bark-like scales—allows it to anchor flawlessly to ancient trees, blending in completely when it curls up to sleep. It uses its massive, leathery, bat-like ears as parabolic receivers, allowing it to echolocate through dense canopy fog and listen for the rustle of its favorite prey: burrowing wood-beetles. Mischievous and highly intelligent, they are known by local foresters to hoard glowing embers from dying campfires, carrying the hot coals in their fire-resistant claws back to their nests to keep their young warm during the harsh winter months.",
     "stats": {
-      "hp": 680,
+      "hp": 580,
       "attack": 70,
       "defense": 120,
       "mana": 0,
       "speed": 80,
-      "intelligence": 115,
-      "range": "Beast",
+      "intelligence": 105,
+      "class": "Beast",
       "type": "Terrestial",
-      "total": 1065
+      "total": 955
     }
   },
   {
@@ -545,7 +545,7 @@
       "mana": 245,
       "speed": 10,
       "intelligence": 130,
-      "range": "Monster",
+      "class": "Monster",
       "type": "Terrestial",
       "total": 10705
     }
@@ -564,7 +564,7 @@
       "mana": 620,
       "speed": 35,
       "intelligence": 80,
-      "range": "Mechanical",
+      "class": "Mechanical",
       "type": "Terrestial",
       "total": 7435
     }
@@ -575,7 +575,7 @@
     "rarity": "rare",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779710139/Generated_Image_May_25_2026_-_12_55AM.jpg_okxnbp.jpg",
     "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779710136/Generated_Image_May_25_2026_-_12_55AM_1.jpg_dgvup5.jpg",
-    "lore": "The Terrarric is a strange, heavy-set creature that survives in hot, rocky valleys by creating its own shiny armor. It sweats a thick orange liquid from its back that quickly hardens into a smooth shell, small wings, and a heavy tail to balance out its big, hollow belly. Because it eats a diet of hot ash and tree sap, its body gets incredibly warm. To cool down, it breathes like a giant air pump—sucking cool air through its tube-like snout and blowing sweet-smelling steam out of the flute-like holes on top of its head. Even though it always looks grumpy and waddles around slowly, local crafters love the Terrarric. They follow the musical, whistling sounds it makes just to collect the tough, shiny orange pieces it leaves behind on the ground.",
+    "lore": "The Terrarric is a stclass, heavy-set creature that survives in hot, rocky valleys by creating its own shiny armor. It sweats a thick oclass liquid from its back that quickly hardens into a smooth shell, small wings, and a heavy tail to balance out its big, hollow belly. Because it eats a diet of hot ash and tree sap, its body gets incredibly warm. To cool down, it breathes like a giant air pump—sucking cool air through its tube-like snout and blowing sweet-smelling steam out of the flute-like holes on top of its head. Even though it always looks grumpy and waddles around slowly, local crafters love the Terrarric. They follow the musical, whistling sounds it makes just to collect the tough, shiny oclass pieces it leaves behind on the ground.",
     "stats": {
       "hp": 1710,
       "attack": 165,
@@ -583,7 +583,7 @@
       "mana": 0,
       "speed": 20,
       "intelligence": 40,
-      "range": "Dragon",
+      "class": "Dragon",
       "type": "Terrestial",
       "total": 2165
     }
@@ -596,15 +596,15 @@
     "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779787285/Generated_Image_May_22_2026_-_8_08PM_1.jpg_ljiq4r.jpg",
     "lore": "Generations ago, these ancient goliath scarabs became symbiotic with a rare, magically charged strain of 'Gild-Musa' bananas, the beetles feeding exclusively on the fruit until a genetic fusion occurred. Their exoskeletons became the protective skin of the banana, their main dorsal horn transformed into a powerful, petrified banana stalk, and their segmented legs took on the fibrous shape of the fruit. This chimeric evolution grants it a unique, sweet aroma that both disguises its form and lures prey, while its thick, peel-like armor provides surprisingly dense protection against predators, who often mistake it for mere ripe fruit before the powerful Peeloceros charges.",
     "stats": {
-      "hp": 845,
+      "hp": 645,
       "attack": 70,
       "defense": 95,
       "mana": 15,
       "speed": 15,
       "intelligence": 50,
-      "range": "Monster",
+      "class": "Monster",
       "type": "Terrestial",
-      "total": 1090
+      "total": 890
     }
   },
   {
@@ -620,10 +620,10 @@
       "defense": 140,
       "mana": 85,
       "speed": 115,
-      "intelligence": 85,
-      "range": "Monster",
+      "intelligence": 75,
+      "class": "Spirit",
       "type": "Amphibian",
-      "total": 2295
+      "total": 2285
     }
   },
   {
@@ -639,10 +639,10 @@
       "defense": 130,
       "mana": 0,
       "speed": 100,
-      "intelligence": 110,
-      "range": "Beast",
+      "intelligence": 90,
+      "class": "Beast",
       "type": "Aquatic",
-      "total": 2585
+      "total": 2565
     }
   },
   {
@@ -657,11 +657,11 @@
       "attack": 340,
       "defense": 200,
       "mana": 0,
-      "speed": 90,
-      "intelligence": 70,
-      "range": "Beast",
+      "speed": 95,
+      "intelligence": 80,
+      "class": "Beast",
       "type": "Amphibian",
-      "total": 3370
+      "total": 3385
     }
   },
   {
@@ -672,15 +672,15 @@
     "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779867752/Generated_Image_May_27_2026_-_10_54AM_1.jpg_oflwro.jpg",
     "lore": "Born in the deep ocean vents, Hammarai hammerhead sharks absorbed raw mana into their skulls, gaining high-level intelligence and psionic powers. To overcome their physical limitations, they psychically bonded with an octopus species to form a bipedal, multi-limbed body capable of walking on land. Today, these apex warriors utilize their psychic energy to absolute command any shark species, masterfully dual-wield katanas in both land and sea combat, and adorn themselves in the cosmetics of defeated ocean beasts as trophies of their absolute dominion.",
     "stats": {
-      "hp": 1195,
+      "hp": 1095,
       "attack": 130,
       "defense": 100,
       "mana": 150,
       "speed": 85,
-      "intelligence": 165,
-      "range": "Melee",
-      "type": "organic",
-      "total": 1825
+      "intelligence": 125,
+      "class": "Beastfolk",
+      "type": "Amphibian",
+      "total": 1685
     }
   },
   {
@@ -696,19 +696,19 @@
       "defense": 510,
       "mana": 295,
       "speed": 125,
-      "intelligence": 130,
-      "range": "Dragon",
+      "intelligence": 150,
+      "class": "Dragon",
       "type": "Aerial",
-      "total": 5060
+      "total": 5080
     }
   },
   {
     "id": 38,
     "name": "Grizzlyth",
     "rarity": "common",
-    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779882355/Generated_Image_May_22_2026_-_1_58PM.jpg_bsfwey.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779882347/Generated_Image_May_22_2026_-_1_58PM_1.jpg_rssb3z.jpg",
-    "lore": "Deep within ancient, undisturbed rainforests where sunlight barely touches the forest floor, Grizzlyth are massive carnivorous mammals that have specially evolved into primary predators of the mossy canopy. While their heavy, muscular build suggests a ground-dwelling beast, they surprise prey by launching themselves from high branches, using their specialized underarm wings to glide effortlessly from tree to tree in near silence. Covered in thick, living moss that provides perfect camouflage among the high branches, they wait patiently for unsuspecting targets before dropping down with devastating body slam.",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779951189/Generated_Image_May_22_2026_-_1_58PM.jpg_uvm9fu.jpg",
+    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779951190/Generated_Image_May_22_2026_-_1_58PM_2.jpg_snf6y9.jpg",
+    "lore": "Deep within undisturbed rainforests where sunlight barely touches the forest floor, Grizzlyth are big carnivorous mammals that have specially evolved into primary predators of the mossy canopy. While their heavy, muscular build suggests a ground-dwelling beast, they surprise prey by launching themselves from high branches, using their specialized underarm wings to glide effortlessly from tree to tree in near silence. Covered in thick, living moss that provides perfect camouflage among the high branches, they wait patiently for unsuspecting targets before dropping down with devastating body slam.",
     "stats": {
       "hp": 1175,
       "attack": 105,
@@ -716,9 +716,180 @@
       "mana": 0,
       "speed": 65,
       "intelligence": 60,
-      "range": "b",
-      "type": "organic",
+      "class": "Beast",
+      "type": "Terrestial",
       "total": 1485
+    }
+  },
+  {
+    "id": 39,
+    "name": "Golebeetle",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779950133/Generated_Image_May_28_2026_-_11_02AM.jpg_v8sn4a.jpg",
+    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779950073/Generated_Image_May_28_2026_-_11_02AM_1.jpg_dg8llt.jpg",
+    "lore": "Built by underground insect rebels as a mindless siege weapon which is powered by a volatile Gravity Manastone, Golebeetle unexpectedly gained sentience during construction and destroyed its creators' lab to claim its freedom. Now obsessed with testing its absolute power, it roams the world as a lone gladiator to find a worthy battle. Due to its raw strength, it easily uproots massive, iron Beetle-Trees with a single arm, and it uses its gravitational core to warp subterranean fields—forcing deep-earth creatures to the surface just to hunt for a challenging opponent.",
+    "stats": {
+      "hp": 2390,
+      "attack": 440,
+      "defense": 310,
+      "mana": 170,
+      "speed": 30,
+      "intelligence": 30,
+      "class": "Artificial Monster",
+      "type": "Aerial",
+      "total": 3370
+    }
+  },
+  {
+    "id": 40,
+    "name": "Necrowyvern",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779950143/Generated_Image_May_28_2026_-_11_50AM.jpg_uph88u.jpg",
+    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779950099/Generated_Image_May_28_2026_-_11_50AM_1.jpg_hhbju9.jpg",
+    "lore": "Long ago, a coven of witches died in a devastating forbidden spell battle high within a desolate mountain. And their vengeful souls reacted violently to the lingering death magic saturating the battlefield, fusing together into a single, amalgation of spiritual energy. Sensing a perfect vessel nearby, this spectral amalgamation forcefully merged with a mountain dragon, warping its flesh and wings with dark magic, and crowning it with a skeletal mask. Thus, Necrowyvern is a fusion of draconic fury and witchcraft, haunting the peaks and hunting for souls to feed the coven trapped within.",
+    "stats": {
+      "hp": 2620,
+      "attack": 285,
+      "defense": 205,
+      "mana": 470,
+      "speed": 160,
+      "intelligence": 160,
+      "class": "Dragon",
+      "type": "A",
+      "total": 3900
+    }
+  },
+  {
+    "id": 41,
+    "name": "Rhinocious",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779950137/Generated_Image_May_28_2026_-_9_49AM.jpg_hn3gjh.jpg",
+    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779950088/Generated_Image_May_28_2026_-_9_49AM_1.jpg_ndvvbx.jpg",
+    "lore": "Rhinocious is an ancient titan species that accomplished the invading and completely conquering the frozen, inhospitable territories of the Ice Golems. Dwarfing even some of the mountain dragons, these massive primal beasts live by a brutal code of dominance, constantly engaging in ferocious civil wars to determine their pack leader. However, this endless internal warfare has come at a tragic cost; centuries of relentlessly weeding out the largest challengers has caused their overall species size to shrink, rapidly driving this once-unstoppable apex predator toward the brink of extinction.",
+    "stats": {
+      "hp": 2300,
+      "attack": 300,
+      "defense": 290,
+      "mana": 0,
+      "speed": 45,
+      "intelligence": 50,
+      "class": "Beast",
+      "type": "Terrestial",
+      "total": 2985
+    }
+  },
+  {
+    "id": 42,
+    "name": "BRUTE-FIN",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779961887/Generated_Image_May_28_2026_-_1_55PM.jpg_lbn0qa.jpg",
+    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779961887/Generated_Image_May_28_2026_-_1_55PM_1.jpg_equlec.jpg",
+    "lore": "CR-03 // \"BRUTE-FIN\" is an uncontained, bio-weapon engineered through illegal triple-helix gene-splicing at the abandoned \"Project Shoreline\" testing facility. This terrestrial juggernaut combines the immense skeletal density, thick hide, and charging momentum of a rhinoceros with the strength, devastating bite force, and razor-sharp teeth of a mighty Megalodon. Overcoming the typical clumsiness of a heavy rhino, the integration of cervid neural pathways equips the asset with hair-trigger, deer reflexes that allow it to shift its weight instantly and evade incoming projectiles with eerie grace. Now stalking the vast, overgrown grasslands of the ruined facility, the predator utilizes the tall brush for camouflage and relies on a spine-fused cybernetic harness to continuously recycle its internal water supply.",
+    "stats": {
+      "hp": 2775,
+      "attack": 325,
+      "defense": 215,
+      "mana": 0,
+      "speed": 75,
+      "intelligence": 95,
+      "class": "Artificial Beast",
+      "type": "Terrestial",
+      "total": 3485
+    }
+  },
+  {
+    "id": 43,
+    "name": "VIPER-FIN",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779961887/Generated_Image_May_28_2026_-_1_58PM.jpg_sbhwlo.jpg",
+    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779961885/Generated_Image_May_28_2026_-_1_58PM_1.jpg_q92elh.jpg",
+    "lore": "SA-09 // \"VIPER-FIN\" is a giant, boss-level bio-weapon that rules the toxic swamplands of the abandoned \"Project Shoreline\" base. By illegally splicing the crushing, coiled muscle mass of a massive anaconda with the saw-toothed jaws of a Megalodon, scientists created the ultimate amphibious ambush predator. It glides with ghostly silence beneath the murky water, using its python-like strength to constrict and crush armored targets while its shark teeth shred them to pieces. Kept from neural overload by a heavy cybernetic collar, this colossal leviathan treats the ruined waterways as its personal throne room, completely invisible beneath the swamp until it rises to swallow intruder's pack whole.",
+    "stats": {
+      "hp": 2850,
+      "attack": 255,
+      "defense": 205,
+      "mana": 0,
+      "speed": 130,
+      "intelligence": 100,
+      "class": "Artificial Beast",
+      "type": "Amphibian",
+      "total": 3540
+    }
+  },
+  {
+    "id": 44,
+    "name": "Beetlebrute",
+    "rarity": "mythical",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1780042212/Generated_Image_May_29_2026_-_11_21AM.jpg_z2jo5o.jpg",
+    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1780042208/Generated_Image_May_29_2026_-_11_21AM_1.jpg_nzjc3b.jpg",
+    "lore": "Once worshipped as the God of Insects, the demon known as Beetlebrute turned its domain into a slaughterhouse, initiating a ruthless campaign to completely exterminate lesser beings. Invulnerable to mortal weapons and driven by pure brutal malice, it became a nightmare to humans and insects alike. Unable to destroy the titan, a band of legendary heroes successfully severed and sealed its soul inside a ancient spiritual artifact, burying and hiding it deep within a hidden forest temple. Though centuries have passed and the seal holds strong, To this day, humanity lives in fear, terrified of the day the seal breaks and he awakens.",
+    "stats": {
+      "hp": 8850,
+      "attack": 1770,
+      "defense": 2300,
+      "mana": 0,
+      "speed": 20,
+      "intelligence": 145,
+      "class": "Demon",
+      "type": "Terrestial",
+      "total": 13085
+    }
+  },
+  {
+    "id": 45,
+    "name": "Vulcannon",
+    "rarity": "common",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1780161545/Generated_Image_May_29_2026_-_6_46PM.jpg_juimjb.jpg",
+    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1780161543/Generated_Image_May_29_2026_-_6_46PM_1.jpg_dycg7k.jpg",
+    "lore": "Vulcannons are a highly inventive, fox-like beastman species renowned for its brilliant craftsmanship rather than physical power. For generations, their clans have forged legendary weapons of war, establishing themselves as the ultimate long-range tactical unit in the military. By seamlessly blending magic with volatile gunpowder, they operate devastating, ornate hand-cannons capable of decimating enemy lines from afar. Though physically ordinary, their peerless technical skill and battlefield intellect have allowed this species to repeatedly rise to immense political and military power within the KiKunai kingdom.",
+    "stats": {
+      "hp": 870,
+      "attack": 175,
+      "defense": 95,
+      "mana": 0,
+      "speed": 80,
+      "intelligence": 165,
+      "class": "Beastfolk",
+      "type": "Terrestial",
+      "total": 1385
+    }
+  },
+  {
+    "id": 46,
+    "name": "Goliyaut",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1780161546/Untitled244_20260529184240.jpg_xaguyr.jpg",
+    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1780161547/Untitled244_20260529184240_1.jpg_cbq3sd.jpg",
+    "lore": "An ancient, highly intelligent race of the frozen peaks, Goliyaut possesses a unique anatomy featuring two distinct sets of arms: a massive, armored upper pair used to battle threats, and a nimble, precise lower pair dedicated to engineering advanced, mana-powered technologies. Deeply obsessed with gold, they adorn their bodies in heavy, gilded jewelry that doubles as conductive circuits for their inventions. They share a symbiotic bond with native blue mountain slimes, utilizing the gelatinous creatures to cool down their hyper-advanced gadgets and stabilize energy grids. Most notably, Goliyaut are master architects capable of constructing massive, interconnected mana domes that seamlessly regulate, channel, and transmit magic across vast mountain ranges and tech networks.",
+    "stats": {
+      "hp": 1620,
+      "attack": 190,
+      "defense": 115,
+      "mana": 0,
+      "speed": 65,
+      "intelligence": 180,
+      "class": "Beast",
+      "type": "Terrestial",
+      "total": 2170
+    }
+  },
+  {
+    "id": 47,
+    "name": "Fracture",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1780161545/Generated_Image_May_29_2026_-_6_50PM.jpg_c2rvdl.jpg",
+    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1780161544/Generated_Image_May_29_2026_-_6_50PM_1.jpg_zmwqtr.jpg",
+    "lore": "Fractures are Born in the lower demonic realms, this entity manifests in our world by feeding on severe body dysmorphia and self-loathing. It targets vulnerable souls who gaze into mirrors through a lens of deep insecurities, slowly hijacking their distressed minds until its spiked, reptilian body physically materializes into reality. Once fully manifested, it stalks other melancholy individuals, preying upon their hidden sadness. Because it strikes without warning or symptoms, humanity harbors a deep, silent fear for the demon knowing that the \"very reflection they fear might just be looking back with claws\".",
+    "stats": {
+      "hp": 1725,
+      "attack": 195,
+      "defense": 130,
+      "mana": 275,
+      "speed": 80,
+      "intelligence": 105,
+      "class": "Demon",
+      "type": "Terrestial",
+      "total": 2510
     }
   }
 ]

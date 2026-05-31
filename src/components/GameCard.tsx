@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { Swords, Shield, Zap, Heart, Flame } from "lucide-react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
-export type CardRarity = "common" | "rare" | "epic" | "legendary" | "mythical" | "hero";
+export type CardRarity = "common" | "rare" | "epic" | "legendary" | "mythical" | "divine";
 
 export interface GameCardData {
   id: number;
@@ -20,7 +20,7 @@ export interface GameCardData {
     speed: number;
     intelligence: number;
     total: number;
-    range: string;
+    class: string;
     type: string;
   };
 }
@@ -58,8 +58,8 @@ const rarityConfig: Record<CardRarity, {
     divider: "rgba(56,189,248,0.2)", frameBorder: "rgba(56,189,248,0.25)",
   },
   epic: {
-    border: "border-violet-500/60", glow: "group-hover:shadow-violet-500/40",
-    badge: "bg-violet-600 text-white", text: "text-violet-200",
+    border: "border-violet-500", glow: "group-hover:shadow-violet-500/40",
+    badge: "bg-violet-700 text-white", text: "text-violet-200",
     bgGradient: "from-violet-600/20 to-transparent",
     metal: "#8b5cf6", metalDark: "#5b21b6", metalLight: "#c4b5fd",
     accent: "#8b5cf6", cardTint: "rgba(13,8,28,0.97)",
@@ -67,8 +67,8 @@ const rarityConfig: Record<CardRarity, {
     divider: "rgba(139,92,246,0.25)", frameBorder: "rgba(139,92,246,0.3)",
   },
   legendary: {
-    border: "border-yellow-500/70", glow: "group-hover:shadow-yellow-400/50",
-    badge: "bg-gradient-to-r from-yellow-500 to-amber-400 text-black", text: "text-yellow-200",
+    border: "border-yellow-500", glow: "group-hover:shadow-yellow-400/50",
+    badge: "bg-gradient-to-r from-yellow-700 to-amber-400 text-white", text: "text-yellow-200",
     bgGradient: "from-yellow-500/20 to-transparent",
     metal: "#eab308", metalDark: "#92400e", metalLight: "#fde68a",
     accent: "#f59e0b", cardTint: "rgba(20,14,4,0.97)",
@@ -84,7 +84,7 @@ const rarityConfig: Record<CardRarity, {
     nameColor: "#fecdd3", waxSeal: "#e11d48", typeLabel: "#f43f5e",
     divider: "rgba(244,63,94,0.3)", frameBorder: "rgba(244,63,94,0.35)",
   },
-  hero: {
+  divine: {
     border: "border-teal-400/70", glow: "group-hover:shadow-teal-400/50",
     badge: "bg-gradient-to-r from-teal-400 to-emerald-400 text-black font-bold", text: "text-teal-200",
     bgGradient: "from-teal-400/20 to-transparent",
@@ -124,7 +124,7 @@ const WaxSeal = ({ rarity, color, badge }: { rarity: string; color: string; badg
   <div className="relative flex items-center">
     <div
       className={cn(
-        "relative px-2.5 py-0.5 text-[8px] font-black uppercase tracking-[0.25em] rounded-sm overflow-hidden",
+        "relative px-2.5 py-0.5 text-[9px] font-black uppercase tracking-[0.25em] rounded-sm overflow-hidden",
         badge
       )}
       style={{ boxShadow: `0 2px 12px ${color}55, inset 0 1px 0 rgba(255,255,255,0.15)` }}
