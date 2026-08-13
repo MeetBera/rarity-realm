@@ -4,8 +4,7 @@
     "name": "Tetra-Gaze Swamp Wyvern",
     "rarity": "rare",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1764945091/1764659171920_i5fdns.jpg",
-    "thumbnail": "",
-    "lore": "Born in the toxic mists of the Deep Marsh, this creature is a biological nightmare evolved for ambush. Its most terrifying feature is its four independent eyes: the top pair scans the sky for larger predators, while the bottom pair locks onto prey hiding in the murky water. Unlike noble dragons, it flies clumsily, preferring to use its muscular, hand-like wings to crawl rapidly through the sludge and drag victims into the depths.",
+    "lore": "Born in a vast, toxic swamp choked with dense, towering trees, this creature evolved four eyes, allowing it to constantly scan its surroundings for both predators and prey. It belongs to a species of dragons, but unlike its noble, winged relatives, it cannot fly. Instead, it uses its massive, muscular wing-like forelimbs to crawl across the swamp at terrifying speed, ambushing unsuspecting prey before dragging them into the murky depths.",
     "stats": {
       "hp": 1450,
       "attack": 180,
@@ -23,8 +22,7 @@
     "name": "Jaguarnaut",
     "rarity": "rare",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779517032/Generated_Image_May_23_2026_-_10_34AM.jpg_esn9ot.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779517031/Generated_Image_May_23_2026_-_10_34AM_1.jpg_ishlal.jpg",
-    "lore": "Once A army general, banished from his jungle tribe for relying on steel instead of stealth, the Jaguarnaut is a mercenary who traded speed for raw, crushing power. He wears heavy plate armor on his massive forearms to act as a living battering ram. He no longer stalks his prey from the shadows; he simply smashes through their front gates, proving that no shield can withstand the weight of his strike.",
+    "lore": "Once a general of an elite jungle tribe, the Jaguarnaut was banished from the tribe for abandoning the tribe's sacred hunting traditions. While his kin relied on speed, stealth, and ambush tactics, he relies on steel and overwhelming force. He forged massive steel armor plates onto his forearms, transforming them into devastating battering rams capable of crushing shields, splintering bones, and breaking through fortified defenses. Cast out by his own people, the Jaguarnaut lives life as a ruthless mercenary.",
     "stats": {
       "hp": 1740,
       "attack": 270,
@@ -42,7 +40,6 @@
     "name": "Snow-Maw",
     "rarity": "common",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779688783/Generated_Image_May_25_2026_-_12_26AM.jpg_hpgcwd.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779688779/Generated_Image_May_25_2026_-_12_26AM_1.jpg_pmwnje.jpg",
     "lore": "the Slobberjaw is perpetually hungry and dangerously happy about it. It doesn't hunt with stealth; it hunts with a tongue that can stretch five feet and tastes like frozen iron.Legends say its drool is so slippery that entire explorer's team have fallen over before even landing a hit. If the bite doesn't get you, the slip-and-slide will.",
     "stats": {
       "hp": 880,
@@ -61,7 +58,6 @@
     "name": "Paleolith",
     "rarity": "rare",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779772104/Generated_Image_May_26_2026_-_10_18AM.jpg_ne2lg0.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779772102/Generated_Image_May_26_2026_-_10_18AM_1.jpg_mnyfga.jpg",
     "lore": "A silent guardian of the shallow seas, this Coral-Spine Ancient is often mistaken for a piece of drifting reef until it opens its eyes. The vibrant red structures on its back are not just for show; they are living, breathing coral colonies that harden instantly when attacked. Sailors believe that the shimmering, translucent fin on its tail can refract light to create illusions, hiding entire shipwrecks—or treasures—from greedy eyes.",
     "stats": {
       "hp": 1920,
@@ -80,7 +76,6 @@
     "name": "T-Shark 9",
     "rarity": "common",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779812379/Generated_Image_May_26_2026_-_10_03AM.jpg_pzzjrg.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779812378/Generated_Image_May_26_2026_-_10_03AM_1.jpg_zqwivv.jpg",
     "lore": "The T-Shark 9 is not a product of natural evolution, but a biological weapon forged in the laboratories of the Project shoreline. In a world where rising sea levels forced jungle warfare to the coasts, warlords needed a beast that could hunt with the stealth of a tiger in the brush and the sensory precision of a shark in the water.",
     "stats": {
       "hp": 1220,
@@ -99,7 +94,6 @@
     "name": "Boreassus",
     "rarity": "epic",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779950163/Generated_Image_May_28_2026_-_12_25AM.jpg_ks2nla.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779950092/Generated_Image_May_28_2026_-_12_25AM_1.jpg_uuiibo.jpg",
     "lore": "The Boreassus is a solitary apex predator native to the sunless, crushing depths of the Boreal Trench, a deep-sea chasm located beneath the polar ice caps. These creatures are ancient, living remnants of a prehistoric ice age, perfectly adapted to extreme cold and pressure. Their bodies generate a potent natural antifreeze, giving their skin a constant, pale, frozen, gel-like appearance that is cold to the touch.",
     "stats": {
       "hp": 3670,
@@ -118,7 +112,6 @@
     "name": "Drowzhowl",
     "rarity": "rare",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779531436/Generated_Image_May_23_2026_-_3_40PM.jpg_ifaw6h.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779531434/Generated_Image_May_23_2026_-_3_40PM_1.jpg_gmlgwl.jpg",
     "lore": "This creature has a massive bellows system inside its chest instead of normal lungs. In combat, it inhales deeply for several seconds (making it vulnerable), and then exhales a concentrated \"slug\" of compressed air.",
     "stats": {
       "hp": 2170,
@@ -137,7 +130,6 @@
     "name": "Cerebrorex ",
     "rarity": "rare",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779604274/Generated_Image_May_24_2026_-_11_29AM.jpg_fbvtlh.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779604273/Generated_Image_May_24_2026_-_11_29AM_1.jpg_plqsur.jpg",
     "lore": "Created in a laboratory, Cerebrorex is a prehistoric predator resurrected with synthetic biology. Because its original skull could not contain its massively expanded intelligence, scientists encased its head in a life-support hydro-dome. It does not hunt with claws; instead, it uses its exposed brain to project psychic shockwaves that paralyze prey instantly. The oclass plating on its tail acts as a cooling vent for the immense heat its brain generates during battle.",
     "stats": {
       "hp": 1260,
@@ -156,7 +148,6 @@
     "name": "Golgoth",
     "rarity": "legendary",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779604274/Generated_Image_May_24_2026_-_12_13AM.jpg_faf7lm.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779604273/Generated_Image_May_24_2026_-_12_13AM_1.jpg_so5pbh.jpg",
     "lore": "Ancient scriptures from the Merfolk civilizations speak of a \"King who sees all, bites all, and knows all.\". It does not belong to a single species but is a terrifying fusion of the ocean’s deadliest predators. It roams the deepest, darkest trenches of the Sapphire Ocean, specifically haunting the \"Graveyard of Galleons\"—a region where ships carrying royal gold frequently disappear. ",
     "stats": {
       "hp": 6250,
@@ -175,7 +166,6 @@
     "name": "Noxotaur",
     "rarity": "common",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1765468681/1764670750906_1_mehhmc.jpg",
-    "thumbnail": "",
     "lore": "If you need to move contraband across the jagged peaks of the Iron Mountains, you don't buy a horse you hire a Hauler. With skin as tough as cured leather and a temperament to match, these beasts are immune to the bitter cold and can climb near-vertical cliffs. The mysterious purple-stoppered jars usually contain \"Nightshade Brew,\" a banned liquor highly prized by giants and ogres. The Haulers are fiercely loyal only to their specific handler; anyone else who tries to touch the cargo gets introduced to the beast's blunt horns.",
     "stats": {
       "hp": 880,
@@ -194,7 +184,6 @@
     "name": "Berrydra",
     "rarity": "common",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779521195/Generated_Image_May_23_2026_-_12_33PM.jpg_tnrud3.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779521194/Generated_Image_May_23_2026_-_12_33PM_1.jpg_g2fjhn.jpg",
     "lore": "A distant, less intelligent cousin of the Hydra. Having three heads should make it a tactical genius, but unfortunately, they share a single stomach and constantly argue over who gets to eat the snack. They are terrible at stealth because they are constantly bickering. However, their neon-colored drool is incredibly slippery—enemies chasing them often slip and fall, making the Berrydra an accidental tactical genius.",
     "stats": {
       "hp": 875,
@@ -210,10 +199,9 @@
   },
   {
     "id": 12,
-    "name": "Megadon-09",
+    "name": "Typhodus-09",
     "rarity": "epic",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779961888/Generated_Image_May_28_2026_-_1_51PM.jpg_qqxmrm.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779961883/Generated_Image_May_28_2026_-_1_51PM_1.jpg_u9nlo6.jpg",
     "lore": "Originally an apex predator of the deep ocean, Typhodus is the result of \"Project Shoreline,\" an illicit military experiment designed to create a unit capable of dominating both sea and land warfare.While the physical enhancements were a success, the neural implant (indicated by the glowing red eye and antenna) was intended to make the beast obedient. However, the sheer aggression of the shark DNA constantly fights the programming. Megadon is now a rogue agent—a berserker who serves no master, roaming coastal ruins and tearing through armored tanks as easily as it tears through flesh.",
     "stats": {
       "hp": 3345,
@@ -232,7 +220,6 @@
     "name": "Demon Toad",
     "rarity": "common",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779688781/Generated_Image_May_25_2026_-_12_21AM.jpg_lgbfyh.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779688779/Generated_Image_May_25_2026_-_12_21AM_1.jpg_ghpl3d.jpg",
     "lore": "The Demon Toads are the undisputed kings of the Kuromuli wetlands. Growing to the size of a grizzly bear, they are the largest poisonous creatures in the region. They are easily identified by the jagged horns on their snout and the stclass, white rune-like markings on their skin.\n\nThese markings are not tattoos, but natural warning signs. When the white patterns glow, it signals that the toad's glands are full of neurotoxin. A single Demon Toad releases enough noxious gas from its skin to turn the surrounding swamp water into acid, dissolving the armor and flesh of any prey foolish enough to get close. Travelers in Kuromuli know that if the fog smells like sulfur, a Demon Toad is nearby.",
     "stats": {
       "hp": 1560,
@@ -251,7 +238,6 @@
     "name": "Vespion",
     "rarity": "rare",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779556522/Generated_Image_April_08_2026_-_8_52PM.jpg_mxhlbi.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779556519/Generated_Image_April_08_2026_-_8_52PM_1.jpg_ktj5he.jpg",
     "lore": "The Vespion is the \"Heavy Siege\" unit of the insect kingdom. Born from a larva fed exclusively on Royal Jelly and liquid iron, it grows too massive and armored to fly properly. Instead of gathering nectar, it exists solely to crush the hive's enemies.\n\nIts wings function like thrusters, allowing it to hover inches off the ground and dash forward with terrifying speed (a move known as the \"Buzz-Blitz\"). The thick white fur around its neck is not for warmth—it is a sensory mane that detects the heartbeat of invisible enemies. When a Vespion enters the battlefield, the buzzing of its wings is low and heavy, sounding more like a chainsaw than a bee.",
     "stats": {
       "hp": 2290,
@@ -270,7 +256,6 @@
     "name": "Kernalisk",
     "rarity": "rare",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779693406/Generated_Image_May_25_2026_-_12_20PM.jpg_uhgltv.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779693402/Generated_Image_May_25_2026_-_12_20PM_1.jpg_e3sopr.jpg",
     "lore": "The Kernalisk was not born; it was grown. Legend says these creatures were originally created by ancient druids to act as scarecrows to protect sacred crops during times of famine. However, after absorbing too much wild magic from the soil, they gained sentience and a voracious hunger. Now, they do not protect the harvest—they hoard it. The creature’s body is a dense armor of calcified kernels. The yellow scales are as hard as gold, while the purple scales (found on its secondary head) are venomous. Its \"wings\" and mane are razor-sharp husks capable of slicing through iron armor.",
     "stats": {
       "hp": 2850,
@@ -289,7 +274,6 @@
     "name": "Kenji",
     "rarity": "common",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779522249/Generated_Image_May_23_2026_-_1_11PM.jpg_kr7j7p.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779522248/Generated_Image_May_23_2026_-_1_11PM_1.jpg_qpx0vk.jpg",
     "lore": "In the misty provinces of the East, humans are often plagued by Yōkai (mischievous or malevolent spirits) that are invisible to the human eye. Kenji is not a soldier for a human army; he is a specialized Exorcist for Hire.\nThe gold swirls on his face and forehead are not natural markings, nor are they paint. They are Singes—scars left from a battle with a Lightning Raiju when he was just a pup. Surviving that strike granted him \"The Sight,\" allowing him to see the most dangerous spirits that even other hounds miss.",
     "stats": {
       "hp": 1070,
@@ -308,7 +292,6 @@
     "name": "Ribbitor",
     "rarity": "common",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779693402/Generated_Image_May_25_2026_-_12_26PM.jpg_mdanih.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779693401/Generated_Image_May_25_2026_-_12_26PM_1.jpg_mkq60w.jpg",
     "lore": "The Ribbitor is an evolutionary anomaly found in the most humid, overgrown sectors of the world. It is not a true dragon, but a highly specialized amphibian that has developed the ability to glide. Its most unique feature is its wings. They are not made of skin or bone, but are actually formed from a hardened, translucent secretion produced by glands on its back. This \"living gel\" mimics the sunlight filtering through leaves, granting the Ribbitor near-perfect camouflage while in the air. It begins its life as a massive tadpole in stagnant, poisonous pools. As it matures, it climbs into the high mangroves. It is an ambush predator; it waits motionless on high branches until it spots prey, then drops silently, extending its sticky wings to glide down and latch onto its victim.",
     "stats": {
       "hp": 965,
@@ -327,7 +310,6 @@
     "name": "Grandmaster Regulus",
     "rarity": "epic",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1766214443/1764693553086_1_t5spui.jpg",
-    "thumbnail": "",
     "lore": "Regulus was once a singular mortal king who presided over a kingdom destined to fall. Unwilling to accept defeat, he attempted the \"Hourglass Ritual\"—a forbidden spell designed to pull a \"winning\" version of himself from a different timeline to replace his failing self. But the ritual shattered. Instead of swapping places with a victorious version of himself, the spell collapsed the walls between realities. Seven distinct Regulus—from the optimistic Prince to the tyrannical Warlord—were violently pulled into a single point in space-time, fused into one immortal, agonizing vessel.",
     "stats": {
       "hp": 3145,
@@ -346,7 +328,6 @@
     "name": "gulperdrake",
     "rarity": "rare",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779531436/Generated_Image_May_23_2026_-_3_42PM.jpg_mhx46p.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779531434/Generated_Image_May_23_2026_-_3_42PM_1.jpg_iayo7v.jpg",
     "lore": "Gulperdrakes are the reason coastal towns experience sudden, dry summers. These creatures feed primarily on rainclouds. Using their massive, accordion-like throats, they inhale entire storm fronts in a single breath, filtering the moisture and spitting out the dry air.\n\nBecause they are so heavy with water weight, their tiny wings can't actually lift them; instead, they inflate their internal air sacs to achieve buoyancy, bobbing through the air like a heavy balloon. In combat, they release this stored pressure in a sonic \"Bellow Blast\" that sends enemies flying backward.",
     "stats": {
       "hp": 2740,
@@ -365,7 +346,6 @@
     "name": "Kravos",
     "rarity": "epic",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1766214444/1764672514698_1_wmwo5v.jpg",
-    "thumbnail": "",
     "lore": "Kravos is an escaped \"Living Spell\" born from a forbidden grimoire, originally a catastrophic curse penned in dark-energy ink that bled off the parchment and fused with the Grand Archivum’s stone masonry to drag itself into three dimensions. A feral, breathing paradox of petrified text and shattered marble, his skin pulses with energy that acts as the literal punctuation of a chaotic magic constantly reshaping his form. He hunts the world with a lashing ribbon of his original two-dimensional narrative—a terrifying whip that defies physics by instantly compressing a target's depth",
     "stats": {
       "hp": 3665,
@@ -384,7 +364,6 @@
     "name": "Sylvalisk",
     "rarity": "rare",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779812380/Generated_Image_May_26_2026_-_10_01AM.jpg_cvpy6v.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779812379/Generated_Image_May_26_2026_-_10_01AM_1.jpg_fkzo8t.jpg",
     "lore": "The Sylvalisk is a gentle, amphibious spirit that acts as a guardian of eastern riverbanks and dense forests. Born from the roots of the World Tree, its scales are a blend of hardened bark and living moss, allowing it to camouflage perfectly against the canopy.\n\nUnusually, it does not walk on land but \"swims\" through the air using the large, translucent leaf-fin on its tail to steer. It is said that wherever a Sylvalisk rests, the plants grow twice as fast, and sick trees are instantly healed. Its glowing blue eyes can see the true intent of any creature; it guides lost travelers to safety but leads those who wish to harm the forest into endless, tangling thickets.",
     "stats": {
       "hp": 2140,
@@ -403,7 +382,6 @@
     "name": "Tropigriff",
     "rarity": "common",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779604274/Generated_Image_May_24_2026_-_11_30AM.jpg_aftyci.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779604273/Generated_Image_May_24_2026_-_11_30AM_1.jpg_r1sw2u.jpg",
     "lore": "A chaotic blend of predator and prankster, the Tropigriff uses its spiral tail to mimic exotic fruit, luring hungry travelers into pecking class. While it can change colors to blend into the jungle canopy, it often forgets to camouflage its bright oclass toes, making it surprisingly easy to spot for those who look down.",
     "stats": {
       "hp": 355,
@@ -422,7 +400,6 @@
     "name": "Vulcakroak",
     "rarity": "common",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779518483/Generated_Image_May_23_2026_-_9_22AM.jpg_egz2je.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779518480/Generated_Image_May_23_2026_-_9_22AM_1.jpg_ksgx0j.jpg",
     "lore": "Born near the ashes of dormant volcanoes, Vulcakroak are grumpy creatures filled with hot, buoyant gas that allows their undersized wings to lift their hefty bodies. They possess a delusion of grandeur, firmly believing they are mighty dragons, and spend their days fruitlessly trying to breathe fire, only ever producing a disappointing puff of warm smoke.",
     "stats": {
       "hp": 560,
@@ -441,7 +418,6 @@
     "name": "Equinox",
     "rarity": "common",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1770823202/1764835357344_1_ixf1db.jpg",
-    "thumbnail": "",
     "lore": "Equinox only appears during the few weeks between late Summer and early Autumn. It represents the turning of the season—the moment when the green of summer begins to fade into the oclass of fall.\nThe Ribbons: Local farmers leave these ribbons on the edge of the woods as offerings. They believe that if Equinox wears them, the frost will be delayed, allowing for a bountiful harvest.",
     "stats": {
       "hp": 940,
@@ -460,7 +436,6 @@
     "name": "Peelagorn ",
     "rarity": "rare",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779464593/Untitled234_20260521222638.jpg_lqsyxj.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779467479/Untitled234_20260521222638.jpg1_hitfy6.jpg",
     "lore": "Stories say the Peelagorn wasn't hatched from an egg, but was the result of an ancient, tropical tree absorbing too much ambient mana over centuries. It eventually uprooted itself, evolving into a roaming, reptilian guardian of the deep jungle. Its appearance is deceivingly comical, but seasoned adventurers know better than to underestimate this botanical beast",
     "stats": {
       "hp": 2250,
@@ -479,7 +454,6 @@
     "name": "Melobuzz",
     "rarity": "common",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779464594/Generated_Image_May_22_2026_-_8_00PM.jpg_xarsix.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779467647/Generated_Image_May_22_2026_-_8_00PM.jpg2_ghdy7i.jpg",
     "lore": "The Melobuzz is a highly evolved, fruit-mimicking arthropod that thrives in sun-drenched, high-magic canopies by disguising itself perfectly as a hovering watermelon. Its durable, green-striped carapace acts as an organic solar array, absorbing ambient sunlight and converting this radiant energy into a highly restorative, volatile red nectar that sustains its hive. Though typically docile, a threatened Melobuzz swarm becomes a formidable defensive force, vibrating their fleshy, slice-like wings to release a disorienting, sweet-smelling mist while rapidly firing hardened, kinetic \"seeds\" from their bodies with the devastating force of a scattergun.",
     "stats": {
       "hp": 315,
@@ -498,7 +472,6 @@
     "name": "Brakkar",
     "rarity": "rare",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779527111/Generated_Image_May_23_2026_-_2_22PM.jpg_yz9vim.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779526755/Generated_Image_May_23_2026_-_2_22PM_1_1.jpg_avzlhv.jpg",
     "lore": "Awakened from a decades-long slumber deep within mystic jade mountains, Brakkar is an ancient zodiac guardian bound by glowing golden runes. These sacred tattoos are not decorative; they channel the raw, unshackled magic of the mother earth directly into his muscles, granting him near-indestructible resilience. Draped in the indigo robes of the mountain monks, he is a stoic, silent protector of the old arenas. However, when his domain is threatened, Brakkar wields his massive, sun-forged mace with terrifying speed, delivering crushing strikes capable of shattering the very bedrock beneath his enemies' feet.",
     "stats": {
       "hp": 2170,
@@ -517,7 +490,6 @@
     "name": "Ear-Flap Squirrel",
     "rarity": "common",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779527600/Generated_Image_May_22_2026_-_1_40PM.jpg_qxwvsb.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779527597/Generated_Image_May_22_2026_-_1_40PM_1.jpg_dttoxy.jpg",
     "lore": "Native to the misty, sun-dappled canopies of the Elderwood, the Ear-Flap Squirrel is an elusive chimera that bridges the gap between woodland mammal and lesser drake. Its most striking feature—a prehensile, looping tail covered in hardened, bark-like scales—allows it to anchor flawlessly to ancient trees, blending in completely when it curls up to sleep. It uses its massive, leathery, bat-like ears as parabolic receivers, allowing it to echolocate through dense canopy fog and listen for the rustle of its favorite prey: burrowing wood-beetles. Mischievous and highly intelligent, they are known by local foresters to hoard glowing embers from dying campfires, carrying the hot coals in their fire-resistant claws back to their nests to keep their young warm during the harsh winter months.",
     "stats": {
       "hp": 580,
@@ -533,11 +505,10 @@
   },
   {
     "id": 29,
-    "name": "Grokarth",
+    "name": "Arbustodon",
     "rarity": "legendary",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779556522/Generated_Image_April_08_2026_-_8_42PM.jpg_wn2o8y.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779556519/Generated_Image_April_08_2026_-_8_42PM_1.jpg_dmhqnf.jpg",
-    "lore": "Legends whisper that Grokarth is not a mere colossal beast, but the nomadic seed-bearer of the primordial world-tree. Driven by an instinctual duty, it roams the desolate wastes seeking the geographic center of the planet. Prophecy claims that when Grokarth finally locates this perfect nexus, it will bury itself completely. In a final act of monumental sacrifice, the beast's glowing heart will fuse with the roots upon its back, consuming its rocky flesh to birth an entirely new, immortal continent of life.",
+    "lore": "Legends whisper that Arbustodon is not a mere colossal beast, but the nomadic seed-bearer of the primordial world-tree. Driven by an instinctual duty, it roams the desolate wastes seeking the geographic center of the planet. Prophecy claims that when Arbustodon finally locates this perfect nexus, it will bury itself completely. In a final act of monumental sacrifice, the beast's glowing heart will fuse with the roots upon its back, consuming its rocky flesh to birth an entirely new, immortal continent of life.",
     "stats": {
       "hp": 7525,
       "attack": 1530,
@@ -555,7 +526,6 @@
     "name": "Aurum-Z",
     "rarity": "legendary",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779694569/Generated_Image_May_25_2026_-_12_57PM.jpg_offo5r.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779694567/Generated_Image_May_25_2026_-_12_57PM_1.jpg_wjbn2v.jpg",
     "lore": "Forged by the ancient empire from a nearly indestructible, gold-like celestial alloy, Aurum-Z is a mechanical titan designed as both a symbol of ultimate wealth and an immovable defender. Its most remarkable feature is the stabilized micro-star housed within its jaws, which provides the automaton with limitless energy for immense physical power while acting as a devastating breath weapon on battlefield. Following the mysterious disappearance of its creators, this immortal \"Tyrant\" now endlessly wanders the crystalline deserts of the old world, an untarnished and roaring guardian forever awaiting orders from a civilization that has long since turned to dust.",
     "stats": {
       "hp": 4245,
@@ -574,7 +544,6 @@
     "name": "Terrarric",
     "rarity": "rare",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779710139/Generated_Image_May_25_2026_-_12_55AM.jpg_okxnbp.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779710136/Generated_Image_May_25_2026_-_12_55AM_1.jpg_dgvup5.jpg",
     "lore": "The Terrarric is a stclass, heavy-set creature that survives in hot, rocky valleys by creating its own shiny armor. It sweats a thick oclass liquid from its back that quickly hardens into a smooth shell, small wings, and a heavy tail to balance out its big, hollow belly. Because it eats a diet of hot ash and tree sap, its body gets incredibly warm. To cool down, it breathes like a giant air pump—sucking cool air through its tube-like snout and blowing sweet-smelling steam out of the flute-like holes on top of its head. Even though it always looks grumpy and waddles around slowly, local crafters love the Terrarric. They follow the musical, whistling sounds it makes just to collect the tough, shiny oclass pieces it leaves behind on the ground.",
     "stats": {
       "hp": 1710,
@@ -593,7 +562,6 @@
     "name": "Peeloceros",
     "rarity": "common",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779787286/Generated_Image_May_22_2026_-_8_08PM.jpg_qjz8wk.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779787285/Generated_Image_May_22_2026_-_8_08PM_1.jpg_ljiq4r.jpg",
     "lore": "Generations ago, these ancient goliath scarabs became symbiotic with a rare, magically charged strain of 'Gild-Musa' bananas, the beetles feeding exclusively on the fruit until a genetic fusion occurred. Their exoskeletons became the protective skin of the banana, their main dorsal horn transformed into a powerful, petrified banana stalk, and their segmented legs took on the fibrous shape of the fruit. This chimeric evolution grants it a unique, sweet aroma that both disguises its form and lures prey, while its thick, peel-like armor provides surprisingly dense protection against predators, who often mistake it for mere ripe fruit before the powerful Peeloceros charges.",
     "stats": {
       "hp": 645,
@@ -612,7 +580,6 @@
     "name": "Lacertafae",
     "rarity": "rare",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779787286/Generated_Image_May_26_2026_-_2_45PM.jpg_mv1nyf.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779787285/Generated_Image_May_26_2026_-_2_45PM_1.jpg_yy0wym.jpg",
     "lore": "In the floating swamps of the Prism Isles, the Lacertafae evolved by eating only pure magic and glowing fairies. Because of this magical diet, the heavy reptile grew massive, glowing wings of pure energy that allow it to fly easily. Its thick skin turned bright purple to hide among glowing plants, and the horn on its nose became a poisonous weapon. Now, it roams the skies and lakes as a deadly hunter, diving from the clouds with the crushing bite of a crocodile.",
     "stats": {
       "hp": 1685,
@@ -631,7 +598,6 @@
     "name": "Voltmane",
     "rarity": "rare",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779813178/Generated_Image_May_26_2026_-_9_49AM.jpg_e9kncq.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779813173/Generated_Image_May_26_2026_-_9_49AM_1.jpg_jhebkv.jpg",
     "lore": "Long ago these beasts used served as the elite vanguard for a grand underwater kingdom. Beneath their shimmering blue scales lies the raw, crushing strength of a hundred lions, powered by a golden, fin-like mane that crackles with immense bio-electricity. They now roam the pitch-black ocean floor in a relentless search for colossal preys to hunt down. When a Voltmane finally corners a giant squid or abyssal whale, it channels thousands of volts into its hooked front talons, with terrifying elegance, it unleashes its signature attack—a series of surgical, supercharged claw slices that effortlessly cleave through the thickest leviathan skin, illuminating the dark ocean in a split-second of lethal, golden flash.",
     "stats": {
       "hp": 1880,
@@ -647,11 +613,10 @@
   },
   {
     "id": 35,
-    "name": "Hulkafins",
+    "name": "Hammerrex",
     "rarity": "rare",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779867753/Generated_Image_May_12_2026_-_8_55PM.jpg_loskse.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779867752/Generated_Image_May_12_2026_-_8_55PM_1.jpg_rpcx2f.jpg",
-    "lore": "They used to hunt exclusively in the deep water, but their insatiable hunger gained them the ability to even hunt on land. Today, the Hulkafins stands as one of the biggest and most active predators hunting humans in coastal regions and island chains, establishing a brutal dominance so absolute that even the mighty megalodons fear them. Despite their hulking, muscular bulk, their fleshy, adapted feet are designed to stay silent against both sand and stone, allowing it to ambush preys with breathtaking speed and crushing strength before dragging them back into the tide. A pack-hunting group of these creatures are more dangerous than any other seakings, capable of wiping out entire seaside settlements in a single, devastating frenzy.",
+    "lore": "They used to hunt exclusively in the deep water, but their insatiable hunger gained them the ability to even hunt on land. Today, the Hammerrex stands as one of the biggest and most active predators hunting humans in coastal regions and island chains, establishing a brutal dominance so absolute that even the mighty megalodons fear them. Despite their hulking, muscular bulk, their fleshy, adapted feet are designed to stay silent against both sand and stone, allowing it to ambush preys with breathtaking speed and crushing strength before dragging them back into the tide. A pack-hunting group of these creatures are more dangerous than any other seakings, capable of wiping out entire seaside settlements in a single, devastating frenzy.",
     "stats": {
       "hp": 2670,
       "attack": 340,
@@ -669,7 +634,6 @@
     "name": "Hammarai",
     "rarity": "common",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779867754/Generated_Image_May_27_2026_-_10_54AM.jpg_q3ufw4.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779867752/Generated_Image_May_27_2026_-_10_54AM_1.jpg_oflwro.jpg",
     "lore": "Born in the deep ocean vents, Hammarai hammerhead sharks absorbed raw mana into their skulls, gaining high-level intelligence and psionic powers. To overcome their physical limitations, they psychically bonded with an octopus species to form a bipedal, multi-limbed body capable of walking on land. Today, these apex warriors utilize their psychic energy to absolute command any shark species, masterfully dual-wield katanas in both land and sea combat, and adorn themselves in the cosmetics of defeated ocean beasts as trophies of their absolute dominion.",
     "stats": {
       "hp": 1095,
@@ -688,7 +652,6 @@
     "name": "Dracrown",
     "rarity": "epic",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779882354/Untitled235_20260521235308.jpg_qaxinx.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779882347/Untitled235_20260521235308_1.jpg_saxa3q.jpg",
     "lore": "Born atop the highest, cloud-piercing mountain peaks where the sun shines brightest, Dracrown is a noble dragon born from golden minerals infused with pure solar energy. It is chosen by powerful and noble kings to serve as a royal protector, a bond so powerful that its body naturally grew a metallic, shield-like chest-plate and a crown-like harness as a symbol of its eternal vow. Today, it stands as a majestic, highly intelligent guardian of Kingdom, using its steel-hard golden scales and sweeping purple wings to command the sky and defend its territory from those with corrupt hearts.",
     "stats": {
       "hp": 3625,
@@ -704,11 +667,10 @@
   },
   {
     "id": 38,
-    "name": "Grizzlyth",
+    "name": "Bramblehide",
     "rarity": "common",
-    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779951189/Generated_Image_May_22_2026_-_1_58PM.jpg_uvm9fu.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779951190/Generated_Image_May_22_2026_-_1_58PM_2.jpg_snf6y9.jpg",
-    "lore": "Deep within undisturbed rainforests where sunlight barely touches the forest floor, Grizzlyth are big carnivorous mammals that have specially evolved into primary predators of the mossy canopy. While their heavy, muscular build suggests a ground-dwelling beast, they surprise prey by launching themselves from high branches, using their specialized underarm wings to glide effortlessly from tree to tree in near silence. Covered in thick, living moss that provides perfect camouflage among the high branches, they wait patiently for unsuspecting targets before dropping down with devastating body slam.",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786387734/Generated_Image_June_28_2026_-_12_30AM.jpg_vr0dmp.jpg",
+    "lore": "Deep within undisturbed rainforests where sunlight barely touches the forest floor, Bramblehide are big carnivorous mammals that have specially evolved into primary predators of the mossy canopy. While their heavy, muscular build suggests a ground-dwelling beast, they surprise prey by launching themselves from high branches, using their specialized underarm wings to glide effortlessly from tree to tree in near silence. Covered in thick, living moss that provides perfect camouflage among the high branches, they wait patiently for unsuspecting targets before dropping down with devastating body slam.",
     "stats": {
       "hp": 1175,
       "attack": 105,
@@ -726,7 +688,6 @@
     "name": "Golebeetle",
     "rarity": "rare",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779950133/Generated_Image_May_28_2026_-_11_02AM.jpg_v8sn4a.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779950073/Generated_Image_May_28_2026_-_11_02AM_1.jpg_dg8llt.jpg",
     "lore": "Built by underground insect rebels as a mindless siege weapon which is powered by a volatile Gravity Manastone, Golebeetle unexpectedly gained sentience during construction and destroyed its creators' lab to claim its freedom. Now obsessed with testing its absolute power, it roams the world as a lone gladiator to find a worthy battle. Due to its raw strength, it easily uproots massive, iron Beetle-Trees with a single arm, and it uses its gravitational core to warp subterranean fields—forcing deep-earth creatures to the surface just to hunt for a challenging opponent.",
     "stats": {
       "hp": 2390,
@@ -745,7 +706,6 @@
     "name": "Necrowyvern",
     "rarity": "rare",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779950143/Generated_Image_May_28_2026_-_11_50AM.jpg_uph88u.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779950099/Generated_Image_May_28_2026_-_11_50AM_1.jpg_hhbju9.jpg",
     "lore": "Long ago, a coven of witches died in a devastating forbidden spell battle high within a desolate mountain. And their vengeful souls reacted violently to the lingering death magic saturating the battlefield, fusing together into a single, amalgation of spiritual energy. Sensing a perfect vessel nearby, this spectral amalgamation forcefully merged with a mountain dragon, warping its flesh and wings with dark magic, and crowning it with a skeletal mask. Thus, Necrowyvern is a fusion of draconic fury and witchcraft, haunting the peaks and hunting for souls to feed the coven trapped within.",
     "stats": {
       "hp": 2620,
@@ -764,7 +724,6 @@
     "name": "Rhinocious",
     "rarity": "rare",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779950137/Generated_Image_May_28_2026_-_9_49AM.jpg_hn3gjh.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779950088/Generated_Image_May_28_2026_-_9_49AM_1.jpg_ndvvbx.jpg",
     "lore": "Rhinocious is an ancient titan species that accomplished the invading and completely conquering the frozen, inhospitable territories of the Ice Golems. Dwarfing even some of the mountain dragons, these massive primal beasts live by a brutal code of dominance, constantly engaging in ferocious civil wars to determine their pack leader. However, this endless internal warfare has come at a tragic cost; centuries of relentlessly weeding out the largest challengers has caused their overall species size to shrink, rapidly driving this once-unstoppable apex predator toward the brink of extinction.",
     "stats": {
       "hp": 2300,
@@ -783,7 +742,6 @@
     "name": "BRUTE-FIN",
     "rarity": "rare",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779961887/Generated_Image_May_28_2026_-_1_55PM.jpg_lbn0qa.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779961887/Generated_Image_May_28_2026_-_1_55PM_1.jpg_equlec.jpg",
     "lore": "CR-03 // \"BRUTE-FIN\" is an uncontained, bio-weapon engineered through illegal triple-helix gene-splicing at the abandoned \"Project Shoreline\" testing facility. This terrestrial juggernaut combines the immense skeletal density, thick hide, and charging momentum of a rhinoceros with the strength, devastating bite force, and razor-sharp teeth of a mighty Megalodon. Overcoming the typical clumsiness of a heavy rhino, the integration of cervid neural pathways equips the asset with hair-trigger, deer reflexes that allow it to shift its weight instantly and evade incoming projectiles with eerie grace. Now stalking the vast, overgrown grasslands of the ruined facility, the predator utilizes the tall brush for camouflage and relies on a spine-fused cybernetic harness to continuously recycle its internal water supply.",
     "stats": {
       "hp": 2775,
@@ -802,7 +760,6 @@
     "name": "VIPER-FIN",
     "rarity": "rare",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779961887/Generated_Image_May_28_2026_-_1_58PM.jpg_sbhwlo.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779961885/Generated_Image_May_28_2026_-_1_58PM_1.jpg_q92elh.jpg",
     "lore": "SA-09 // \"VIPER-FIN\" is a giant, boss-level bio-weapon that rules the toxic swamplands of the abandoned \"Project Shoreline\" base. By illegally splicing the crushing, coiled muscle mass of a massive anaconda with the saw-toothed jaws of a Megalodon, scientists created the ultimate amphibious ambush predator. It glides with ghostly silence beneath the murky water, using its python-like strength to constrict and crush armored targets while its shark teeth shred them to pieces. Kept from neural overload by a heavy cybernetic collar, this colossal leviathan treats the ruined waterways as its personal throne room, completely invisible beneath the swamp until it rises to swallow intruder's pack whole.",
     "stats": {
       "hp": 2850,
@@ -821,7 +778,6 @@
     "name": "Beetlebrute",
     "rarity": "mythical",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1780042212/Generated_Image_May_29_2026_-_11_21AM.jpg_z2jo5o.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1780042208/Generated_Image_May_29_2026_-_11_21AM_1.jpg_nzjc3b.jpg",
     "lore": "Once worshipped as the God of Insects, the demon known as Beetlebrute turned its domain into a slaughterhouse, initiating a ruthless campaign to completely exterminate lesser beings. Invulnerable to mortal weapons and driven by pure brutal malice, it became a nightmare to humans and insects alike. Unable to destroy the titan, a band of legendary heroes successfully severed and sealed its soul inside a ancient spiritual artifact, burying and hiding it deep within a hidden forest temple. Though centuries have passed and the seal holds strong, To this day, humanity lives in fear, terrified of the day the seal breaks and he awakens.",
     "stats": {
       "hp": 8850,
@@ -840,7 +796,6 @@
     "name": "Vulcannon",
     "rarity": "common",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1780161545/Generated_Image_May_29_2026_-_6_46PM.jpg_juimjb.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1780161543/Generated_Image_May_29_2026_-_6_46PM_1.jpg_dycg7k.jpg",
     "lore": "Vulcannons are a highly inventive, fox-like beastman species renowned for its brilliant craftsmanship rather than physical power. For generations, their clans have forged legendary weapons of war, establishing themselves as the ultimate long-range tactical unit in the military. By seamlessly blending magic with volatile gunpowder, they operate devastating, ornate hand-cannons capable of decimating enemy lines from afar. Though physically ordinary, their peerless technical skill and battlefield intellect have allowed this species to repeatedly rise to immense political and military power within the KiKunai kingdom.",
     "stats": {
       "hp": 870,
@@ -859,7 +814,6 @@
     "name": "Goliyaut",
     "rarity": "rare",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1780161546/Untitled244_20260529184240.jpg_xaguyr.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1780161547/Untitled244_20260529184240_1.jpg_cbq3sd.jpg",
     "lore": "An ancient, highly intelligent race of the frozen peaks, Goliyaut possesses a unique anatomy featuring two distinct sets of arms: a massive, armored upper pair used to battle threats, and a nimble, precise lower pair dedicated to engineering advanced, mana-powered technologies. Deeply obsessed with gold, they adorn their bodies in heavy, gilded jewelry that doubles as conductive circuits for their inventions. They share a symbiotic bond with native blue mountain slimes, utilizing the gelatinous creatures to cool down their hyper-advanced gadgets and stabilize energy grids. Most notably, Goliyaut are master architects capable of constructing massive, interconnected mana domes that seamlessly regulate, channel, and transmit magic across vast mountain ranges and tech networks.",
     "stats": {
       "hp": 1620,
@@ -878,7 +832,6 @@
     "name": "Fracture",
     "rarity": "rare",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1780161545/Generated_Image_May_29_2026_-_6_50PM.jpg_c2rvdl.jpg",
-    "thumbnail": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1780161544/Generated_Image_May_29_2026_-_6_50PM_1.jpg_zmwqtr.jpg",
     "lore": "Fractures are Born in the lower demonic realms, this entity manifests in our world by feeding on severe body dysmorphia and self-loathing. It targets vulnerable souls who gaze into mirrors through a lens of deep insecurities, slowly hijacking their distressed minds until its spiked, reptilian body physically materializes into reality. Once fully manifested, it stalks other melancholy individuals, preying upon their hidden sadness. Because it strikes without warning or symptoms, humanity harbors a deep, silent fear for the demon knowing that the \"very reflection they fear might just be looking back with claws\".",
     "stats": {
       "hp": 1725,
@@ -890,6 +843,186 @@
       "class": "Demon",
       "type": "Terrestial",
       "total": 2510
+    }
+  },
+  {
+    "id": 48,
+    "name": "lumivines",
+    "rarity": "common",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1780161546/Untitled244_20260529191354.jpg_xksz0n.jpg",
+    "lore": "A bizarre fusion of flora and fauna, the Luminopod lurks in mist-shrouded swamps, floating just beneath the surface. It extends its long, vine-like tentacles to mimic ordinary lily pads, creating a deception that smaller creatures to hop right onto them. The moment prey lands, the microscopic barbs on the pad secrete a paralyzing sap, allowing the monster to slowly reel them into its translucent, bulbous main body, where the catch is digested over the span of several days. During the night, its central core pulses with an eerie bioluminescence that intensifies dramatically during the mating season a glowing, hypnotic display used to signal potential mates across the dark waters.",
+    "stats": {
+      "hp": 960,
+      "attack": 25,
+      "defense": 70,
+      "mana": 10,
+      "speed": 35,
+      "intelligence": 25,
+      "class": "Monster",
+      "type": "Aquatic",
+      "total": 1125
+    }
+  },
+  {
+    "id": 49,
+    "name": "Enma & Lin",
+    "rarity": "epic",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1783335754/Generated_Image_July_02_2026_-_8_26AM.jpg_djzfyq.jpg",
+    "lore": "Enma, a fearsome war deity, was once a force of destruction. His wrath peaked when he obliterated the legendary Monastery of Space. To stop his rampage, the surviving elder monks used their ultimate brass to seal him away in a dark pocket of space. Centuries later, his prison was discovered by a young girl named Lin. While the monks relied on ancient seals, Lin possessed a prodigal mastery over Space. She completely subjugated his volatile spirit, bending his colossal will to her own.\n\nNow, the unlikely duo runs wild. Enma serves as Riko’s unstoppable enforcer and mount, forced to carry the ultimate prize from the ruined monastery: the Infinity Sack. This legendary, extra-dimensional relic can swallow, store, and transport absolutely anything, regardless of size or weight. With a tamed diety of war at her fingertips and a limitless void on his back, Lin answers to no one.",
+    "stats": {
+      "hp": 4620,
+      "attack": 520,
+      "defense": 370,
+      "mana": 600,
+      "speed": 45,
+      "intelligence": 100,
+      "class": "Monster",
+      "type": "Terrestial",
+      "total": 6255
+    }
+  },
+  {
+    "id": 50,
+    "name": "Chlorosaur",
+    "rarity": "common",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786387735/Generated_Image_August_03_2026_-_11_48PM.jpg_j1zjq6.jpg",
+    "lore": "",
+    "stats": {
+      "hp": 970,
+      "attack": 80,
+      "defense": 150,
+      "mana": 0,
+      "speed": 100,
+      "intelligence": 75,
+      "class": "Beast",
+      "type": "Terrestial",
+      "total": 1375
+    }
+  },
+  {
+    "id": 51,
+    "name": "Leviascythe",
+    "rarity": "common",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786387753/Untitled255_20260704163554.jpg_yiftv8.jpg",
+    "lore": "",
+    "stats": {
+      "hp": 1125,
+      "attack": 115,
+      "defense": 95,
+      "mana": 0,
+      "speed": 105,
+      "intelligence": 70,
+      "class": "Beast",
+      "type": "Aquatic",
+      "total": 1510
+    }
+  },
+  {
+    "id": 52,
+    "name": "Aegitaur",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786387731/Generated_Image_August_03_2026_-_11_16PM.jpg_fvv5nr.jpg",
+    "lore": "",
+    "stats": {
+      "hp": 1940,
+      "attack": 275,
+      "defense": 310,
+      "mana": 100,
+      "speed": 200,
+      "intelligence": 110,
+      "class": "Monster",
+      "type": "Terrestial",
+      "total": 2935
+    }
+  },
+  {
+    "id": 53,
+    "name": "Typhooni",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786387735/Generated_Image_July_02_2026_-_8_20AM.jpg_xhl8ek.jpg",
+    "lore": "",
+    "stats": {
+      "hp": 2335,
+      "attack": 200,
+      "defense": 130,
+      "mana": 655,
+      "speed": 130,
+      "intelligence": 130,
+      "class": "Spirit",
+      "type": "Terrestial",
+      "total": 3580
+    }
+  },
+  {
+    "id": 54,
+    "name": "Tropicrawl",
+    "rarity": "common",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786470625/Generated_Image_May_22_2026_-_8_05PM.jpg_k7uwqe.jpg",
+    "lore": "",
+    "stats": {
+      "hp": 480,
+      "attack": 40,
+      "defense": 70,
+      "mana": 10,
+      "speed": 35,
+      "intelligence": 40,
+      "class": "Monster",
+      "type": "Terrestial",
+      "total": 675
+    }
+  },
+  {
+    "id": 55,
+    "name": "Hazmaton",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786470624/Generated_Image_August_02_2026_-_1_48PM.jpg_n02azp.jpg",
+    "lore": "",
+    "stats": {
+      "hp": 1500,
+      "attack": 150,
+      "defense": 165,
+      "mana": 210,
+      "speed": 50,
+      "intelligence": 65,
+      "class": "Mechanical",
+      "type": "Terrestial",
+      "total": 2140
+    }
+  },
+  {
+    "id": 56,
+    "name": "Terrakhan",
+    "rarity": "epic",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786470627/Generated_Image_July_28_2026_-_1_10AM.jpg_eztkhe.jpg",
+    "lore": "",
+    "stats": {
+      "hp": 3410,
+      "attack": 620,
+      "defense": 300,
+      "mana": 175,
+      "speed": 130,
+      "intelligence": 110,
+      "class": "Monster",
+      "type": "T",
+      "total": 4745
+    }
+  },
+  {
+    "id": 57,
+    "name": "Berrygoblin",
+    "rarity": "common",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786470622/Generated_Image_August_03_2026_-_11_01PM.jpg_gznnnj.jpg",
+    "lore": "",
+    "stats": {
+      "hp": 350,
+      "attack": 20,
+      "defense": 10,
+      "mana": 30,
+      "speed": 50,
+      "intelligence": 35,
+      "class": "Monster",
+      "type": "Terrestial",
+      "total": 495
     }
   }
 ]

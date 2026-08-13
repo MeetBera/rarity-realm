@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, useRef } from "react";
+import { useState, useMemo, useEffect, useRef, useCallback } from "react";
 import {
   ChevronLeft,
   ChevronRight,
@@ -8,108 +8,109 @@ import {
   Zap,
   Brain,
   Activity,
-  Move,
   Sun,
   BookOpen,
 } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  animate,
+} from "framer-motion";
 
 /* ─────────────────────────────────────────────────────────────────────────── */
-/*  RARITY CONFIG  (extended for god-tier look)                                */
+/* RARITY CONFIG (Enhanced Glow & Math)                                        */
 /* ─────────────────────────────────────────────────────────────────────────── */
 const rarityConfig = {
   common: {
-    text: "text-slate-300",
-    border: "border-slate-400/40",
-    bg: "bg-slate-500/10",
-    shadow: "shadow-slate-500/10",
-    gradient: "from-slate-500/10 to-transparent",
-    accent: "bg-slate-400",
     accentHex: "#94a3b8",
-    glowColor: "rgba(148,163,184,0.35)",
-    badgeBg: "bg-slate-400",
-    badgeText: "text-slate-950",
-    orb: "#94a3b8",
-    bar: "bg-gradient-to-r from-slate-400 to-slate-300",
+    glowColor: "rgba(148,163,184,0.5)",
+    badgeBg: "bg-slate-300",
+    badgeText: "text-slate-900",
+    bar: "from-slate-500 via-slate-300 to-slate-500",
   },
   rare: {
-    text: "text-blue-300",
-    border: "border-blue-400/50",
-    bg: "bg-blue-500/10",
-    shadow: "shadow-blue-500/20",
-    gradient: "from-blue-600/20 to-transparent",
-    accent: "bg-blue-500",
     accentHex: "#3b82f6",
-    glowColor: "rgba(59,130,246,0.45)",
+    glowColor: "rgba(59,130,246,0.6)",
     badgeBg: "bg-blue-500",
     badgeText: "text-white",
-    orb: "#3b82f6",
-    bar: "bg-gradient-to-r from-blue-600 to-cyan-400",
+    bar: "from-blue-700 via-cyan-400 to-blue-700",
   },
   epic: {
-    text: "text-purple-300",
-    border: "border-purple-400/50",
-    bg: "bg-purple-500/10",
-    shadow: "shadow-purple-500/25",
-    gradient: "from-purple-600/25 to-transparent",
-    accent: "bg-purple-500",
     accentHex: "#a855f7",
-    glowColor: "rgba(168,85,247,0.45)",
+    glowColor: "rgba(168,85,247,0.6)",
     badgeBg: "bg-purple-500",
     badgeText: "text-white",
-    orb: "#a855f7",
-    bar: "bg-gradient-to-r from-purple-600 to-pink-400",
+    bar: "from-purple-700 via-pink-400 to-purple-700",
   },
   legendary: {
-    text: "text-amber-300",
-    border: "border-amber-400/50",
-    bg: "bg-amber-500/10",
-    shadow: "shadow-amber-500/25",
-    gradient: "from-amber-500/20 to-transparent",
-    accent: "bg-amber-400",
     accentHex: "#f59e0b",
-    glowColor: "rgba(245,158,11,0.5)",
-    badgeBg: "bg-gradient-to-r from-amber-400 to-yellow-300",
+    glowColor: "rgba(245,158,11,0.6)",
+    badgeBg: "bg-gradient-to-r from-amber-400 to-yellow-200",
     badgeText: "text-amber-950",
-    orb: "#f59e0b",
-    bar: "bg-gradient-to-r from-amber-500 to-yellow-300",
+    bar: "from-amber-600 via-yellow-300 to-amber-600",
   },
   mythical: {
-    text: "text-red-400",
-    border: "border-red-500/50",
-    bg: "bg-red-500/10",
-    shadow: "shadow-red-500/25",
-    gradient: "from-red-600/25 to-transparent",
-    accent: "bg-red-500",
     accentHex: "#ef4444",
-    glowColor: "rgba(239,68,68,0.5)",
+    glowColor: "rgba(239,68,68,0.7)",
     badgeBg: "bg-gradient-to-r from-red-600 to-rose-400",
     badgeText: "text-white",
-    orb: "#ef4444",
-    bar: "bg-gradient-to-r from-red-600 to-orange-400",
+    bar: "from-red-700 via-orange-400 to-red-700",
   },
 };
 
 /* ─────────────────────────────────────────────────────────────────────────── */
-/*  PARTICLE SYSTEM                                                            */
+/* ANIMATED COUNTER (Ticks numbers up dynamically - Added tabular-nums)        */
+/* ─────────────────────────────────────────────────────────────────────────── */
+const AnimatedCounter = ({ value, color, delay = 0 }) => {
+  const nodeRef = useRef(null);
+
+  useEffect(() => {
+    const node = nodeRef.current;
+    if (!node) return;
+
+    const controls = animate(0, value, {
+      duration: 1.5,
+      delay: delay,
+      ease: [0.16, 1, 0.3, 1],
+      onUpdate(v) {
+        node.textContent = Math.round(v).toLocaleString();
+      },
+    });
+
+    return () => controls.stop();
+  }, [value, delay]);
+
+  return (
+    <span
+      ref={nodeRef}
+      className="font-mono font-bold tabular-nums"
+      style={{ color, textShadow: `0 0 15px ${color}80` }}
+    />
+  );
+};
+
+/* ─────────────────────────────────────────────────────────────────────────── */
+/* ETHEREAL PARTICLE SYSTEM                                                    */
 /* ─────────────────────────────────────────────────────────────────────────── */
 const ParticleField = ({ color }) => {
-  const particles = useMemo(() =>
-    Array.from({ length: 18 }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 3 + 1,
-      duration: Math.random() * 6 + 5,
-      delay: Math.random() * 4,
-    })), []
+  const particles = useMemo(
+    () =>
+      Array.from({ length: 25 }, (_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        size: Math.random() * 4 + 1,
+        duration: Math.random() * 4 + 3,
+        delay: Math.random() * 2,
+      })),
+    []
   );
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none mix-blend-screen z-0">
       {particles.map((p) => (
         <motion.div
           key={p.id}
@@ -120,12 +121,13 @@ const ParticleField = ({ color }) => {
             width: p.size,
             height: p.size,
             background: color,
-            boxShadow: `0 0 ${p.size * 3}px ${color}`,
+            boxShadow: `0 0 ${p.size * 4}px ${color}`,
           }}
           animate={{
-            y: [0, -30, 0],
-            opacity: [0, 0.8, 0],
-            scale: [0.5, 1, 0.5],
+            y: [0, -60, -100],
+            x: [0, Math.random() * 20 - 10, 0],
+            opacity: [0, 1, 0],
+            scale: [0, 1.5, 0],
           }}
           transition={{
             duration: p.duration,
@@ -140,184 +142,118 @@ const ParticleField = ({ color }) => {
 };
 
 /* ─────────────────────────────────────────────────────────────────────────── */
-/*  CORNER DECORATION                                                          */
-/* ─────────────────────────────────────────────────────────────────────────── */
-const CornerDecor = ({ color, position }) => {
-  const posMap = {
-    tl: "top-0 left-0",
-    tr: "top-0 right-0 rotate-90",
-    bl: "bottom-0 left-0 -rotate-90",
-    br: "bottom-0 right-0 rotate-180",
-  };
-  return (
-    <div className={cn("absolute w-12 h-12 pointer-events-none", posMap[position])}>
-      <svg viewBox="0 0 48 48" fill="none" className="w-full h-full">
-        <path d="M2 46 L2 2 L46 2" stroke={color} strokeWidth="1.5" strokeOpacity="0.6" />
-        <path d="M2 18 L2 2 L18 2" stroke={color} strokeWidth="3" strokeOpacity="0.9" strokeLinecap="round" />
-      </svg>
-    </div>
-  );
-};
-
-/* ─────────────────────────────────────────────────────────────────────────── */
-/*  SCAN LINE OVERLAY                                                          */
-/* ─────────────────────────────────────────────────────────────────────────── */
-const ScanLines = () => (
-  <div
-    className="absolute inset-0 pointer-events-none z-10 opacity-[0.025]"
-    style={{
-      backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.3) 2px, rgba(255,255,255,0.3) 4px)",
-    }}
-  />
-);
-
-/* ─────────────────────────────────────────────────────────────────────────── */
-/*  TILT IMAGE CARD                                                            */
-/* ─────────────────────────────────────────────────────────────────────────── */
-const TiltImage = ({ src, alt, color, onFullscreen }) => {
-  const ref = useRef(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const springX = useSpring(x, { stiffness: 150, damping: 20 });
-  const springY = useSpring(y, { stiffness: 150, damping: 20 });
-  const rotateX = useTransform(springY, [-0.5, 0.5], [8, -8]);
-  const rotateY = useTransform(springX, [-0.5, 0.5], [-8, 8]);
-
-  const handleMouseMove = (e) => {
-    const rect = ref.current?.getBoundingClientRect();
-    if (!rect) return;
-    x.set((e.clientX - rect.left) / rect.width - 0.5);
-    y.set((e.clientY - rect.top) / rect.height - 0.5);
-  };
-  const handleMouseLeave = () => { x.set(0); y.set(0); };
-
-  return (
-    <motion.div
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      onClick={onFullscreen}
-      style={{ rotateX, rotateY, transformStyle: "preserve-3d", perspective: 800 }}
-      className="relative w-full h-full flex items-center justify-center cursor-zoom-in group"
-    >
-      {/* Holographic shimmer ring */}
-      <motion.div
-        className="absolute inset-0 rounded-2xl pointer-events-none"
-        style={{
-          background: `radial-gradient(ellipse at 50% 50%, ${color}22 0%, transparent 70%)`,
-          boxShadow: `0 0 80px ${color}33, inset 0 0 40px ${color}11`,
-        }}
-        animate={{ opacity: [0.5, 1, 0.5] }}
-        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <img
-        src={src}
-        alt={alt}
-        className="max-w-full max-h-[80%] object-contain relative z-10"
-        style={{
-          filter: `drop-shadow(0 0 40px ${color}66) drop-shadow(0 20px 40px rgba(0,0,0,0.8))`,
-          transition: "filter 0.3s ease",
-        }}
-      />
-      {/* Zoom hint */}
-      <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
-        <div className="text-[10px] font-mono uppercase tracking-widest text-white/40 bg-black/40 px-2 py-1 rounded-md backdrop-blur-sm">
-          click to expand
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
-/* ─────────────────────────────────────────────────────────────────────────── */
-/*  QUICK STAT                                                                 */
-/* ─────────────────────────────────────────────────────────────────────────── */
-const QuickStat = ({ label, value, icon, isHighlight, color }) => (
-  <motion.div
-    initial={{ opacity: 0, x: -10 }}
-    animate={{ opacity: 1, x: 0 }}
-    className={cn(
-      "relative px-5 py-3.5 rounded-xl flex items-center justify-between border overflow-hidden transition-all duration-300 group hover:scale-[1.02]",
-      isHighlight
-        ? "bg-white/5 border-white/15 shadow-lg"
-        : "bg-white/[0.03] border-white/8 hover:bg-white/5"
-    )}
-    style={isHighlight ? { boxShadow: `0 0 20px ${color}22, inset 0 1px 0 rgba(255,255,255,0.06)` } : {}}
-  >
-    {isHighlight && (
-      <div
-        className="absolute left-0 top-0 bottom-0 w-[3px] rounded-l-xl"
-        style={{ background: color, boxShadow: `0 0 12px ${color}` }}
-      />
-    )}
-    <div className="flex items-center gap-3">
-      <div
-        className="p-2 rounded-lg text-white/70 group-hover:text-white transition-colors"
-        style={{ background: `${color}18` }}
-      >
-        {icon}
-      </div>
-      <span className="text-slate-400 text-[10px] uppercase font-black tracking-[0.2em]">{label}</span>
-    </div>
-    <span
-      className="text-2xl font-black font-mono tracking-tight"
-      style={{ color: isHighlight ? color : "white", textShadow: isHighlight ? `0 0 20px ${color}99` : "none" }}
-    >
-      {typeof value === "number" ? value.toLocaleString() : value}
-    </span>
-  </motion.div>
-);
-
-/* ─────────────────────────────────────────────────────────────────────────── */
-/*  STAT ROW                                                                   */
+/* GOD-TIER STAT ROW                                                           */
 /* ─────────────────────────────────────────────────────────────────────────── */
 const StatRow = ({ label, value, icon, max, color, barClass, delay = 0 }) => {
   const pct = Math.min((value / max) * 100, 100);
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 6 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay }}
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5, delay, ease: "easeOut" }}
       className="space-y-2 group"
     >
-      <div className="flex justify-between items-center px-0.5">
-        <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.18em] text-slate-500 group-hover:text-slate-300 transition-colors duration-200">
-          <span style={{ color: color }}>{icon}</span>
+      <div className="flex justify-between items-center px-1">
+        <div className="flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] text-slate-400 group-hover:text-white transition-colors duration-300">
+          <span style={{ color, textShadow: `0 0 10px ${color}` }}>{icon}</span>
           {label}
         </div>
         <div className="flex items-baseline gap-1">
-          <span className="text-sm font-mono font-bold text-white">{value.toLocaleString()}</span>
-          <span className="text-[9px] text-slate-600 font-mono">/{max.toLocaleString()}</span>
+          <AnimatedCounter value={value} color="#ffffff" delay={delay} />
+          <span className="text-[10px] text-slate-600 font-mono">
+            /{max.toLocaleString()}
+          </span>
         </div>
       </div>
-      <div className="h-[5px] w-full bg-slate-900/80 rounded-full overflow-hidden border border-white/5 relative">
+
+      <div className="h-2 w-full bg-[#030712] rounded-full overflow-hidden border border-white/5 relative shadow-inner">
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: `${pct}%` }}
           transition={{ duration: 1.2, delay, ease: [0.16, 1, 0.3, 1] }}
-          className={cn("h-full absolute left-0 top-0 rounded-full", barClass)}
-          style={{ boxShadow: `0 0 10px ${color}` }}
-        />
-        {/* Gloss */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/25 to-transparent rounded-full pointer-events-none" />
+          className={cn(
+            "h-full absolute left-0 top-0 rounded-full bg-gradient-to-r",
+            barClass
+          )}
+          style={{
+            boxShadow: `0 0 15px ${color}, inset 0 0 8px rgba(255,255,255,0.5)`,
+            backgroundSize: "200% 100%",
+          }}
+        >
+          <motion.div
+            animate={{ x: ["-100%", "200%"] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+            className="absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-[-20deg]"
+          />
+        </motion.div>
       </div>
     </motion.div>
   );
 };
 
 /* ─────────────────────────────────────────────────────────────────────────── */
-/*  MAIN MODAL                                                                 */
+/* SLIDE TRANSITION CONFIG & SWIPE MATH                                        */
+/* ─────────────────────────────────────────────────────────────────────────── */
+const slideVariants = {
+  enter: (direction) => ({
+    x: direction > 0 ? 100 : -100,
+    opacity: 0,
+    scale: 0.95,
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+    scale: 1,
+  },
+  exit: (direction) => ({
+    x: direction < 0 ? 100 : -100,
+    opacity: 0,
+    scale: 0.95,
+  }),
+};
+
+const swipeConfidenceThreshold = 10000;
+const swipePower = (offset, velocity) => {
+  return Math.abs(offset) * velocity;
+};
+
+/* ─────────────────────────────────────────────────────────────────────────── */
+/* MAIN MODAL COMPONENT                                                        */
 /* ─────────────────────────────────────────────────────────────────────────── */
 export const CardModal = ({ isOpen, onClose, card }) => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [[page, direction], setPage] = useState([0, 0]);
   const [fullscreenImage, setFullscreenImage] = useState(false);
 
   useEffect(() => {
-    if (!isOpen) { setCurrentSlide(0); setFullscreenImage(false); }
+    if (!isOpen) {
+      setPage([0, 0]);
+      setFullscreenImage(false);
+    }
   }, [isOpen]);
+
+  const paginate = useCallback((newDirection) => {
+    setPage(([prevPage]) => {
+      const newPage = (prevPage + newDirection + 3) % 3;
+      return [newPage, newDirection];
+    });
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (!isOpen || fullscreenImage) return;
+      if (e.key === "ArrowRight") paginate(1);
+      if (e.key === "ArrowLeft") paginate(-1);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, fullscreenImage, paginate]);
 
   const totalPower = useMemo(() => {
     if (!card) return 0;
+    // Uses stats.total if provided by backend, otherwise fallbacks to computation
+    if (card.stats.total) return card.stats.total;
+    
     const { hp, attack, defense, mana, intelligence, speed } = card.stats;
     return hp + attack + defense + mana + intelligence + speed;
   }, [card]);
@@ -327,450 +263,344 @@ export const CardModal = ({ isOpen, onClose, card }) => {
   const rarityKey = card.rarity.toLowerCase();
   const theme = rarityConfig[rarityKey] ?? rarityConfig.common;
 
-  // Updated navigation for 3 slides
-  const nextSlide = () => setCurrentSlide((p) => (p + 1) % 3);
-  const prevSlide = () => setCurrentSlide((p) => (p - 1 + 3) % 3);
+  const dragProps = {
+    drag: "x" as const,
+    dragConstraints: { left: 0, right: 0 },
+    dragElastic: 1,
+    onDragEnd: (e, { offset, velocity }) => {
+      const swipe = swipePower(offset.x, velocity.x);
+      if (swipe < -swipeConfidenceThreshold) {
+        paginate(1);
+      } else if (swipe > swipeConfidenceThreshold) {
+        paginate(-1);
+      }
+    },
+  };
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent
         className="p-0 border-none bg-transparent shadow-none max-w-5xl w-full md:w-[95vw] overflow-hidden focus:outline-none"
-        onInteractOutside={(e) => { if (fullscreenImage) e.preventDefault(); }}
+        onInteractOutside={(e) => {
+          if (fullscreenImage) e.preventDefault();
+        }}
       >
         <DialogTitle className="sr-only">{card.name} Details</DialogTitle>
 
-        {/* ── OUTER SHELL ── */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.96, y: 12 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.96, y: 12 }}
-          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className={cn(
-            "relative w-full rounded-[1.75rem] border bg-[#080c14] backdrop-blur-2xl overflow-hidden",
-            theme.border
-          )}
+          initial={{ opacity: 0, scale: 0.9, y: 40, filter: "blur(20px)" }}
+          animate={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
+          exit={{ opacity: 0, scale: 0.9, y: 40, filter: "blur(20px)" }}
+          transition={{ duration: 0.5, type: "spring", bounce: 0.2 }}
+          className="relative w-full rounded-[2rem] bg-[#05070a]/90 backdrop-blur-3xl overflow-hidden border border-white/10"
           style={{
-            boxShadow: `0 0 0 1px ${theme.accentHex}18, 0 25px 80px rgba(0,0,0,0.8), 0 0 60px ${theme.glowColor}`,
+            boxShadow: `0 25px 80px rgba(0,0,0,0.9), 0 0 120px ${theme.glowColor}, inset 0 0 0 1px ${theme.accentHex}30`,
           }}
         >
-          {/* Ambient gradient */}
-          <div
-            className="absolute inset-0 pointer-events-none"
+          <motion.div
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.5, 0.3],
+            }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] pointer-events-none z-0 mix-blend-color-dodge"
             style={{
-              background: `radial-gradient(ellipse 80% 60% at 50% -10%, ${theme.accentHex}14 0%, transparent 70%)`,
+              background: `radial-gradient(circle, ${theme.accentHex}15 0%, transparent 60%)`,
+              filter: "blur(60px)",
             }}
           />
 
-          {/* Scanlines */}
-          <ScanLines />
+          <ParticleField color={theme.accentHex} />
 
-          {/* Corner ornaments */}
-          <CornerDecor color={theme.accentHex} position="tl" />
-          <CornerDecor color={theme.accentHex} position="tr" />
-          <CornerDecor color={theme.accentHex} position="bl" />
-          <CornerDecor color={theme.accentHex} position="br" />
-
-          {/* Animated noise overlay */}
-          <div
-            className="absolute inset-0 pointer-events-none opacity-[0.04] mix-blend-overlay"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-              backgroundSize: "128px 128px",
-            }}
-          />
-
-          {/* Close button */}
           <Button
             variant="ghost"
             size="icon"
             onClick={onClose}
-            className="absolute top-4 right-4 z-[70] text-white/40 hover:text-white hover:bg-white/10 rounded-full transition-all duration-200"
-            style={{ background: "rgba(0,0,0,0.4)", backdropFilter: "blur(12px)" }}
+            className="absolute top-5 right-5 z-[70] text-white/50 hover:text-white hover:bg-white/10 hover:scale-110 rounded-full transition-all duration-300 backdrop-blur-md select-none"
+            style={{ border: "1px solid rgba(255,255,255,0.1)" }}
           >
-            <X className="w-4 h-4" />
+            <X className="w-5 h-5" />
           </Button>
 
-          {/* Nav arrows */}
-          {[
-            { dir: "prev", icon: ChevronLeft, fn: prevSlide, cls: "left-3" },
-            { dir: "next", icon: ChevronRight, fn: nextSlide, cls: "right-3" },
-          ].map(({ dir, icon: Icon, fn, cls }) => (
-            <Button
-              key={dir}
-              variant="ghost"
-              size="icon"
-              onClick={fn}
-              className={cn(
-                "absolute top-1/2 -translate-y-1/2 z-[60] h-10 w-10 rounded-full text-white/20 hover:text-white transition-all duration-200",
-                cls
-              )}
-              style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}
-            >
-              <Icon className="h-6 w-6" />
-            </Button>
-          ))}
-
-          {/* ── CONTENT AREA ── */}
-          <div className="relative w-full h-[90vh] md:h-[740px] max-h-[90vh] flex flex-col">
-            <AnimatePresence mode="wait">
-
+          <div className="relative w-full h-[90vh] md:h-[760px] max-h-[90vh] flex flex-col z-10 overflow-hidden">
+            <AnimatePresence initial={false} custom={direction} mode="popLayout">
               {/* ════ SLIDE 0 – HERO ════ */}
-              {currentSlide === 0 && (
+              {page === 0 && (
                 <motion.div
                   key="slide-hero"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="flex flex-col md:flex-row h-full"
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className="flex flex-col md:flex-row h-full touch-pan-y"
+                  {...dragProps}
                 >
-                  {/* LEFT – image */}
-                  <div className="w-full md:w-[52%] h-[45vh] md:h-full relative flex items-center justify-center p-8 md:p-12">
-                    <ParticleField color={theme.glowColor} />
-
-                    {/* Deep glow blob */}
-                    <div
-                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] rounded-full pointer-events-none"
-                      style={{
-                        background: `radial-gradient(ellipse, ${theme.accentHex}28 0%, transparent 70%)`,
-                        filter: "blur(30px)",
-                      }}
-                    />
-
-                    <TiltImage
-                      src={card.image}
-                      alt={card.name}
-                      color={theme.accentHex}
-                      onFullscreen={() => setFullscreenImage(true)}
-                    />
+                  <div className="w-full md:w-[55%] h-[50vh] md:h-full relative flex items-center justify-center p-8">
+                    {/* Static Image Replacement */}
+                    <div 
+                      className="relative w-full h-full flex items-center justify-center cursor-zoom-in group z-10"
+                      onClick={() => setFullscreenImage(true)}
+                    >
+                      <img
+                        src={card.image}
+                        alt={card.name}
+                        draggable={false}
+                        className="w-full h-full max-h-[85%] object-contain select-none drop-shadow-2xl relative z-10"
+                        style={{
+                          filter: `drop-shadow(0 20px 30px rgba(0,0,0,0.8)) drop-shadow(0 0 20px ${theme.accentHex}40)`,
+                        }}
+                      />
+                    </div>
                   </div>
 
-                  {/* Divider line */}
-                  <div
-                    className="hidden md:block absolute left-[52%] top-8 bottom-8 w-px"
-                    style={{ background: `linear-gradient(to bottom, transparent, ${theme.accentHex}40 30%, ${theme.accentHex}40 70%, transparent)` }}
-                  />
-
-                  {/* RIGHT – info */}
-                  <div className="w-full md:w-[48%] h-full flex flex-col justify-center p-6 md:p-10 md:pl-8 space-y-6 relative z-20">
-                    {/* Rarity + type row */}
+                  <div className="w-full md:w-[45%] h-full flex flex-col justify-center p-8 md:pr-16 space-y-8 select-none">
+                    
+                    {/* ── IDENTITY LINE: RARITY, CLASS & TYPE ── */}
                     <motion.div
-                      initial={{ opacity: 0, y: -8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.1 }}
-                      className="flex items-center gap-3"
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.2 }}
+                      className="flex items-center gap-3 flex-wrap"
                     >
                       <span
                         className={cn(
-                          "px-3 py-1 rounded-sm text-[10px] font-black uppercase tracking-[0.22em] skew-x-[-10deg] select-none",
-                          theme.badgeBg, theme.badgeText
+                          "px-4 py-1.5 rounded text-[11px] font-black uppercase tracking-[0.25em] relative overflow-hidden group shadow-lg",
+                          theme.badgeBg,
+                          theme.badgeText
                         )}
-                        style={{ boxShadow: `0 0 16px ${theme.glowColor}` }}
+                        style={{ boxShadow: `0 0 20px ${theme.glowColor}` }}
                       >
+                        <span className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1s_infinite] bg-gradient-to-r from-transparent via-white/50 to-transparent" />
                         {card.rarity}
                       </span>
-                      <div
-                        className="h-px flex-1"
-                        style={{ background: `linear-gradient(to right, ${theme.accentHex}50, transparent)` }}
-                      />
-                      <span
-                        className="text-[10px] font-mono uppercase tracking-[0.2em]"
-                        style={{ color: `${theme.accentHex}88` }}
-                      >
-                        {card.stats.categorie}
-                      </span>
+
+                      {/* NEW: Class & Type Badges */}
+                      <div className="flex gap-2">
+                        {card.stats.class && (
+                          <span 
+                            className="px-3 py-1.5 rounded border text-[10px] font-bold uppercase tracking-widest backdrop-blur-sm"
+                            style={{ 
+                              color: theme.accentHex, 
+                              borderColor: `${theme.accentHex}40`, 
+                              backgroundColor: `${theme.accentHex}10` 
+                            }}
+                          >
+                            {card.stats.class}
+                          </span>
+                        )}
+                        {card.stats.type && (
+                          <span 
+                            className="px-3 py-1.5 rounded border text-[10px] font-bold uppercase tracking-widest backdrop-blur-sm"
+                            style={{ 
+                              color: theme.accentHex, 
+                              borderColor: `${theme.accentHex}40`, 
+                              backgroundColor: `${theme.accentHex}10` 
+                            }}
+                          >
+                            {card.stats.type}
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="h-[2px] flex-1 bg-gradient-to-r from-white/20 to-transparent rounded-full ml-1" />
                     </motion.div>
 
-                    {/* Name */}
                     <motion.div
-                      initial={{ opacity: 0, y: -4 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.15 }}
+                      initial={{ opacity: 0, filter: "blur(10px)", y: 10 }}
+                      animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+                      transition={{ delay: 0.3, duration: 0.7 }}
                     >
                       <h2
-                        className="text-3xl md:text-5xl font-black uppercase text-white leading-[0.88] tracking-tighter"
+                        className="text-4xl md:text-5xl font-black uppercase text-white leading-none tracking-relaxed select-none pointer-events-none"
                         style={{
-                          textShadow: `0 0 60px ${theme.accentHex}44, 0 4px 30px rgba(0,0,0,0.9)`,
-                          fontFamily: "'Bebas Neue', sans-serif",
-                          letterSpacing: "-0.02em",
+                          textShadow: `0 0 80px ${theme.accentHex}66, 0 4px 20px rgba(0,0,0,0.8)`,
                         }}
                       >
                         {card.name}
                       </h2>
                     </motion.div>
 
-                    {/* Quick stats */}
                     <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.25 }}
-                      className="space-y-2.5"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.4 }}
+                      className="flex gap-4 mt-8 pointer-events-auto"
                     >
-                      <QuickStat label="Class" value={card.stats.class} icon={<Move className="w-3.5 h-3.5" />} isHighlight={false} color={theme.accentHex} />
-                      <QuickStat label="Total Power" value={totalPower} icon={<Zap className="w-3.5 h-3.5" />} isHighlight color={theme.accentHex} />
-                    </motion.div>
-
-                    {/* 3-Slide Indicators */}
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.35 }}
-                      className="pt-2 flex items-center gap-2"
-                    >
-                      {[0, 1, 2].map((idx) => (
-                        <button
-                          key={idx}
-                          onClick={() => setCurrentSlide(idx)}
-                          className={cn(
-                            "h-[3px] rounded-full transition-all duration-300",
-                            currentSlide === idx ? "w-10 opacity-100" : "w-4 opacity-40 hover:opacity-100"
-                          )}
+                      <button
+                        onClick={() => paginate(1)}
+                        className="group relative overflow-hidden px-8 py-4 rounded-xl font-bold uppercase tracking-widest text-sm text-white transition-transform hover:scale-105 active:scale-95"
+                        style={{
+                          background: `linear-gradient(135deg, ${theme.accentHex}40, transparent)`,
+                          border: `1px solid ${theme.accentHex}50`,
+                          boxShadow: `0 0 30px ${theme.accentHex}20`,
+                        }}
+                      >
+                        <div
+                          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                           style={{
-                            background: theme.accentHex,
-                            boxShadow: currentSlide === idx ? `0 0 8px ${theme.accentHex}` : "none"
+                            background: `radial-gradient(circle at center, ${theme.accentHex}80 0%, transparent 70%)`,
                           }}
                         />
-                      ))}
+                        <span className="relative z-10 flex items-center gap-2">
+                          Analyze Stats <ChevronRight className="w-4 h-4" />
+                        </span>
+                      </button>
                     </motion.div>
-
-                    {/* View stats hint */}
-                    <motion.button
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.4 }}
-                      onClick={nextSlide}
-                      className="self-start flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-200 group"
-                      style={{ color: `${theme.accentHex}66` }}
-                    >
-                      <span className="group-hover:text-white transition-colors">View Stats</span>
-                      <ChevronRight
-                        className="w-3 h-3 group-hover:translate-x-1 transition-transform"
-                        style={{ color: theme.accentHex }}
-                      />
-                    </motion.button>
                   </div>
                 </motion.div>
               )}
 
               {/* ════ SLIDE 1 – STATS ════ */}
-              {currentSlide === 1 && (
+              {page === 1 && (
                 <motion.div
                   key="slide-stats"
-                  initial={{ opacity: 0, x: 24 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -24 }}
-                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                  className="w-full h-full p-5 md:p-10 flex flex-col justify-center overflow-y-auto"
-                  style={{ scrollbarWidth: "thin", scrollbarColor: `${theme.accentHex}44 transparent` }}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className="w-full h-full p-8 md:p-16 flex flex-col justify-center touch-pan-y"
+                  {...dragProps}
                 >
-                  <div className="max-w-4xl w-full mx-auto space-y-10">
-
-                    {/* Header */}
-                    <div className="text-center space-y-3">
-                      <motion.h3
-                        initial={{ opacity: 0, y: -6 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-2xl md:text-3xl font-black text-white uppercase tracking-[0.25em]"
-                        style={{ fontFamily: "'Bebas Neue'", letterSpacing: "0.2em" }}
-                      >
-                        Combat Attributes
-                      </motion.h3>
-                      <motion.div
-                        initial={{ scaleX: 0 }}
-                        animate={{ scaleX: 1 }}
-                        transition={{ delay: 0.1, duration: 0.5 }}
-                        className="h-[2px] w-24 mx-auto rounded-full"
-                        style={{ background: `linear-gradient(to right, transparent, ${theme.accentHex}, transparent)` }}
-                      />
-                    </div>
-
-                    {/* Stats Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-1 mx-auto max-w-2xl gap-x-12 gap-y-6">
-                      <StatRow label="Health" value={card.stats.hp} icon={<Activity className="w-4 h-4" />} max={10000} color={theme.accentHex} barClass={theme.bar} delay={0.1} />
-                      <StatRow label="Attack" value={card.stats.attack} icon={<Swords className="w-4 h-4" />} max={3000} color={theme.accentHex} barClass={theme.bar} delay={0.15} />
-                      <StatRow label="Defense" value={card.stats.defense} icon={<Shield className="w-4 h-4" />} max={3000} color={theme.accentHex} barClass={theme.bar} delay={0.2} />
-                      <StatRow label="Mana" value={card.stats.mana} icon={<Sun className="w-4 h-4" />} max={2500} color={theme.accentHex} barClass={theme.bar} delay={0.25} />
-                      <StatRow label="Intelligence" value={card.stats.intelligence} icon={<Brain className="w-4 h-4" />} max={1000} color={theme.accentHex} barClass={theme.bar} delay={0.3} />
-                      <StatRow label="Speed" value={card.stats.speed} icon={<Zap className="w-4 h-4" />} max={500} color={theme.accentHex} barClass={theme.bar} delay={0.35} />
-                    </div>
-
-                    {/* Total power banner */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 6 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.45 }}
-                      className="relative overflow-hidden rounded-xl px-8 py-5 flex items-center justify-between"
-                      style={{
-                        background: `linear-gradient(135deg, ${theme.accentHex}14, ${theme.accentHex}06)`,
-                        border: `1px solid ${theme.accentHex}30`,
-                        boxShadow: `0 0 30px ${theme.accentHex}14`,
-                      }}
-                    >
+                  <div className="max-w-3xl w-full mx-auto space-y-12">
+                    <div className="text-center space-y-4 select-none">
+                      <h3 className="text-3xl font-black text-white uppercase tracking-[0.3em] font-mono">
+                        Combat Matrix
+                      </h3>
                       <div
-                        className="absolute right-0 top-0 bottom-0 w-1.5 rounded-r-xl"
-                        style={{ background: theme.accentHex, boxShadow: `0 0 14px ${theme.accentHex}` }}
+                        className="h-1 w-32 mx-auto rounded-full"
+                        style={{
+                          background: `linear-gradient(90deg, transparent, ${theme.accentHex}, transparent)`,
+                          boxShadow: `0 0 20px ${theme.accentHex}`,
+                        }}
                       />
-                      <span className="text-sm font-black uppercase tracking-[0.25em] text-slate-400">Total Output Power</span>
-                      <span
-                        className="text-4xl font-black font-mono"
-                        style={{ color: theme.accentHex, textShadow: `0 0 20px ${theme.accentHex}99`, letterSpacing: "-0.04em" }}
-                      >
-                        {totalPower.toLocaleString()}
-                      </span>
-                    </motion.div>
+                    </div>
 
-                    {/* Bottom nav hints */}
-                    <motion.div 
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.5 }}
-                      className="flex justify-between items-center px-4"
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8 select-none">
+                      <StatRow label="Health" value={card.stats.hp} icon={<Activity className="w-5 h-5" />} max={10000} color={theme.accentHex} barClass={theme.bar} delay={0.1} />
+                      <StatRow label="Attack" value={card.stats.attack} icon={<Swords className="w-5 h-5" />} max={3000} color={theme.accentHex} barClass={theme.bar} delay={0.2} />
+                      <StatRow label="Defense" value={card.stats.defense} icon={<Shield className="w-5 h-5" />} max={3000} color={theme.accentHex} barClass={theme.bar} delay={0.3} />
+                      <StatRow label="Mana" value={card.stats.mana} icon={<Sun className="w-5 h-5" />} max={2500} color={theme.accentHex} barClass={theme.bar} delay={0.4} />
+                      <StatRow label="Intel" value={card.stats.intelligence} icon={<Brain className="w-5 h-5" />} max={1000} color={theme.accentHex} barClass={theme.bar} delay={0.5} />
+                      <StatRow label="Speed" value={card.stats.speed} icon={<Zap className="w-5 h-5" />} max={500} color={theme.accentHex} barClass={theme.bar} delay={0.6} />
+                    </div>
+
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.8 }}
+                      className="mt-8 rounded-2xl p-6 border border-white/10 flex justify-between items-center bg-black/40 backdrop-blur-xl select-none"
+                      style={{ boxShadow: `inset 0 0 50px ${theme.accentHex}20` }}
                     >
-                      <button
-                        onClick={prevSlide}
-                        className="text-[10px] font-black text-slate-600 hover:text-white uppercase tracking-[0.2em] flex items-center gap-1.5 transition-colors duration-200"
-                      >
-                        <ChevronLeft className="w-3.5 h-3.5" /> Hero
-                      </button>
-                      <button
-                        onClick={nextSlide}
-                        className="text-[10px] font-black text-slate-600 hover:text-white uppercase tracking-[0.2em] flex items-center gap-1.5 transition-colors duration-200"
-                      >
-                        Lore <ChevronRight className="w-3.5 h-3.5" />
-                      </button>
+                      <span className="text-sm font-bold uppercase tracking-widest text-slate-400">Net Power Level</span>
+                      <div className="text-4xl font-black text-white">
+                        <AnimatedCounter value={totalPower} color={theme.accentHex} delay={0.8} />
+                      </div>
                     </motion.div>
                   </div>
                 </motion.div>
               )}
 
               {/* ════ SLIDE 2 – LORE ════ */}
-              {currentSlide === 2 && (
+              {page === 2 && (
                 <motion.div
                   key="slide-lore"
-                  initial={{ opacity: 0, x: 24 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -24 }}
-                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                  className="w-full h-full p-5 md:p-10 flex flex-col overflow-y-auto"
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className="w-full h-full p-8 md:p-16 flex flex-col justify-center items-center touch-pan-y"
+                  {...dragProps}
                 >
-                  <div className="max-w-3xl w-full mx-auto h-full flex flex-col space-y-8">
-                    
-                    {/* Header */}
-                    <div className="text-center space-y-3 shrink-0 pt-4">
-                      <motion.h3
-                        initial={{ opacity: 0, y: -6 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-2xl md:text-3xl font-black text-white uppercase tracking-[0.25em] flex items-center justify-center gap-3"
-                        style={{ fontFamily: "'Bebas Neue'", letterSpacing: "0.2em" }}
-                      >
-                        <BookOpen className="w-6 h-6" style={{ color: theme.accentHex }} />
-                        Character Lore
-                      </motion.h3>
-                      <motion.div
-                        initial={{ scaleX: 0 }}
-                        animate={{ scaleX: 1 }}
-                        transition={{ delay: 0.1, duration: 0.5 }}
-                        className="h-[2px] w-24 mx-auto rounded-full"
-                        style={{ background: `linear-gradient(to right, transparent, ${theme.accentHex}, transparent)` }}
-                      />
-                    </div>
-
-                    {/* Scrollable Container */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.15 }}
-                      className="relative p-8 md:p-12 rounded-2xl flex-1 min-h-0 overflow-y-auto custom-scrollbar"
-                      style={{
-                        background: `linear-gradient(135deg, ${theme.accentHex}09, transparent)`,
-                        border: `1px solid ${theme.accentHex}20`,
-                        boxShadow: `inset 0 1px 0 ${theme.accentHex}15`,
-                      }}
+                  <div className="max-w-2xl w-full relative">
+                    <BookOpen
+                      className="absolute -top-12 -left-12 w-32 h-32 opacity-10 rotate-[-15deg] pointer-events-none"
+                      style={{ color: theme.accentHex }}
+                    />
+                    <motion.p
+                      className="text-lg md:text-xl leading-relaxed font-mono italic text-slate-300 relative z-10 pointer-events-none select-none"
                     >
-                      {/* Quote mark (stays in place while text scrolls) */}
-                      <div
-                        className="absolute top-6 left-6 text-7xl leading-none font-serif pointer-events-none select-none"
-                        style={{ color: `${theme.accentHex}20`, fontFamily: "Georgia, serif" }}
-                      >
-                        "
-                      </div>
-
-                      <p
-                        className="text-slate-300 text-base md:text-lg leading-loose relative z-10 pt-4"
-                        style={{ fontFamily: "'Courier New', monospace", fontStyle: "italic" }}
-                      >
-                        {card.lore}
-                      </p>
-                    </motion.div>
-
-                    {/* Back button */}
-                    <motion.div 
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.3 }}
-                      className="flex justify-center pb-4 shrink-0"
-                    >
-                      <button
-                        onClick={() => setCurrentSlide(0)}
-                        className="text-[10px] font-black text-slate-600 hover:text-white uppercase tracking-[0.2em] flex items-center gap-1.5 transition-colors duration-200"
-                      >
-                        <ChevronLeft className="w-3.5 h-3.5" /> Back to Start
-                      </button>
-                    </motion.div>
+                      {card.lore.split("").map((char, index) => (
+                        <motion.span
+                          key={index}
+                          variants={{
+                            hidden: { opacity: 0, filter: "blur(8px)" },
+                            visible: { opacity: 1, filter: "blur(0px)" },
+                          }}
+                        >
+                          {char}
+                        </motion.span>
+                      ))}
+                    </motion.p>
                   </div>
                 </motion.div>
               )}
-
             </AnimatePresence>
+
+            {/* ── NAVIGATION CONTROLS ── */}
+            <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-16 z-50 pointer-events-none select-none">
+              <button
+                onClick={() => paginate(-1)}
+                className="pointer-events-auto p-3 rounded-full bg-white/5 hover:bg-white/10 hover:scale-110 active:scale-95 border border-white/10 transition-all text-white/50 hover:text-white backdrop-blur-md"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+
+              <div className="flex items-center gap-3 pointer-events-auto">
+                {[0, 1, 2].map((idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => {
+                      if (page !== idx) {
+                        setPage([idx, idx > page ? 1 : -1]);
+                      }
+                    }}
+                    className="relative h-2 rounded-full transition-all duration-500 hover:opacity-80"
+                    style={{
+                      width: page === idx ? "40px" : "8px",
+                      background: page === idx ? theme.accentHex : "rgba(255,255,255,0.2)",
+                      boxShadow: page === idx ? `0 0 15px ${theme.accentHex}` : "none",
+                    }}
+                  />
+                ))}
+              </div>
+
+              <button
+                onClick={() => paginate(1)}
+                className="pointer-events-auto p-3 rounded-full bg-white/5 hover:bg-white/10 hover:scale-110 active:scale-95 border border-white/10 transition-all text-white/50 hover:text-white backdrop-blur-md"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            </div>
           </div>
         </motion.div>
 
-        {/* ── FULLSCREEN OVERLAY ── */}
+        {/* ── FULLSCREEN IMAGE OVERLAY ── */}
         <AnimatePresence>
           {fullscreenImage && (
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              className="fixed inset-0 z-[100] flex items-center justify-center p-6 cursor-zoom-out"
-              style={{ background: "rgba(0,0,0,0.97)", backdropFilter: "blur(20px)" }}
+              initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+              animate={{ opacity: 1, backdropFilter: "blur(40px)" }}
+              exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+              className="fixed inset-0 z-[100] flex items-center justify-center p-8 bg-black/95 cursor-zoom-out select-none"
               onClick={() => setFullscreenImage(false)}
             >
-              {/* Glow behind fullscreen img */}
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background: `radial-gradient(ellipse 60% 60% at 50% 50%, ${theme.accentHex}18, transparent)`,
-                }}
-              />
               <motion.img
-                initial={{ scale: 0.88, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.92, opacity: 0 }}
-                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                initial={{ scale: 0.8, y: 50 }}
+                animate={{ scale: 1, y: 0 }}
+                exit={{ scale: 0.8, opacity: 0 }}
+                transition={{ type: "spring", damping: 25, stiffness: 200 }}
                 src={card.image}
                 alt={card.name}
-                className="max-w-full max-h-[88vh] object-contain relative z-10"
-                style={{ filter: `drop-shadow(0 0 80px ${theme.accentHex}55)` }}
+                draggable={false}
+                className="max-w-full max-h-[90vh] object-contain drop-shadow-2xl"
+                style={{ filter: `drop-shadow(0 0 100px ${theme.accentHex}40)` }}
               />
-              <Button
-                variant="ghost"
-                size="icon"
-                className="absolute top-5 right-5 text-white rounded-full hover:bg-white/10 transition-all duration-200"
-                style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)" }}
-                onClick={(e) => { e.stopPropagation(); setFullscreenImage(false); }}
-              >
-                <X className="w-5 h-5" />
-              </Button>
-
-              {/* Card name watermark */}
-              <div
-                className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[10px] font-black uppercase tracking-[0.4em] select-none pointer-events-none"
-                style={{ color: `${theme.accentHex}44`, fontFamily: "'Bebas Neue', 'Impact', sans-serif", letterSpacing: "0.5em" }}
-              >
-                {card.name}
-              </div>
             </motion.div>
           )}
         </AnimatePresence>

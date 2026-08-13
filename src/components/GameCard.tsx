@@ -1,7 +1,7 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { Swords, Shield, Zap, Heart, Flame } from "lucide-react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { Swords, Shield, Zap, Heart, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 
 export type CardRarity = "common" | "rare" | "epic" | "legendary" | "mythical" | "divine";
 
@@ -10,7 +10,6 @@ export interface GameCardData {
   name: string;
   rarity: CardRarity;
   image: string;
-  thumbnail?: string; // <-- Added thumbnail property
   lore: string;
   stats: {
     hp: number;
@@ -28,371 +27,254 @@ export interface GameCardData {
 interface GameCardProps {
   card: GameCardData;
   onCardClick: (card: GameCardData) => void;
+  index?: number; // Used for staggered entrance animations
 }
 
 /* ─────────────────────────────────────────────────────────────────────────── */
-/* RARITY CONFIG — ink-on-paper luxury meets supernatural                     */
+/* RARITY CONFIG — Ultra-premium supernatural color palettes                   */
 /* ─────────────────────────────────────────────────────────────────────────── */
-const rarityConfig: Record<CardRarity, {
-  border: string; glow: string; badge: string; text: string; bgGradient: string;
-  metal: string; metalDark: string; metalLight: string; accent: string;
-  cardTint: string; nameColor: string; waxSeal: string; typeLabel: string;
-  divider: string; frameBorder: string;
-}> = {
+const rarityConfig: Record<
+  CardRarity,
+  {
+    border: string;
+    glow: string;
+    badge: string;
+    text: string;
+    bgGradient: string;
+    accent: string;
+    cardTint: string;
+    divider: string;
+    frameBorder: string;
+    foil: string;
+  }
+> = {
   common: {
-    border: "border-stone-600/60", glow: "group-hover:shadow-stone-400/20",
-    badge: "bg-stone-600 text-stone-100", text: "text-stone-300",
-    bgGradient: "from-stone-500/15 to-transparent",
-    metal: "#a8a29e", metalDark: "#57534e", metalLight: "#d6d3d1",
-    accent: "#a8a29e", cardTint: "rgba(28,25,23,0.96)",
-    nameColor: "#d6d3d1", waxSeal: "#78716c", typeLabel: "#78716c",
-    divider: "rgba(168,162,158,0.2)", frameBorder: "rgba(168,162,158,0.25)",
+    border: "border-stone-500/40",
+    glow: "rgba(168,162,158,0.4)",
+    badge: "from-stone-600 to-stone-800 text-stone-200",
+    text: "text-stone-300",
+    bgGradient: "from-stone-500/20 to-transparent",
+    accent: "#a8a29e",
+    cardTint: "rgba(24,24,27,0.85)",
+    divider: "rgba(168,162,158,0.3)",
+    frameBorder: "rgba(168,162,158,0.4)",
+    foil: "linear-gradient(115deg, transparent 20%, rgba(168,162,158,0.1) 45%, rgba(255,255,255,0.2) 50%, rgba(168,162,158,0.1) 55%, transparent 80%)",
   },
   rare: {
-    border: "border-sky-500/50", glow: "group-hover:shadow-sky-400/30",
-    badge: "bg-sky-600 text-white", text: "text-sky-200",
-    bgGradient: "from-sky-600/20 to-transparent",
-    metal: "#38bdf8", metalDark: "#0369a1", metalLight: "#7dd3fc",
-    accent: "#38bdf8", cardTint: "rgba(7,18,32,0.97)",
-    nameColor: "#bae6fd", waxSeal: "#0284c7", typeLabel: "#38bdf8",
-    divider: "rgba(56,189,248,0.2)", frameBorder: "rgba(56,189,248,0.25)",
+    border: "border-sky-500/50",
+    glow: "rgba(14,165,233,0.5)",
+    badge: "from-sky-500 to-blue-700 text-sky-50",
+    text: "text-sky-200",
+    bgGradient: "from-sky-500/30 to-transparent",
+    accent: "#38bdf8",
+    cardTint: "rgba(15,23,42,0.85)",
+    divider: "rgba(56,189,248,0.3)",
+    frameBorder: "rgba(56,189,248,0.5)",
+    foil: "linear-gradient(115deg, transparent 20%, rgba(56,189,248,0.2) 45%, rgba(255,255,255,0.3) 50%, rgba(56,189,248,0.2) 55%, transparent 80%)",
   },
   epic: {
-    border: "border-violet-500", glow: "group-hover:shadow-violet-500/40",
-    badge: "bg-violet-700 text-white", text: "text-violet-200",
-    bgGradient: "from-violet-600/20 to-transparent",
-    metal: "#8b5cf6", metalDark: "#5b21b6", metalLight: "#c4b5fd",
-    accent: "#8b5cf6", cardTint: "rgba(13,8,28,0.97)",
-    nameColor: "#ddd6fe", waxSeal: "#7c3aed", typeLabel: "#8b5cf6",
-    divider: "rgba(139,92,246,0.25)", frameBorder: "rgba(139,92,246,0.3)",
+    border: "border-violet-500/60",
+    glow: "rgba(139,92,246,0.6)",
+    badge: "from-violet-500 to-purple-800 text-violet-50",
+    text: "text-violet-200",
+    bgGradient: "from-violet-500/30 to-transparent",
+    accent: "#a78bfa",
+    cardTint: "rgba(23,15,35,0.85)",
+    divider: "rgba(167,139,250,0.3)",
+    frameBorder: "rgba(167,139,250,0.5)",
+    foil: "linear-gradient(115deg, transparent 20%, rgba(167,139,250,0.3) 45%, rgba(255,255,255,0.4) 50%, rgba(167,139,250,0.3) 55%, transparent 80%)",
   },
   legendary: {
-    border: "border-yellow-500", glow: "group-hover:shadow-yellow-400/50",
-    badge: "bg-gradient-to-r from-yellow-700 to-amber-400 text-white", text: "text-yellow-200",
-    bgGradient: "from-yellow-500/20 to-transparent",
-    metal: "#eab308", metalDark: "#92400e", metalLight: "#fde68a",
-    accent: "#f59e0b", cardTint: "rgba(20,14,4,0.97)",
-    nameColor: "#fde68a", waxSeal: "#d97706", typeLabel: "#eab308",
-    divider: "rgba(234,179,8,0.3)", frameBorder: "rgba(234,179,8,0.35)",
+    border: "border-amber-400/70",
+    glow: "rgba(251,191,36,0.7)",
+    badge: "from-amber-300 via-yellow-500 to-orange-600 text-yellow-950 font-bold",
+    text: "text-amber-200",
+    bgGradient: "from-amber-400/30 to-transparent",
+    accent: "#fbbf24",
+    cardTint: "rgba(30,20,5,0.85)",
+    divider: "rgba(251,191,36,0.4)",
+    frameBorder: "rgba(251,191,36,0.6)",
+    foil: "linear-gradient(115deg, transparent 20%, rgba(251,191,36,0.4) 45%, rgba(255,255,255,0.6) 50%, rgba(251,191,36,0.4) 55%, transparent 80%)",
   },
   mythical: {
-    border: "border-rose-500/70", glow: "group-hover:shadow-rose-500/50",
-    badge: "bg-gradient-to-r from-rose-600 to-red-500 text-white", text: "text-rose-200",
-    bgGradient: "from-rose-600/25 to-transparent",
-    metal: "#f43f5e", metalDark: "#9f1239", metalLight: "#fda4af",
-    accent: "#f43f5e", cardTint: "rgba(22,4,8,0.98)",
-    nameColor: "#fecdd3", waxSeal: "#e11d48", typeLabel: "#f43f5e",
-    divider: "rgba(244,63,94,0.3)", frameBorder: "rgba(244,63,94,0.35)",
+    border: "border-rose-500/70",
+    glow: "rgba(244,63,94,0.7)",
+    badge: "from-rose-400 via-red-500 to-rose-800 text-white font-bold",
+    text: "text-rose-200",
+    bgGradient: "from-rose-500/30 to-transparent",
+    accent: "#fb7185",
+    cardTint: "rgba(35,10,15,0.85)",
+    divider: "rgba(251,113,133,0.4)",
+    frameBorder: "rgba(251,113,133,0.6)",
+    foil: "linear-gradient(115deg, transparent 20%, rgba(251,113,133,0.4) 45%, rgba(255,255,255,0.6) 50%, rgba(251,113,133,0.4) 55%, transparent 80%)",
   },
   divine: {
-    border: "border-teal-400/70", glow: "group-hover:shadow-teal-400/50",
-    badge: "bg-gradient-to-r from-teal-400 to-emerald-400 text-black font-bold", text: "text-teal-200",
-    bgGradient: "from-teal-400/20 to-transparent",
-    metal: "#2dd4bf", metalDark: "#0f766e", metalLight: "#99f6e4",
-    accent: "#2dd4bf", cardTint: "rgba(4,20,18,0.97)",
-    nameColor: "#ccfbf1", waxSeal: "#0d9488", typeLabel: "#2dd4bf",
-    divider: "rgba(45,212,191,0.25)", frameBorder: "rgba(45,212,191,0.3)",
+    border: "border-teal-300/80",
+    glow: "rgba(45,212,191,0.8)",
+    badge: "from-teal-200 via-emerald-400 to-teal-700 text-teal-950 font-black",
+    text: "text-teal-200",
+    bgGradient: "from-teal-300/30 to-transparent",
+    accent: "#5eead4",
+    cardTint: "rgba(5,25,25,0.85)",
+    divider: "rgba(94,234,212,0.5)",
+    frameBorder: "rgba(94,234,212,0.7)",
+    foil: "linear-gradient(115deg, transparent 15%, rgba(94,234,212,0.5) 40%, rgba(255,255,255,0.8) 50%, rgba(94,234,212,0.5) 60%, transparent 85%)",
   },
 };
 
-/* ─── ORNATE FRAME BORDER SVG ─── */
+/* ─── ORNATE FRAME ─── */
 const OrnateFrame = ({ color, hovered }: { color: string; hovered: boolean }) => (
   <svg
-    className="absolute inset-0 w-full h-full pointer-events-none z-20"
-    style={{ opacity: hovered ? 1 : 0.45, transition: "opacity 0.4s ease" }}
+    className="absolute inset-0 w-full h-full pointer-events-none z-20 transition-opacity duration-500"
+    style={{ opacity: hovered ? 1 : 0.6 }}
     preserveAspectRatio="none"
   >
-    {/* Outer rect */}
-    <rect x="4" y="4" width="calc(100% - 8px)" height="calc(100% - 8px)"
-      rx="14" fill="none" stroke={color} strokeWidth="0.75" strokeOpacity="0.5" />
-    {/* Inner rect */}
-    <rect x="8" y="8" width="calc(100% - 16px)" height="calc(100% - 16px)"
-      rx="11" fill="none" stroke={color} strokeWidth="0.4" strokeOpacity="0.3" />
-    {/* Corner diamonds TL */}
-    <polygon points="4,14 10,8 16,14 10,20" fill={color} opacity="0.7" />
-    {/* Corner diamonds TR */}
-    <polygon points="calc(100% - 4px),14 calc(100% - 10px),8 calc(100% - 16px),14 calc(100% - 10px),20" fill={color} opacity="0.7" />
-    {/* Corner diamonds BL */}
-    <polygon points="4,calc(100% - 14px) 10,calc(100% - 8px) 16,calc(100% - 14px) 10,calc(100% - 20px)" fill={color} opacity="0.7" />
-    {/* Corner diamonds BR */}
-    <polygon points="calc(100% - 4px),calc(100% - 14px) calc(100% - 10px),calc(100% - 8px) calc(100% - 16px),calc(100% - 14px) calc(100% - 10px),calc(100% - 20px)" fill={color} opacity="0.7" />
+    <rect x="6" y="6" width="calc(100% - 12px)" height="calc(100% - 12px)" rx="12" fill="none" stroke={color} strokeWidth="1" strokeOpacity="0.4" />
+    <rect x="10" y="10" width="calc(100% - 20px)" height="calc(100% - 20px)" rx="8" fill="none" stroke={color} strokeWidth="0.5" strokeOpacity="0.2" />
+    
+    {/* Corner Embellishments */}
+    <g fill={color} opacity={hovered ? "0.9" : "0.5"} className="transition-opacity duration-500">
+      <path d="M6,20 L6,12 A6,6 0 0,1 12,6 L20,6 L12,12 Z" />
+      <path d="Mcalc(100% - 6px),20 Lcalc(100% - 6px),12 A6,6 0 0,0 calc(100% - 12px),6 Lcalc(100% - 20px),6 Lcalc(100% - 12px),12 Z" />
+      <path d="M6,calc(100% - 20px) L6,calc(100% - 12px) A6,6 0 0,0 12,calc(100% - 6px) L20,calc(100% - 6px) L12,calc(100% - 12px) Z" />
+      <path d="Mcalc(100% - 6px),calc(100% - 20px) Lcalc(100% - 6px),calc(100% - 12px) A6,6 0 0,1 calc(100% - 12px),calc(100% - 6px) Lcalc(100% - 20px),calc(100% - 6px) Lcalc(100% - 12px),calc(100% - 12px) Z" />
+    </g>
   </svg>
 );
 
-/* ─── WAX SEAL badge ─── */
-const WaxSeal = ({ rarity, color, badge }: { rarity: string; color: string; badge: string }) => (
-  <div className="relative flex items-center">
-    <div
-      className={cn(
-        "relative px-2.5 py-0.5 text-[9px] font-black uppercase tracking-[0.25em] rounded-sm overflow-hidden",
-        badge
-      )}
-      style={{ boxShadow: `0 2px 12px ${color}55, inset 0 1px 0 rgba(255,255,255,0.15)` }}
-    >
-      {/* Foil-stamp sheen */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%, rgba(255,255,255,0.05) 100%)" }}
-      />
-      {rarity}
-    </div>
-  </div>
-);
-
 /* ─── STAT PLAQUE ─── */
-const StatBadge = ({
-  icon, value, label, highlight, accent,
-}: { icon: any; value: number; label: string; highlight?: boolean; accent: string }) => (
+const StatBadge = ({ icon, value, label, highlight, accent }: { icon: React.ReactNode; value: number; label: string; highlight?: boolean; accent: string }) => (
   <motion.div
-    whileHover={{ y: -2, scale: 1.04 }}
-    transition={{ type: "spring", stiffness: 400, damping: 20 }}
-    className="relative flex flex-col items-center justify-center py-1.5 px-1 overflow-hidden"
+    whileHover={{ y: -3, scale: 1.05, filter: "brightness(1.2)" }}
+    className="relative flex flex-col items-center justify-center py-2 px-1 rounded-lg overflow-hidden group"
     style={{
-      background: highlight
-        ? `linear-gradient(160deg, ${accent}22, ${accent}0a)`
-        : "rgba(0,0,0,0.35)",
-      border: `1px solid ${highlight ? accent + "44" : "rgba(255,255,255,0.07)"}`,
-      borderRadius: "10px",
-      boxShadow: highlight ? `0 0 18px ${accent}22, inset 0 1px 0 ${accent}33` : "none",
+      background: highlight ? `linear-gradient(145deg, ${accent}25, rgba(0,0,0,0.5))` : "rgba(0,0,0,0.4)",
+      border: `1px solid ${highlight ? accent + "66" : "rgba(255,255,255,0.08)"}`,
+      boxShadow: highlight ? `0 4px 12px ${accent}20, inset 0 1px 0 ${accent}40` : "inset 0 1px 0 rgba(255,255,255,0.05)",
     }}
   >
-    {/* Top micro-line on highlight */}
     {highlight && (
-      <div
-        className="absolute top-0 inset-x-0 h-px"
-        style={{ background: `linear-gradient(to right, transparent, ${accent}bb, transparent)` }}
-      />
+      <div className="absolute top-0 inset-x-0 h-[1px] opacity-70 group-hover:opacity-100 transition-opacity"
+           style={{ background: `linear-gradient(90deg, transparent, ${accent}, transparent)` }} />
     )}
-    {/* Engraved look */}
-    <div className="flex items-center gap-0.5 mb-0.5">
-      <span className="opacity-80">{icon}</span>
-      <span
-        className="text-[7px] font-black uppercase tracking-[0.2em] leading-none"
-        style={{ color: highlight ? accent : "rgba(255,255,255,0.35)" }}
-      >
+    <div className="flex items-center gap-1 mb-1">
+      <span className="opacity-90">{icon}</span>
+      <span className="text-[8px] font-black uppercase tracking-[0.2em]" style={{ color: highlight ? accent : "rgba(255,255,255,0.5)" }}>
         {label}
       </span>
     </div>
-    <span
-      className="text-[11px] sm:text-xs font-mono font-black leading-none"
-      style={{
-        color: highlight ? accent : "rgba(255,255,255,0.75)",
-        textShadow: highlight ? `0 0 12px ${accent}` : "none",
-        fontVariantNumeric: "tabular-nums",
-      }}
-    >
+    <span className="text-xs sm:text-sm font-black tracking-tight"
+          style={{
+            color: highlight ? "#fff" : "rgba(255,255,255,0.85)",
+            textShadow: highlight ? `0 0 10px ${accent}` : "none",
+            fontFamily: "monospace"
+          }}>
       {value.toLocaleString()}
     </span>
   </motion.div>
 );
 
 /* ─────────────────────────────────────────────────────────────────────────── */
-/* MAIN EXPORT  — logic identical                                             */
+/* MAIN EXPORT                                                                 */
 /* ─────────────────────────────────────────────────────────────────────────── */
-export const GameCard = ({ card, onCardClick }: GameCardProps) => {
+export const GameCard = ({ card, onCardClick, index = 0 }: GameCardProps) => {
   const theme = rarityConfig[card.rarity] ?? rarityConfig.common;
-  const [isFavorite, setIsFavorite] = useState(false);
   const [hovered, setHovered] = useState(false);
-  const [shimmerX, setShimmerX] = useState(50);
-
   const cardRef = useRef<HTMLDivElement>(null);
-  const mvx = useMotionValue(0);
-  const mvy = useMotionValue(0);
-  const smx = useSpring(mvx, { stiffness: 150, damping: 25 });
-  const smy = useSpring(mvy, { stiffness: 150, damping: 25 });
-  const rotateX = useTransform(smy, [-0.5, 0.5], [5, -5]);
-  const rotateY = useTransform(smx, [-0.5, 0.5], [-5, 5]);
-
-  const onMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    const r = cardRef.current?.getBoundingClientRect();
-    if (!r) return;
-    const nx = (e.clientX - r.left) / r.width - 0.5;
-    const ny = (e.clientY - r.top) / r.height - 0.5;
-    mvx.set(nx);
-    mvy.set(ny);
-    setShimmerX(((nx + 0.5) * 100));
-  }, [mvx, mvy]);
-
-  const onLeave = useCallback(() => {
-    mvx.set(0); mvy.set(0);
-    setShimmerX(50);
-    setHovered(false);
-  }, [mvx, mvy]);
 
   return (
     <motion.div
-      ref={cardRef}
-      onMouseMove={onMove}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={onLeave}
-      whileTap={{ scale: 0.97 }}
-      onClick={() => onCardClick(card)}
-      style={{ rotateX, rotateY, transformStyle: "preserve-3d", perspective: 1000 }}
-      className={cn(
-        "group relative w-full aspect-[3/3.8] rounded-2xl cursor-pointer overflow-hidden flex flex-col border",
-        theme.border
-      )}
+      initial={{ opacity: 0, y: 30, scale: 0.9 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.6, delay: index * 0.1, type: "spring", bounce: 0.4 }}
+      className="perspective-[1200px] w-full max-w-[320px] mx-auto"
     >
-      {/* Base card material — very dark, textured */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: `
-            radial-gradient(ellipse 70% 50% at 50% 0%, ${theme.accent}0e 0%, transparent 60%),
-            linear-gradient(175deg, rgba(22,20,18,0.98) 0%, rgba(8,7,6,1) 100%)
-          `,
-        }}
-      />
-      {/* Paper grain */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.06]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`,
-          backgroundSize: "150px",
-          mixBlendMode: "overlay",
-        }}
-      />
-
-      {/* Hover elevation glow */}
       <motion.div
-        className="absolute inset-0 pointer-events-none rounded-2xl"
-        animate={{ opacity: hovered ? 1 : 0 }}
-        transition={{ duration: 0.5 }}
-        style={{ boxShadow: `0 0 40px ${theme.accent}35, 0 20px 60px rgba(0,0,0,0.7), 0 0 0 1px ${theme.accent}22` }}
-      />
-
-      {/* Ornate frame */}
-      <OrnateFrame color={theme.accent} hovered={hovered} />
-
-      {/* ── IMAGE ZONE ── */}
-      <div className="relative flex-grow overflow-hidden" style={{ borderRadius: "12px 12px 0 0" }}>
-        {/* Rarity tint */}
-        <div className={cn("absolute inset-0 bg-gradient-to-b opacity-25 z-10 pointer-events-none", theme.bgGradient)} />
-
-        {/* Image darken at bottom */}
-        <div
-          className="absolute inset-x-0 bottom-0 z-10 pointer-events-none"
-          style={{
-            height: "55%",
-            background: `linear-gradient(to top, ${theme.cardTint} 0%, rgba(0,0,0,0.5) 50%, transparent 100%)`,
-          }}
-        />
-
-        {/* Using the thumbnail as the main display, falling back to original image if missing */}
-        <motion.img
-          src={card.thumbnail || card.image}
-          alt={card.name}
-          animate={{ scale: hovered ? 1.12 : 1.08 }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full h-full object-cover object-center"
-          style={{
-            filter: hovered ? "saturate(1.15) contrast(1.05)" : "saturate(0.9) contrast(1.0)",
-            transition: "filter 0.5s ease",
-          }}
-        />
-
-        {/* Light refraction on hover — moves with cursor */}
-        <motion.div
-          className="absolute inset-0 pointer-events-none z-10"
-          style={{
-            background: `radial-gradient(ellipse 50% 30% at ${shimmerX}% 40%, rgba(255,255,255,0.06) 0%, transparent 70%)`,
-          }}
-        />
-
-        {/* Slow diagonal gloss on hover */}
-        <motion.div
-          className="absolute pointer-events-none z-10"
-          style={{
-            inset: "-20%",
-            background: "linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.04) 50%, transparent 60%)",
-          }}
-          animate={hovered ? { x: ["−60%", "160%"] } : { x: "-60%" }}
-          transition={{ duration: 1.8, ease: "easeInOut", repeat: hovered ? Infinity : 0, repeatDelay: 1 }}
-        />
-
-        {/* ── TOP ROW ── */}
-        <div className="absolute top-3 left-3 right-3 flex justify-between items-start z-20">
-          <WaxSeal rarity={card.rarity} color={theme.accent} badge={theme.badge} />
-
-          <button
-            onClick={(e) => { e.stopPropagation(); setIsFavorite(!isFavorite); }}
-            className="p-1.5 rounded-full backdrop-blur-md hover:scale-110 active:scale-95 transition-all duration-200"
-            style={{
-              background: "rgba(0,0,0,0.55)",
-              border: "1px solid rgba(255,255,255,0.1)",
-              boxShadow: "0 2px 8px rgba(0,0,0,0.4)",
-            }}
-          >
-            <motion.div animate={isFavorite ? { scale: [1, 1.5, 1] } : {}} transition={{ duration: 0.3 }}>
-              <Heart
-                className={cn("w-3.5 h-3.5 transition-all duration-300", isFavorite ? "fill-rose-500 text-rose-500" : "text-white/50")}
-              />
-            </motion.div>
-          </button>
-        </div>
-
-        {/* Name overlaid on image bottom */}
-        <div className="absolute bottom-0 inset-x-0 z-20 px-3 pb-2">
-          <div
-            className="h-px w-full mb-1"
-            style={{ background: `linear-gradient(to right, transparent, ${theme.accent}60, transparent)` }}
-          />
-          <h3
-            className="font-black uppercase leading-none  truncate"
-            style={{
-              fontFamily: "mono",
-              fontSize: "clamp(12px, 2.9vw, 13px)",
-              color: "white",
-              letterSpacing: "0.06em",
-              textShadow: `0 2px 20px rgba(0,0,0,0.9), 0 0 30px ${theme.accent}55`,
-            }}
-          >
-            {card.name}
-          </h3>
-        </div>
-      </div>
-
-      {/* ── STATS PANEL ── */}
-      <div
-        className="relative flex-none z-20"
-        style={{
-          background: `linear-gradient(180deg, ${theme.cardTint} 0%, rgba(4,3,2,1) 100%)`,
-          borderTop: `1px solid ${theme.frameBorder}`,
-          backdropFilter: "blur(16px)",
-        }}
+        ref={cardRef}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        onClick={() => onCardClick(card)}
+        whileTap={{ scale: 0.95 }}
+        className={cn(
+          "group relative w-full aspect-[3/4.2] rounded-2xl cursor-pointer flex flex-col border backdrop-blur-sm",
+          theme.border
+        )}
       >
-        {/* Horizontal rule at top */}
-        <div
-          className="absolute top-0 inset-x-3 h-px"
-          style={{ background: `linear-gradient(to right, transparent, ${theme.accent}50, transparent)` }}
-        />
+        {/* ── IMAGE ZONE (Parallax Layer) ── */}
+        <div className="absolute inset-0 rounded-2xl overflow-hidden bg-white" style={{ transform: "translateZ(0)" }}>
+          <motion.img
+            src={ card.image}
+            alt={card.name}
+            className="w-full h-full object-contain object-center -translate-y-10 opacity-100 transition-opacity duration-300 group-hover:opacity-90"
+          />
+          
+          {/* Base Dark Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent pointer-events-none" />
+        </div>
 
-        {/* Ambient glow from above */}
-        <motion.div
-          className="absolute inset-0 pointer-events-none"
-          animate={{ opacity: hovered ? 1 : 0 }}
-          transition={{ duration: 0.4 }}
-          style={{ background: `radial-gradient(ellipse 80% 60% at 50% 0%, ${theme.accent}0e, transparent)` }}
-        />
+       
 
-        <div className="relative z-10 px-2.5 pt-1.5 pb-2">
-          {/* Divider with center diamond */}
-          <div className="relative flex items-center justify-center mb-1.5">
-            <div className="flex-1 h-px" style={{ background: theme.divider }} />
-            <div
-              className="mx-2 w-1.5 h-1.5 rotate-45"
-              style={{ background: theme.accent, boxShadow: `0 0 6px ${theme.accent}` }}
-            />
-            <div className="flex-1 h-px" style={{ background: theme.divider }} />
+        {/* ── ORNATE FRAME ── */}
+        <OrnateFrame color={theme.accent} hovered={hovered} />
+
+        {/* ── FLOATING UI ELEMENTS (Z-translated layer) ── */}
+        <div className="relative flex-grow p-4 flex flex-col justify-between z-30 pointer-events-none" style={{ transform: "translateZ(30px)" }}>
+          
+          {/* Top Row: Rarity Badge */}
+          <div className="flex justify-between items-start">
+            <div className={cn(
+              "px-3 py-1 rounded-sm shadow-xl backdrop-blur-md bg-gradient-to-br flex items-center gap-1.5 border",
+              theme.badge,
+              card.rarity === "divine" || card.rarity === "mythical" ? "border-white/30" : "border-black/20"
+            )}>
+              {(card.rarity === "divine" || card.rarity === "mythical" || card.rarity === "legendary") && (
+                <Sparkles className="w-3 h-3" />
+              )}
+              <span className="text-[10px] uppercase tracking-[0.25em] leading-none mt-0.5">{card.rarity}</span>
+            </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-1">
-            <StatBadge icon={<Swords className="w-3 h-3 text-rose-400" />} value={card.stats.attack} label="ATK" accent={theme.accent} />
-            <StatBadge icon={<Shield className="w-3 h-3 text-sky-400" />} value={card.stats.defense} label="DEF" accent={theme.accent} />
-            <StatBadge icon={<Zap className="w-3 h-3 text-amber-400" />} value={card.stats.total} label="PWR" highlight accent={theme.accent} />
+          {/* Bottom Section: Name & Stats Plaque */}
+          <div className="mt-auto pointer-events-auto">
+            {/* Title & Type */}
+            <div className="mb-2 px-1">
+              <h3 
+                className="font-black uppercase text-xl tracking-wide text-white mb-1"
+                style={{ 
+                  fontFamily: "system-ui, -apple-system, sans-serif",
+                  textShadow: `0 4px 20px rgba(0,0,0,0.9), 0 0 12px ${theme.accent}10` 
+                }}
+              >
+                {card.name}
+              </h3>
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm text-white/90">
+                  {card.stats.class}
+                </span>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-white/60">
+                  {card.stats.type}
+                </span>
+              </div>
+            </div>
+
+            {/* Glassmorphism Stat Panel */}
+            <div 
+              className="rounded-xl p-3 backdrop-blur-xl border border-white/10 relative overflow-hidden shadow-2xl"
+              style={{ background: `linear-gradient(135deg, ${theme.cardTint} 0%, rgba(10,10,10,0.95) 100%)` }}
+            >
+              {/* Internal glowing accent line */}
+              <div className="absolute top-0 inset-x-0 h-[2px]" style={{ background: `linear-gradient(90deg, transparent, ${theme.accent}80, transparent)` }} />
+              
+              {/* Stat Grid */}
+              <div className="grid grid-cols-3 gap-2">
+                <StatBadge icon={<Swords className="w-3.5 h-3.5 text-rose-400" />} value={card.stats.attack} label="ATK" accent={theme.accent} />
+                <StatBadge icon={<Shield className="w-3.5 h-3.5 text-sky-400" />} value={card.stats.defense} label="DEF" accent={theme.accent} />
+                <StatBadge icon={<Zap className="w-3.5 h-3.5 text-amber-400" />} value={card.stats.total} label="PWR" highlight accent={theme.accent} />
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 };

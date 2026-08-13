@@ -16,7 +16,6 @@ interface CardData {
   name: string;
   rarity: string;
   image: string;
-  thumbnail: string;
   lore: string;
   stats: CardStats;
 }
@@ -30,7 +29,6 @@ const AddCard = () => {
     name: '',
     rarity: 'common',
     image: '',
-    thumbnail: '',
     lore: '',
     stats: initialStats
   });
@@ -113,11 +111,6 @@ const AddCard = () => {
         <div className="mb-4">
           <label className="block text-sm text-gray-400 mb-1">Image URL</label>
           <input type="text" name="image" value={formData.image} onChange={handleChange} placeholder="https://..." className="w-full bg-gray-700 rounded p-2" />
-        </div>
-
-        <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-1">Thumbnail URL</label>
-          <input type="text" name="thumbnail" value={formData.thumbnail} onChange={handleChange} placeholder="https://..." className="w-full bg-gray-700 rounded p-2" />
         </div>
 
         <div className="mb-6">
