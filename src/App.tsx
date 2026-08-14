@@ -6,7 +6,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 // 1. Import the new page here
-import AddCard from "./pages/AddCard"; 
+import AddCard from "./pages/AddCard";
+import Lucky from "./pages/Lucky";
+import Gauntlet from "./pages/Gauntlet";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +23,8 @@ const App = () => (
           
           {/* 2. Add the route here, above the catch-all */}
           <Route path="/add" element={<AddCard />} />
+          <Route path="/lucky" element={<Lucky />} />
+          <Route path="/gauntlet" element={<Gauntlet />} />
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

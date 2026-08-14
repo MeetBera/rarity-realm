@@ -525,18 +525,18 @@
     "id": 30,
     "name": "Aurum-Z",
     "rarity": "legendary",
-    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779694569/Generated_Image_May_25_2026_-_12_57PM.jpg_offo5r.jpg",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786637154/Generated_Image_May_25_2026_-_12_57PM_hbqzo8.jpg",
     "lore": "Forged by the ancient empire from a nearly indestructible, gold-like celestial alloy, Aurum-Z is a mechanical titan designed as both a symbol of ultimate wealth and an immovable defender. Its most remarkable feature is the stabilized micro-star housed within its jaws, which provides the automaton with limitless energy for immense physical power while acting as a devastating breath weapon on battlefield. Following the mysterious disappearance of its creators, this immortal \"Tyrant\" now endlessly wanders the crystalline deserts of the old world, an untarnished and roaring guardian forever awaiting orders from a civilization that has long since turned to dust.",
     "stats": {
       "hp": 4245,
       "attack": 845,
-      "defense": 1610,
+      "defense": 1710,
       "mana": 620,
       "speed": 35,
       "intelligence": 80,
       "class": "Mechanical",
       "type": "Terrestial",
-      "total": 7435
+      "total": 7535
     }
   },
   {
@@ -996,15 +996,15 @@
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786470627/Generated_Image_July_28_2026_-_1_10AM.jpg_eztkhe.jpg",
     "lore": "",
     "stats": {
-      "hp": 3410,
+      "hp": 3100,
       "attack": 620,
       "defense": 300,
-      "mana": 175,
+      "mana": 375,
       "speed": 130,
       "intelligence": 110,
       "class": "Monster",
-      "type": "T",
-      "total": 4745
+      "type": "Terrestial",
+      "total": 4635
     }
   },
   {
@@ -1023,6 +1023,78 @@
       "class": "Monster",
       "type": "Terrestial",
       "total": 495
+    }
+  },
+  {
+    "id": 58,
+    "name": "Flutterdrake",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786470633/Generated_Image_August_03_2026_-_12_26PM.jpg_rcq0b9.jpg",
+    "lore": "",
+    "stats": {
+      "hp": 1835,
+      "attack": 310,
+      "defense": 205,
+      "mana": 150,
+      "speed": 115,
+      "intelligence": 90,
+      "class": "Dragon",
+      "type": "Aerial",
+      "total": 2705
+    }
+  },
+  {
+    "id": 59,
+    "name": "Gastrotyrant",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786470623/Generated_Image_May_21_2026_-_10_23PM.jpg_xpe1ut.jpg",
+    "lore": "",
+    "stats": {
+      "hp": 2850,
+      "attack": 225,
+      "defense": 190,
+      "mana": 360,
+      "speed": 85,
+      "intelligence": 70,
+      "class": "Dragon",
+      "type": "Aerial",
+      "total": 3780
+    }
+  },
+  {
+    "id": 60,
+    "name": "Seisguru",
+    "rarity": "common",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786637301/Generated_Image_April_08_2026_-_9_30PM_d81w8g.jpg",
+    "lore": "",
+    "stats": {
+      "hp": 900,
+      "attack": 65,
+      "defense": 80,
+      "mana": 230,
+      "speed": 50,
+      "intelligence": 135,
+      "class": "Monster",
+      "type": "Terrestial",
+      "total": 1460
+    }
+  },
+  {
+    "id": 61,
+    "name": "Gargobrawl",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786637301/Generated_Image_April_08_2026_-_9_04PM_vdck63.jpg",
+    "lore": "",
+    "stats": {
+      "hp": 1835,
+      "attack": 270,
+      "defense": 220,
+      "mana": 0,
+      "speed": 75,
+      "intelligence": 70,
+      "class": "Beast",
+      "type": "Terrestial",
+      "total": 2470
     }
   }
 ]
