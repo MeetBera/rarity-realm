@@ -352,7 +352,7 @@ const Index = () => {
         {/* GRID */}
         <motion.div
           layout
-          className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 md:gap-6 min-h-[400px]"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 md:gap-6 min-h-[400px]"
         >
           <AnimatePresence mode="popLayout">
             {filteredAndSortedCards.length > 0 ? (

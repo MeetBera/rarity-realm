@@ -194,13 +194,13 @@ export default function Gauntlet() {
           <div className="w-full max-w-5xl flex flex-col items-center justify-between flex-1 py-2 md:py-4">
             
             {/* Header HUD */}
-            <div className="w-full flex justify-between items-center px-8 mb-4">
-              <div className="flex flex-col items-center bg-black/40 px-6 py-2 rounded-xl border border-white/10 backdrop-blur-md">
+            <div className="w-full flex justify-between items-center px-2 sm:px-8 mb-4">
+              <div className="flex flex-col items-center bg-black/40 px-4 sm:px-6 py-2 rounded-xl border border-white/10 backdrop-blur-md">
                 <span className="text-[10px] uppercase tracking-widest text-amber-500 font-bold mb-1">Score</span>
                 <span className="text-3xl font-black text-white font-mono leading-none">{score}</span>
               </div>
               
-              <div className="flex flex-col items-center bg-black/40 px-6 py-2 rounded-xl border border-white/10 backdrop-blur-md relative">
+              <div className="flex flex-col items-center bg-black/40 px-4 sm:px-6 py-2 rounded-xl border border-white/10 backdrop-blur-md relative">
                 <span className="text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-1">Time</span>
                 <span className={`text-3xl font-black font-mono leading-none ${timeLeft <= 5 ? 'text-red-500 animate-pulse' : 'text-white'}`}>
                   {timeLeft}s
@@ -232,7 +232,7 @@ export default function Gauntlet() {
                   scale: slashEnemy ? [0.9, 1.1, 0] : 0.9
                 }}
                 transition={{ duration: 0.3 }}
-                className="relative w-full max-w-[180px] sm:max-w-[220px] md:max-w-[260px] flex items-center justify-center"
+                className="relative w-full max-w-[150px] sm:max-w-[220px] md:max-w-[260px] flex items-center justify-center"
               >
                 <div className={`absolute -inset-4 rounded-2xl opacity-50 blur-xl ${getElementColor(getElement(enemy.stats.type)).bg}`} />
                 <div className="pointer-events-none w-full">
@@ -258,7 +258,7 @@ export default function Gauntlet() {
                 <Zap className="w-4 h-4 text-amber-500" /> Select Counter <Zap className="w-4 h-4 text-amber-500" />
               </div>
               
-              <div className="flex flex-row items-center justify-center gap-2 md:gap-4 px-2 md:px-4 w-full max-w-4xl mx-auto">
+              <div className="grid grid-cols-2 sm:flex sm:flex-row items-center justify-center gap-2 md:gap-4 px-2 md:px-4 w-full max-w-4xl mx-auto">
                 {hand.map((card, idx) => {
                   const el = getElement(card.stats.type);
                   const colors = getElementColor(el);
@@ -269,7 +269,7 @@ export default function Gauntlet() {
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ delay: idx * 0.05 }}
                       onClick={() => handleCardPlay(card)}
-                      className={`relative cursor-pointer transition-transform hover:-translate-y-2 md:hover:-translate-y-4 group flex-1 min-w-0 max-w-[140px] sm:max-w-[160px] md:max-w-[200px]`}
+                      className={`relative cursor-pointer transition-transform hover:-translate-y-2 md:hover:-translate-y-4 group flex-1 min-w-0 w-full sm:max-w-[160px] md:max-w-[200px]`}
                     >
                       <div className={`absolute -inset-1 md:-inset-2 rounded-xl border-2 opacity-0 group-hover:opacity-100 transition-opacity ${colors.border} ${colors.shadow}`} />
                       <div className="pointer-events-none w-full">

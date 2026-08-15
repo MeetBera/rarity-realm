@@ -21,4 +21,16 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom", "react-router-dom"],
+          ui: ["@radix-ui/react-accordion", "@radix-ui/react-dialog", "@radix-ui/react-slot", "lucide-react", "class-variance-authority", "clsx", "tailwind-merge"],
+          framer: ["framer-motion"]
+        }
+      }
+    }
+  }
 }));

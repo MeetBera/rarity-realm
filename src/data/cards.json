@@ -10,9 +10,9 @@
       "attack": 180,
       "defense": 115,
       "mana": 0,
-      "speed": 190,
+      "speed": 170,
       "intelligence": 120,
-      "total": 2055,
+      "total": 2035,
       "class": "Dragon",
       "type": "amphibian"
     }
@@ -42,13 +42,13 @@
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779688783/Generated_Image_May_25_2026_-_12_26AM.jpg_hpgcwd.jpg",
     "lore": "the Slobberjaw is perpetually hungry and dangerously happy about it. It doesn't hunt with stealth; it hunts with a tongue that can stretch five feet and tastes like frozen iron.Legends say its drool is so slippery that entire explorer's team have fallen over before even landing a hit. If the bite doesn't get you, the slip-and-slide will.",
     "stats": {
-      "hp": 880,
+      "hp": 1080,
       "attack": 190,
       "defense": 130,
       "mana": 0,
       "speed": 115,
       "intelligence": 70,
-      "total": 1385,
+      "total": 1585,
       "class": "Beast",
       "type": "terrestial"
     }
@@ -258,7 +258,7 @@
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779693406/Generated_Image_May_25_2026_-_12_20PM.jpg_uhgltv.jpg",
     "lore": "The Kernalisk was not born; it was grown. Legend says these creatures were originally created by ancient druids to act as scarecrows to protect sacred crops during times of famine. However, after absorbing too much wild magic from the soil, they gained sentience and a voracious hunger. Now, they do not protect the harvest—they hoard it. The creature’s body is a dense armor of calcified kernels. The yellow scales are as hard as gold, while the purple scales (found on its secondary head) are venomous. Its \"wings\" and mane are razor-sharp husks capable of slicing through iron armor.",
     "stats": {
-      "hp": 2850,
+      "hp": 2550,
       "attack": 430,
       "defense": 325,
       "mana": 270,
@@ -266,7 +266,7 @@
       "intelligence": 85,
       "class": "Dragon",
       "type": "Terrestial",
-      "total": 4070
+      "total": 3770
     }
   },
   {
@@ -298,11 +298,11 @@
       "attack": 90,
       "defense": 75,
       "mana": 0,
-      "speed": 135,
+      "speed": 105,
       "intelligence": 70,
       "class": "Dragon",
       "type": "Amphibian",
-      "total": 1335
+      "total": 1305
     }
   },
   {
@@ -352,11 +352,11 @@
       "attack": 750,
       "defense": 560,
       "mana": 540,
-      "speed": 130,
+      "speed": 110,
       "intelligence": 175,
       "class": "Monster",
       "type": "Terrestial",
-      "total": 5820
+      "total": 5800
     }
   },
   {
@@ -586,11 +586,11 @@
       "attack": 185,
       "defense": 140,
       "mana": 85,
-      "speed": 115,
+      "speed": 95,
       "intelligence": 75,
       "class": "Spirit",
       "type": "Amphibian",
-      "total": 2285
+      "total": 2265
     }
   },
   {
@@ -658,11 +658,11 @@
       "attack": 375,
       "defense": 510,
       "mana": 295,
-      "speed": 125,
+      "speed": 135,
       "intelligence": 150,
       "class": "Dragon",
       "type": "Aerial",
-      "total": 5080
+      "total": 5090
     }
   },
   {
@@ -708,15 +708,15 @@
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1779950143/Generated_Image_May_28_2026_-_11_50AM.jpg_uph88u.jpg",
     "lore": "Long ago, a coven of witches died in a devastating forbidden spell battle high within a desolate mountain. And their vengeful souls reacted violently to the lingering death magic saturating the battlefield, fusing together into a single, amalgation of spiritual energy. Sensing a perfect vessel nearby, this spectral amalgamation forcefully merged with a mountain dragon, warping its flesh and wings with dark magic, and crowning it with a skeletal mask. Thus, Necrowyvern is a fusion of draconic fury and witchcraft, haunting the peaks and hunting for souls to feed the coven trapped within.",
     "stats": {
-      "hp": 2620,
+      "hp": 2420,
       "attack": 285,
       "defense": 205,
       "mana": 470,
       "speed": 160,
       "intelligence": 160,
       "class": "Dragon",
-      "type": "A",
-      "total": 3900
+      "type": "Aerial",
+      "total": 3700
     }
   },
   {
@@ -780,10 +780,10 @@
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1780042212/Generated_Image_May_29_2026_-_11_21AM.jpg_z2jo5o.jpg",
     "lore": "Once worshipped as the God of Insects, the demon known as Beetlebrute turned its domain into a slaughterhouse, initiating a ruthless campaign to completely exterminate lesser beings. Invulnerable to mortal weapons and driven by pure brutal malice, it became a nightmare to humans and insects alike. Unable to destroy the titan, a band of legendary heroes successfully severed and sealed its soul inside a ancient spiritual artifact, burying and hiding it deep within a hidden forest temple. Though centuries have passed and the seal holds strong, To this day, humanity lives in fear, terrified of the day the seal breaks and he awakens.",
     "stats": {
-      "hp": 8850,
+      "hp": 8000,
       "attack": 1770,
       "defense": 2300,
-      "mana": 0,
+      "mana": 850,
       "speed": 20,
       "intelligence": 145,
       "class": "Demon",
@@ -868,12 +868,12 @@
     "name": "Enma & Lin",
     "rarity": "epic",
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1783335754/Generated_Image_July_02_2026_-_8_26AM.jpg_djzfyq.jpg",
-    "lore": "Enma, a fearsome war deity, was once a force of destruction. His wrath peaked when he obliterated the legendary Monastery of Space. To stop his rampage, the surviving elder monks used their ultimate brass to seal him away in a dark pocket of space. Centuries later, his prison was discovered by a young girl named Lin. While the monks relied on ancient seals, Lin possessed a prodigal mastery over Space. She completely subjugated his volatile spirit, bending his colossal will to her own.\n\nNow, the unlikely duo runs wild. Enma serves as Riko’s unstoppable enforcer and mount, forced to carry the ultimate prize from the ruined monastery: the Infinity Sack. This legendary, extra-dimensional relic can swallow, store, and transport absolutely anything, regardless of size or weight. With a tamed diety of war at her fingertips and a limitless void on his back, Lin answers to no one.",
+    "lore": "Enma, a fearsome war deity, who was once a force of destruction. His wrath peaked when he obliterated the legendary Monastery of Space. To stop his rampage, the surviving elder monks used their ultimate brass to seal him away in a dark pocket of space. Centuries later, his prison was discovered by a young girl named Lin. While the monks relied on ancient seals, Lin possessed a prodigal mastery over Space. She completely subjugated his volatile spirit, bending his colossal will to her own.\n\nNow, the unlikely duo runs wild. Enma serves as Riko’s unstoppable enforcer and mount, forced to carry the ultimate prize from the ruined monastery: the Infinity Sack. This legendary, extra-dimensional relic can swallow, store, and transport absolutely anything, regardless of size or weight. With a tamed diety of war at her fingertips and a limitless void on his back, Lin answers to no one.",
     "stats": {
-      "hp": 4620,
-      "attack": 520,
-      "defense": 370,
-      "mana": 600,
+      "hp": 4220,
+      "attack": 720,
+      "defense": 470,
+      "mana": 700,
       "speed": 45,
       "intelligence": 100,
       "class": "Monster",
@@ -1032,9 +1032,9 @@
     "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786470633/Generated_Image_August_03_2026_-_12_26PM.jpg_rcq0b9.jpg",
     "lore": "",
     "stats": {
-      "hp": 1835,
-      "attack": 310,
-      "defense": 205,
+      "hp": 1955,
+      "attack": 210,
+      "defense": 185,
       "mana": 150,
       "speed": 115,
       "intelligence": 90,
@@ -1095,6 +1095,276 @@
       "class": "Beast",
       "type": "Terrestial",
       "total": 2470
+    }
+  },
+  {
+    "id": 62,
+    "name": "Bahamuzar",
+    "rarity": "epic",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786637295/Generated_Image_April_08_2026_-_8_58PM_j7aqiy.jpg",
+    "lore": "",
+    "stats": {
+      "hp": 3850,
+      "attack": 655,
+      "defense": 540,
+      "mana": 390,
+      "speed": 40,
+      "intelligence": 70,
+      "class": "Dragon",
+      "type": "Terrestial",
+      "total": 5545
+    }
+  },
+  {
+    "id": 63,
+    "name": "Daotaurus",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786637302/Generated_Image_April_08_2026_-_9_52PM_ttkvqw.jpg",
+    "lore": "",
+    "stats": {
+      "hp": 2070,
+      "attack": 390,
+      "defense": 235,
+      "mana": 0,
+      "speed": 95,
+      "intelligence": 75,
+      "class": "Demi Human",
+      "type": "Terrestial",
+      "total": 2865
+    }
+  },
+  {
+    "id": 64,
+    "name": "Namazujin",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786721663/Generated_Image_April_05_2026_-_1_07PM_1_vcoe2c.jpg",
+    "lore": "",
+    "stats": {
+      "hp": 1660,
+      "attack": 255,
+      "defense": 180,
+      "mana": 0,
+      "speed": 60,
+      "intelligence": 10,
+      "class": "Beast",
+      "type": "Amphibian",
+      "total": 2165
+    }
+  },
+  {
+    "id": 65,
+    "name": "Rosegeist",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786721663/Generated_Image_April_05_2026_-_1_24PM_1_cq3lt4.jpg",
+    "lore": "",
+    "stats": {
+      "hp": 2540,
+      "attack": 345,
+      "defense": 170,
+      "mana": 405,
+      "speed": 150,
+      "intelligence": 110,
+      "class": "Demon",
+      "type": "Terrestial",
+      "total": 3720
+    }
+  },
+  {
+    "id": 66,
+    "name": "Macagryph",
+    "rarity": "common",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786721664/Generated_Image_April_05_2026_-_1_44PM_1_iixuxa.jpg",
+    "lore": "",
+    "stats": {
+      "hp": 1050,
+      "attack": 110,
+      "defense": 80,
+      "mana": 0,
+      "speed": 120,
+      "intelligence": 60,
+      "class": "Beast",
+      "type": "Aerial",
+      "total": 1410
+    }
+  },
+  {
+    "id": 67,
+    "name": "Imperiorca",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786721664/Generated_Image_April_05_2026_-_1_52PM_1_ax2rwo.jpg",
+    "lore": "Imperiorca is known across the seas as the ocean’s royal brawler. Marked from birth by gilded crests embedded in its skin, it fights with an sense of pride, relying on its unbreakable knuckles to shatter glaciers. It lives for the thrill of a unwanted clashes, regularly charging into coastline clashes against other sea kings like Voltmanes in explosive tests of raw strength. Despite its massive built, it moves through the depths with speed, flexing its dense back and fin muscles to water behind it, launching itself forward like a living torpedo to deliver devastating strikes.",
+    "stats": {
+      "hp": 1930,
+      "attack": 365,
+      "defense": 230,
+      "mana": 0,
+      "speed": 135,
+      "intelligence": 80,
+      "class": "Beast",
+      "type": "Aquatic",
+      "total": 2740
+    }
+  },
+  {
+    "id": 68,
+    "name": "Oculomancer",
+    "rarity": "common",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786786418/Generated_Image_April_30_2026_-_10_14AM_ljm7jb.jpg",
+    "lore": "",
+    "stats": {
+      "hp": 2440,
+      "attack": 300,
+      "defense": 180,
+      "mana": 470,
+      "speed": 150,
+      "intelligence": 95,
+      "class": "Spirit",
+      "type": "Terrestial",
+      "total": 3635
+    }
+  },
+  {
+    "id": 69,
+    "name": "Zephyram",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786786413/Generated_Image_August_02_2026_-_1_52PM_que0mv.jpg",
+    "lore": "",
+    "stats": {
+      "hp": 1605,
+      "attack": 275,
+      "defense": 210,
+      "mana": 0,
+      "speed": 85,
+      "intelligence": 60,
+      "class": "Beast",
+      "type": "Aerial",
+      "total": 2235
+    }
+  },
+  {
+    "id": 70,
+    "name": "Phantotem",
+    "rarity": "common",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786786407/Generated_Image_August_02_2026_-_11_13AM_uzbxtu.jpg",
+    "lore": "",
+    "stats": {
+      "hp": 630,
+      "attack": 70,
+      "defense": 35,
+      "mana": 170,
+      "speed": 70,
+      "intelligence": 55,
+      "class": "Spirit",
+      "type": "Aerial",
+      "total": 1030
+    }
+  },
+  {
+    "id": 71,
+    "name": "Kragmandu",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786786407/Generated_Image_April_08_2026_-_10_08PM_oxym5o.jpg",
+    "lore": "",
+    "stats": {
+      "hp": 1670,
+      "attack": 275,
+      "defense": 180,
+      "mana": 0,
+      "speed": 60,
+      "intelligence": 50,
+      "class": "Beast",
+      "type": "Terrestial",
+      "total": 2235
+    }
+  },
+  {
+    "id": 72,
+    "name": "Mitsukai",
+    "rarity": "rare",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786786416/Generated_Image_August_03_2026_-_10_58PM_sprvbh.jpg",
+    "lore": "",
+    "stats": {
+      "hp": 1485,
+      "attack": 160,
+      "defense": 110,
+      "mana": 380,
+      "speed": 45,
+      "intelligence": 130,
+      "class": "Monster",
+      "type": "Terrestial",
+      "total": 2310
+    }
+  },
+  {
+    "id": 73,
+    "name": "Dreadbrady",
+    "rarity": "common",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786786415/Generated_Image_August_03_2026_-_11_44PM_djn8si.jpg",
+    "lore": "",
+    "stats": {
+      "hp": 1345,
+      "attack": 165,
+      "defense": 120,
+      "mana": 0,
+      "speed": 70,
+      "intelligence": 60,
+      "class": "Beast",
+      "type": "Terrestial",
+      "total": 1760
+    }
+  },
+  {
+    "id": 74,
+    "name": "Grinelder",
+    "rarity": "common",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786786416/Generated_Image_August_02_2026_-_11_01AM_y7k0kf.jpg",
+    "lore": "",
+    "stats": {
+      "hp": 920,
+      "attack": 60,
+      "defense": 40,
+      "mana": 55,
+      "speed": 35,
+      "intelligence": 70,
+      "class": "Monster",
+      "type": "Terrestial",
+      "total": 1180
+    }
+  },
+  {
+    "id": 75,
+    "name": "Plumelisk",
+    "rarity": "epic",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786803805/Generated_Image_August_15_2026_-_7_46PM.jpg_xssbos.jpg",
+    "lore": "High in the peaks of the Aeon Mountain ranges roams the mighty Plumelisk, widely revered as the most breathtaking dragons in existence due to iridescent, feathered scales that monarchs and nobles covet as jewels. Yet, beneath this angelic beauty lies a brutal apex predator with an insatiable bloodlust for prey larger than themselves. Though they possess powerfully muscled legs for terrestrial speed, they no longer hunt on the ground; instead, they use its massive limbs to explosively launch themselves into the high sky, diving at terminal velocity to grapple, crush, and tear apart beasts mid-flight, leaving only flashes of radiant light and falling carcasses.",
+    "stats": {
+      "hp": 3890,
+      "attack": 560,
+      "defense": 435,
+      "mana": 375,
+      "speed": 180,
+      "intelligence": 115,
+      "class": "Dragon",
+      "type": "Aerial",
+      "total": 5555
+    }
+  },
+  {
+    "id": 76,
+    "name": "Hydra",
+    "rarity": "epic",
+    "image": "https://res.cloudinary.com/dnoxvxlg9/image/upload/v1786818932/Generated_Image_May_09_2026_-_9_41AM_n6wtae.jpg",
+    "lore": "",
+    "stats": {
+      "hp": 3335,
+      "attack": 370,
+      "defense": 305,
+      "mana": 510,
+      "speed": 85,
+      "intelligence": 70,
+      "class": "Monster",
+      "type": "Amphibian",
+      "total": 4675
     }
   }
 ]

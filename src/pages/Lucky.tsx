@@ -6,28 +6,10 @@ import cardsData from "@/data/cards.json";
 import { Nav } from "@/components/Nav";
 import { Sparkles, Dices, Gift } from "lucide-react";
 
-// Helper for weighted random selection
-const getCardPower = (card: GameCardData) => {
-  const { hp, attack, defense, mana, intelligence, speed } = card.stats;
-  return hp + attack + defense + mana + intelligence + speed;
-};
-
+// Helper for purely random selection (no bias)
 const getRandomCard = () => {
-  const weights = cardsData.map((card) => {
-    const power = getCardPower(card as GameCardData);
-    return { card, weight: 100000 / (power || 1) }; // Higher power = lower weight
-  });
-  
-  const totalWeight = weights.reduce((sum, item) => sum + item.weight, 0);
-  let random = Math.random() * totalWeight;
-  
-  for (const item of weights) {
-    if (random < item.weight) {
-      return item.card as GameCardData;
-    }
-    random -= item.weight;
-  }
-  return cardsData[0] as GameCardData;
+  const randomIndex = Math.floor(Math.random() * cardsData.length);
+  return cardsData[randomIndex] as GameCardData;
 };
 
 /* ─────────────────────────────────────────────────────────────────────────── */
@@ -116,7 +98,7 @@ export default function Lucky() {
             <Sparkles className="w-5 h-5 text-amber-500" />
           </div>
           <p className="text-slate-400 font-mono uppercase tracking-widest text-sm max-w-lg mx-auto">
-            Spin to summon a random warrior. Stronger characters are rarer. Test your fate!
+            Spin to summon a completely random warrior. Test your fate!
           </p>
         </motion.div>
         

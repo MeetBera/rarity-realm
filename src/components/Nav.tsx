@@ -85,13 +85,16 @@ export const Nav = ({ searchQuery, setSearchQuery }: { searchQuery?: string; set
           {/* CENTER — search or links */}
           <div className="hidden md:flex items-center gap-6 flex-1 max-w-lg mx-auto pl-8">
             <Link to="/" className={`text-[11px] font-black uppercase tracking-wider transition-colors ${location.pathname === '/' ? 'text-amber-400' : 'text-slate-400 hover:text-slate-200'}`}>
-              Roster
+              List
             </Link>
             <Link to="/lucky" className={`text-[11px] font-black uppercase tracking-wider transition-colors ${location.pathname === '/lucky' ? 'text-amber-400' : 'text-slate-400 hover:text-slate-200'}`}>
               Tavern (Lucky)
             </Link>
             <Link to="/gauntlet" className={`text-[11px] font-black uppercase tracking-wider transition-colors ${location.pathname === '/gauntlet' ? 'text-amber-400' : 'text-slate-400 hover:text-slate-200'}`}>
               Gauntlet
+            </Link>
+            <Link to="/trivia" className={`text-[11px] font-black uppercase tracking-wider transition-colors ${location.pathname === '/trivia' ? 'text-amber-400' : 'text-slate-400 hover:text-slate-200'}`}>
+              Trivia
             </Link>
 
             {setSearchQuery && (
@@ -147,6 +150,9 @@ export const Nav = ({ searchQuery, setSearchQuery }: { searchQuery?: string; set
                 </Link>
                 <Link to="/gauntlet" className={`text-sm font-black uppercase tracking-wider transition-colors ${location.pathname === '/gauntlet' ? 'text-amber-400' : 'text-slate-400'}`}>
                   Gauntlet
+                </Link>
+                <Link to="/trivia" className={`text-sm font-black uppercase tracking-wider transition-colors ${location.pathname === '/trivia' ? 'text-amber-400' : 'text-slate-400'}`}>
+                  Trivia
                 </Link>
                 
                 {setSearchQuery && (

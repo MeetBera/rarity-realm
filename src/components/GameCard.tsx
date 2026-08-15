@@ -239,7 +239,7 @@ export const GameCard = ({ card, onCardClick, index = 0 }: GameCardProps) => {
             {/* Title & Type */}
             <div className="mb-2 px-1">
               <h3 
-                className="font-black uppercase text-xl tracking-wide text-white mb-1"
+                className="font-black uppercase text-lg sm:text-xl tracking-wide text-white mb-1"
                 style={{ 
                   fontFamily: "system-ui, -apple-system, sans-serif",
                   textShadow: `0 4px 20px rgba(0,0,0,0.9), 0 0 12px ${theme.accent}10` 
@@ -247,11 +247,11 @@ export const GameCard = ({ card, onCardClick, index = 0 }: GameCardProps) => {
               >
                 {card.name}
               </h3>
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm text-white/90">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-[8px] sm:text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm text-white/90">
                   {card.stats.class}
                 </span>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-white/60">
+                <span className="text-[8px] sm:text-[10px] font-bold uppercase tracking-widest text-white/60">
                   {card.stats.type}
                 </span>
               </div>

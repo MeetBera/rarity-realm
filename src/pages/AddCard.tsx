@@ -86,12 +86,12 @@ const AddCard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-8 flex justify-center">
+    <div className="min-h-screen bg-gray-900 text-white p-4 sm:p-8 flex justify-center">
       <form onSubmit={handleSubmit} className="w-full max-w-2xl bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-700">
         <h2 className="text-2xl font-bold mb-6 text-emerald-400">Add New Card</h2>
 
         {/* Basic Info */}
-        <div className="grid grid-cols-2 gap-4 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
           <div>
             <label className="block text-sm text-gray-400 mb-1">Card Name</label>
             <input type="text" name="name" value={formData.name} onChange={handleChange} required className="w-full bg-gray-700 rounded p-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
@@ -120,7 +120,7 @@ const AddCard = () => {
 
         {/* Stats Section */}
         <h3 className="text-xl font-semibold mb-4 text-emerald-400 border-b border-gray-600 pb-2">Stats</h3>
-        <div className="grid grid-cols-3 gap-4 mb-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-4">
           {['hp', 'attack', 'defense', 'mana', 'speed', 'intelligence'].map((stat) => (
             <div key={stat}>
               <label className="block text-xs uppercase text-gray-500 mb-1">{stat}</label>
@@ -136,7 +136,7 @@ const AddCard = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-2 gap-4 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
            <div>
             <label className="block text-sm text-gray-400 mb-1">Monster Type</label>
             {/* UPDATED: Changed from Select to Input */}
